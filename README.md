@@ -1,4 +1,4 @@
-# Documents for Message API V4
+# Documents for COOLSMS Developers
 
-이 문서는 [https://docs.solapi.com](https://docs.solapi.com) 으로 이동 되었습니다.
+준비중입니다...
 
