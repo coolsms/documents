@@ -6,39 +6,36 @@ _참고_
 
 Authorization 헤더정보를 전달하는 방식은 HTTP에서 인증을 위한 수단으로 널리 사용되고 있습니다. [Basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) 을 참고하세요.
 
-쿨에스엠에스 [API Key 관리](https://www.coolsms.co.kr/credentials) 페이지에서 API Key와 API Secret을 생성하여 REST API 호출에 사용합니다.
+쿨에스엠에스 [API Key 관리](https://coolsms.co.kr/credentials) 페이지에서 API Key와 API Secret을 생성하여 REST API 호출에 사용합니다.
 
 ## Request
 
 {% tabs %}
 {% tab title="Syntax" %}
-```text
-{
-  Authorization: <AuthenticationMethod> apiKey=<ApiKey>,
-  date=<DateTime>, 
-  salt=<Salt>, 
-  signature=<Signature>
-}
-```
+`Authorization: <AuthenticationMethod> apiKey=<API Key>, date=<Date Time>, salt=<Salt>, signature=<Signature>`
 {% endtab %}
 
 {% tab title="Sample" %}
-`$ curl -X POST https://rest.coolsms.co.kr/messages/v4/groups --header "Authorization : HMAC-SHA256 apiKey=[API_KEY], date=[ISO 8601 DATE], salt=[UNIQID], signature=[SIGNATURE]"`
+`curl -X GET https://api.coolsms.co.kr/messages/v4/list --header "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"`
 {% endtab %}
 {% endtabs %}
 
-* AuthenticationMethod
-  * Signature 생성 알고리즘으로 HMAC-SHA256, HMAC-MD5 중에 하나를 선택할 수 있습니다.
-* apiKey  
-  * 발급받은 API Key를 입력합니다.
-* date
-  * ISO 8601 규격의 날짜와 시간을 입력합니다.
-* salt
-  * 10 ~ 64바이트의 불규칙적이고 랜덤한 문자열을 생성하여 사용합니다.
-* signature
-  * date와 salt을 하나로 연결한 문자열을 데이터로 하고 API Secret을 Key로 만들어진 HMAC 해시코드
+**&lt;AuthenticationMethod&gt;**  
+Signature 생성 알고리즘으로 HMAC-SHA256, HMAC-MD5 중에 하나를 선택할 수 있습니다.
 
-Signature의 재사용을 막기위해서 입력된 date의 표준시간을 기준으로 ±15분 차이가 날 경우 RequestTimeTooSkewed 오류를 리턴합니다. 또한 15분 내에 한번 사용된 Signature는 중복사용이 불가능하므로 원천적으로 재사용을 차단하고 있습니다.
+**&lt;API Key&gt;**  
+발급받은 API Key를 입력합니다.
+
+**&lt;Date Time&gt;**  
+ISO 8601 규격의 날짜와 시간을 입력합니다.
+
+**&lt;Salt&gt;**  
+12 ~ 64바이트의 불규칙적이고 랜덤한 문자열을 생성하여 사용합니다.
+
+**&lt;Signature&gt;**  
+&lt;Date Time&gt;과 &lt;Salt&gt;를 하나로 연결한 문자열을 데이터로 하고 API Secret을 Key로 만들어진 HMAC 해시코드
+
+Signature의 재사용을 막기위해서 입력된 &lt;Date Time&gt;의 표준시간을 기준으로 ±15분 차이가 날 경우 RequestTimeTooSkewed 오류를 리턴합니다. 또한 15분 내에 한번 사용된 Signature는 중복사용이 불가능하므로 원천적으로 재사용을 차단하고 있습니다.
 
 _**참고**_
 
@@ -46,7 +43,7 @@ _**참고**_
 
 ## Signature 생성
 
-클라이언트에서 Date + Salt 를 데이터로, API Secret을 Key로 사용하여 HMAC\(Hash-based Message Authentication Code\)을 만들어진 Signature를 서버로 보내면, 서버 쪽에서도 동일한 방식으로 만들어 비교하게 됩니다. API Secret은 Signature를 생성할 때만 사용하고 외부에 노출되지 않도록 주의해야 합니다.
+클라이언트에서 &lt;Date Time&gt; + &lt;Salt&gt; 를 데이터로, API Secret을 Key로 사용하여 HMAC\(Hash-based Message Authentication Code\)을 만들어진 Signature를 서버로 보내면, 서버 쪽에서도 동일한 방식으로 만들어 비교하게 됩니다. API Secret은 Signature를 생성할 때만 사용하고 외부에 노출되지 않도록 주의해야 합니다.
 
 _**참고**_
 
@@ -71,7 +68,5 @@ Signature는 중복사용이 불가하며 15분 안에 전송되는 요청\(Requ
 
 메시지 API v4.0 부터 OAuth2 를 통한 인증을 제공합니다.
 
-{% page-ref page="oauth2.md" %}
-
-
+{% page-ref page="oauth2-3/oauth2.md" %}
 
