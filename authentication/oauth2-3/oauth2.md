@@ -12,7 +12,7 @@ OAuth 2는 개발자가 새롭게 만든 어플리케이션 이나 웹 사이트
 
 ## 인증 흐름 알아보기
 
-![](../../.gitbook/assets/flow1-1.jpg)
+![](https://github.com/coolsms/documents/tree/7ca6146b61cd067d8dbdc123b0fed954b54ba21e/.gitbook/assets/flow1-1.jpg)
 
 ## Step 1. 사용자 인증하기
 
@@ -26,56 +26,36 @@ GET https://api.coolsms.co.kr/oauth2/v1/authorize
 
 필요한 GET 쿼리 파라미터는 아래와 같으며 필드에 따라서 필수항목과 옵션 항목들이 있습니다.
 
+| Name | Type | Required | Desc |
+| :--- | :--- | :--- | :--- |
+
+
+| client\_id | String | true | 앱 생성시 발급받은 Client ID |
+| :--- | :--- | :--- | :--- |
+
+
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">Name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Required</th>
-      <th style="text-align:left">Desc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">client_id</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">true</td>
-      <td style="text-align:left">&#xC571; &#xC0DD;&#xC131;&#xC2DC; &#xBC1C;&#xAE09;&#xBC1B;&#xC740; Client
-        ID</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">response_type</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">true</td>
-      <td style="text-align:left">
+      <th style="text-align:left">response_type</th>
+      <th style="text-align:left">String</th>
+      <th style="text-align:left">true</th>
+      <th style="text-align:left">
         <p>Access Token &#xAC12;&#xC744; &#xBC14;&#xB85C; &#xBC1C;&#xAE09;&#xBC1B;&#xC744;
           &#xC218; &#xC788;&#xB294; &apos;token&apos;</p>
         <p>Authorization Code &#xAC12;&#xC744; &#xBC1C;&#xAE09;&#xBC1B;&#xC744; &#xC218;
           &#xC788;&#xB294; &apos;code&apos;</p>
-      </td>
+      </th>
     </tr>
-    <tr>
-      <td style="text-align:left">state</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">true</td>
-      <td style="text-align:left">OAuth2 &#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xAC01;&#xAC01;&#xC758; &#xC694;&#xCCAD;&#xC744;
-        &#xAD6C;&#xBD84;&#xC9D3;&#xB294; &#xAD6C;&#xBCC4; &#xD0A4;</td>
-    </tr>
-  </tbody>
-</table>```text
-// rseponse_type이 code일 경우
-{
-    code: 'ADFKVJCK19JDFKL2KFJLS3388',
-    state: '사용자가 보내왔던 state값'
-}
+  </thead>
+  <tbody></tbody>
+</table>| state | String | true | OAuth2 서버에서 각각의 요청을 구분짓는 구별 키 |
+| :--- | :--- | :--- | :--- |
 
-// rseponse_type이 token일 경우
-{
-    access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ZwUymzWAUiTxQ...',
-    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ZwUymzWAUiTxQ...'
-}
-```
 
+// rseponse\_type이 token일 경우 { access\_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ZwUymzWAUiTxQ...', refresh\_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ZwUymzWAUiTxQ...' }
+
+```text
 요청시 보냈던 `state` 값이 Response 값에 포함이되어 해당 요청이 어떤 사용자에 대한 요청인지 인지 확인할수 있습니다.
 
 access\_token과 refresh\_token의 경우 아래에서 설명하도록 하겠습니다.
@@ -91,83 +71,97 @@ POST https://api.coolsms.co.kr/oauth2/v1/access_token
 
 필요한 POST body 파라미터는 아래와 같으며 필드에 따라서 필수항목과 옵션항목들이 있습니다.
 
+| Name | Type | Required | Desc |
+| :--- | :--- | :--- | :--- |
+
+
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">Name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Required</th>
-      <th style="text-align:left">Desc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">grant_type</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">true</td>
-      <td style="text-align:left">
+      <th style="text-align:left">grant_type</th>
+      <th style="text-align:left">String</th>
+      <th style="text-align:left">true</th>
+      <th style="text-align:left">
         <p>&apos;authorization_code&apos;, &apos;refresh_token&apos; &#xAC12;&#xC774;
           &#xC788;&#xC73C;&#xBA70;</p>
         <p>&#xD1A0;&#xD070;&#xC744; &#xBC1C;&#xAE09;&#xBC1B;&#xC744; &#xBC29;&#xBC95;&#xC5D0;
           &#xB9DE;&#xAC8C; &#xC124;&#xC815;&#xAC00;&#xB2A5;</p>
-      </td>
+      </th>
     </tr>
+  </thead>
+  <tbody></tbody>
+</table><table>
+  <thead>
     <tr>
-      <td style="text-align:left">code</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">false</td>
-      <td style="text-align:left">
+      <th style="text-align:left">code</th>
+      <th style="text-align:left">String</th>
+      <th style="text-align:left">false</th>
+      <th style="text-align:left">
         <p>grant_type&#xC774; &apos;authorization_code&apos;&#xC77C; &#xB54C; &#xD544;&#xC218;&#xAC12;&#xC73C;&#xB85C;</p>
         <p>Step 1&#xC5D0;&#xC11C; &#xBC1C;&#xAE09;&#xBC1B;&#xC740; authorization_code
           &#xAC12;</p>
-      </td>
+      </th>
     </tr>
+  </thead>
+  <tbody></tbody>
+</table><table>
+  <thead>
     <tr>
-      <td style="text-align:left">client_id</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">false</td>
-      <td style="text-align:left">
+      <th style="text-align:left">client_id</th>
+      <th style="text-align:left">String</th>
+      <th style="text-align:left">false</th>
+      <th style="text-align:left">
         <p>grant_type&#xC774; &apos;authorization_code&apos;&#xC77C; &#xB54C; &#xD544;&#xC218;&#xAC12;&#xC73C;&#xB85C;</p>
         <p>&#xC571; &#xC0DD;&#xC131;&#xC2DC; &#xBC1C;&#xAE09;&#xBC1B;&#xC740; Client
           ID &#xAC12;</p>
-      </td>
+      </th>
     </tr>
+  </thead>
+  <tbody></tbody>
+</table><table>
+  <thead>
     <tr>
-      <td style="text-align:left">client_secret</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">false</td>
-      <td style="text-align:left">
+      <th style="text-align:left">client_secret</th>
+      <th style="text-align:left">String</th>
+      <th style="text-align:left">false</th>
+      <th style="text-align:left">
         <p>grant_type&#xC774; &apos;authorization_code&apos;&#xC77C; &#xB54C; &#xD544;&#xC218;&#xAC12;&#xC73C;&#xB85C;</p>
         <p>&#xC571; &#xC0DD;&#xC131;&#xC2DC; &#xBC1C;&#xAE09;&#xBC1B;&#xC740; Client
           Secret &#xAC12;</p>
-      </td>
+      </th>
     </tr>
+  </thead>
+  <tbody></tbody>
+</table><table>
+  <thead>
     <tr>
-      <td style="text-align:left">redirect_uri</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">false</td>
-      <td style="text-align:left">
+      <th style="text-align:left">redirect_uri</th>
+      <th style="text-align:left">String</th>
+      <th style="text-align:left">false</th>
+      <th style="text-align:left">
         <p>grant_type&#xC774; &apos;authorization_code&apos;&#xC77C; &#xB54C; &#xD544;&#xC218;&#xAC12;&#xC73C;&#xB85C;</p>
         <p>&#xC571; &#xC0DD;&#xC131;&#xC2DC; &#xC785;&#xB825;&#xD558;&#xC600;&#xB358;
           Redirect URI &#xAC12;</p>
-      </td>
+      </th>
     </tr>
+  </thead>
+  <tbody></tbody>
+</table><table>
+  <thead>
     <tr>
-      <td style="text-align:left">refresh_token</td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">false</td>
-      <td style="text-align:left">
+      <th style="text-align:left">refresh_token</th>
+      <th style="text-align:left">String</th>
+      <th style="text-align:left">false</th>
+      <th style="text-align:left">
         <p>grant_type&#xC774; &apos;refresh_token&apos;&#xC77C; &#xACBD;&#xC6B0;
           &#xD544;&#xC218;&#xAC12;&#xC73C;&#xB85C;</p>
         <p>&#xCCAB; Access Token &#xBC1C;&#xAE09; &#xC2DC; &#xBC1B;&#xC558;&#xB358;
           &#xAC12;</p>
-      </td>
+      </th>
     </tr>
-  </tbody>
-</table>또한 발급받은 액세스 토큰의 경우 24시간 사용이 가능하며, Refresh Token을 통해 좀 더 간단하게 재발급이 가능합니다.  
-Refresh Token의 경우 만료기한이 없으며, **가장 처음 엑세스 토큰을 발급받을 때만 볼 수 있으니 이 점 유의 부탁드립니다.**
-
-## Step 3. 엑세스 토큰을 사용하여 API 접근하기
+  </thead>
+  <tbody></tbody>
+</table>## Step 3. 엑세스 토큰을 사용하여 API 접근하기
 
 위에서 발급받은 엑세스 토큰을 사용하여 아래와 같이 쿨에스엠에스의 API를 이용할 수 있습니다.
 
