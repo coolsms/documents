@@ -11,15 +11,6 @@
   * [권한\(Scope\) 목록](authentication/oauth2-3/scope.md)
 * [멤버 권한 목록](authentication/undefined.md)
 
-## DEVELOPMENT-KITS
-
-* [Overview](development-kits/overview.md)
-
-## APP-STORE
-
-* [쿨에스엠에스 OAuth2 연동 Node & Express를 이용하여 앱 만들기](app-store/oauth2-node-and-express.md)
-* [쿨에스엠에스 앱 스토어에 내가 만든 앱 등록하기](app-store/undefined.md)
-
 ## API REFERENCE
 
 * [Overview](api-reference/overview.md)
@@ -72,11 +63,6 @@
   * [잔액 소진 알림 on/off 설정](api-reference/cash/setlowbalancealertswitch.md)
   * [자동 충전 on/off](api-reference/cash/toggleautorecharge.md)
   * [견적서 발급](api-reference/cash/getestimate.md)
-* [이미지 \(삭제 예정\)](api-reference/images/README.md)
-  * [이미지 생성](api-reference/images/createimages.md)
-  * [이미지 삭제](api-reference/images/deleteimage.md)
-  * [이미지 정보 조회](api-reference/images/getimageinfo.md)
-  * [이미지 리스트 조회](api-reference/images/getimagelist.md)
 * [발신번호](api-reference/senderid/README.md)
   * [문서 업로드](api-reference/senderid/uploaddocument.md)
   * [증빙자료 인증 요청](api-reference/senderid/createapprovalsenderids.md)

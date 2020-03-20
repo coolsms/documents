@@ -13,9 +13,7 @@ _참고_ REST는 Representational State Transfer의 약자로 API 연동 규격�
 
 `<ServiceName>`
 
-* [메시지](messages/)
-* [잔액](https://github.com/solapi/documents/tree/62adac8b2800927921e6dafd5d6f95441e784571/api-reference/cash/README.md)
-* [이미지](images/)
+* 서비스 이름\(messages, kakao, cash, senderid, ...\)
 
 `<Version>`
 
