@@ -179,7 +179,7 @@ func main() {
 
 {% tab title="JAVA" %}
 ```java
-package solapi;
+package coolsms;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -374,7 +374,7 @@ func main() {
 
 {% tab title="JAVA" %}
 ```java
-package solapi;
+package coolsms;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
