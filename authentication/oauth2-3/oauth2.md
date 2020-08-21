@@ -49,7 +49,9 @@ GET https://api.coolsms.co.kr/oauth2/v1/authorize
     </tr>
   </thead>
   <tbody></tbody>
-</table>| state | String | true | OAuth2 서버에서 각각의 요청을 구분짓는 구별 키 |
+</table>
+
+| state | String | true | OAuth2 서버에서 각각의 요청을 구분짓는 구별 키 |
 | :--- | :--- | :--- | :--- |
 
 
@@ -90,7 +92,9 @@ POST https://api.coolsms.co.kr/oauth2/v1/access_token
     </tr>
   </thead>
   <tbody></tbody>
-</table><table>
+</table>
+
+<table>
   <thead>
     <tr>
       <th style="text-align:left">code</th>
@@ -104,7 +108,9 @@ POST https://api.coolsms.co.kr/oauth2/v1/access_token
     </tr>
   </thead>
   <tbody></tbody>
-</table><table>
+</table>
+
+<table>
   <thead>
     <tr>
       <th style="text-align:left">client_id</th>
@@ -118,7 +124,9 @@ POST https://api.coolsms.co.kr/oauth2/v1/access_token
     </tr>
   </thead>
   <tbody></tbody>
-</table><table>
+</table>
+
+<table>
   <thead>
     <tr>
       <th style="text-align:left">client_secret</th>
@@ -132,7 +140,9 @@ POST https://api.coolsms.co.kr/oauth2/v1/access_token
     </tr>
   </thead>
   <tbody></tbody>
-</table><table>
+</table>
+
+<table>
   <thead>
     <tr>
       <th style="text-align:left">redirect_uri</th>
@@ -146,7 +156,9 @@ POST https://api.coolsms.co.kr/oauth2/v1/access_token
     </tr>
   </thead>
   <tbody></tbody>
-</table><table>
+</table>
+
+<table>
   <thead>
     <tr>
       <th style="text-align:left">refresh_token</th>
@@ -161,7 +173,9 @@ POST https://api.coolsms.co.kr/oauth2/v1/access_token
     </tr>
   </thead>
   <tbody></tbody>
-</table>## Step 3. 엑세스 토큰을 사용하여 API 접근하기
+</table>
+
+## Step 3. 엑세스 토큰을 사용하여 API 접근하기
 
 위에서 발급받은 엑세스 토큰을 사용하여 아래와 같이 쿨에스엠에스의 API를 이용할 수 있습니다.
 
