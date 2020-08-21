@@ -2,6 +2,11 @@
 
 * [Documents for COOLSMS Developers](README.md)
 
+## Development Kits
+
+* [Node JS](development-kits/node-js.md)
+* [PHP](development-kits/php.md)
+
 ## AUTHENTICATION
 
 * [Overview](authentication/overview.md)
