@@ -5,6 +5,7 @@
 ## Development Kits
 
 * [Node JS](development-kits/node-js.md)
+* [Go](development-kits/go.md)
 * [PHP](development-kits/php.md)
 
 ## AUTHENTICATION
