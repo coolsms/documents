@@ -2,12 +2,6 @@
 
 * [Documents for COOLSMS Developers](README.md)
 
-## Development Kits
-
-* [Node JS](development-kits/node-js.md)
-* [Go](development-kits/go.md)
-* [PHP](development-kits/php.md)
-
 ## AUTHENTICATION
 
 * [Overview](authentication/overview.md)
@@ -17,25 +11,34 @@
   * [권한\(Scope\) 목록](authentication/oauth2-3/scope.md)
 * [멤버 권한 목록](authentication/undefined.md)
 
+## DEVELOPMENT-KITS
+
+* [Go](development-kits/go.md)
+* [Node JS](development-kits/node-js.md)
+* [Overview](development-kits/overview.md)
+* [PHP](development-kits/php.md)
+
+## APP-STORE
+
+* [쿨에스엠에스 OAuth2 연동 Node & Express를 이용하여 앱 만들기](app-store/oauth2-node-and-express.md)
+* [쿨에스엠에스 앱 스토어에 내가 만든 앱 등록하기](app-store/undefined.md)
+
 ## API REFERENCE
 
 * [Overview](api-reference/overview.md)
 * [메시지](api-reference/messages/README.md)
-  * [단일 메시지](api-reference/messages/sendsimplemessage.md)
+  * [단일 메시지](api-reference/messages/sendSimpleMessage.md)
   * [그룹 메시지](api-reference/messages/groups/README.md)
-    * [그룹 생성](api-reference/messages/groups/createmessagegroup.md)
-    * [그룹 메시지 삭제](api-reference/messages/groups/deletegroupmessages.md)
-    * [그룹 목록 조회](api-reference/messages/groups/getmessagegrouplist.md)
-    * [그룹 정보 조회](api-reference/messages/groups/getmessagegroupinfo.md)
-    * [그룹 삭제](api-reference/messages/groups/deletemessagegroup.md)
-    * [그룹 메시지 추가](api-reference/messages/groups/addgroupmessages.md)
-    * [그룹 메시지 목록 조회](api-reference/messages/groups/getgroupmessagelist.md)
-    * [발송 요청](api-reference/messages/groups/sendgroupmessage.md)
-    * [실패한 그룹 재발송 요청](api-reference/messages/groups/resendgroupmessage.md)
-  * [메시지 조회](api-reference/messages/getmessagelist.md)
-  * [통계 조회](api-reference/messages/getstatistics.md)
-  * [overseas](api-reference/messages/overseas/README.md)
-    * [해외 문자 리포트 처리](api-reference/messages/overseas/report.md)
+    * [그룹 생성](api-reference/messages/groups/createMessageGroup.md)
+    * [그룹 메시지 삭제](api-reference/messages/groups/deleteGroupMessages.md)
+    * [그룹 목록 조회](api-reference/messages/groups/getMessageGroupList.md)
+    * [그룹 정보 조회](api-reference/messages/groups/getMessageGroupInfo.md)
+    * [그룹 삭제](api-reference/messages/groups/deleteMessageGroup.md)
+    * [그룹 메시지 추가](api-reference/messages/groups/addGroupMessages.md)
+    * [그룹 메시지 목록 조회](api-reference/messages/groups/getGroupMessageList.md)
+    * [발송 요청](api-reference/messages/groups/sendGroupMessage.md)
+  * [메시지 조회](api-reference/messages/getMessageList.md)
+  * [통계 조회](api-reference/messages/getStatistics.md)
 * [카카오톡](api-reference/kakao/README.md)
   * [템플릿 검수 요청](api-reference/kakao/templateinspection.md)
   * [카테고리 정보 조회](api-reference/kakao/getcategory.md)
@@ -69,6 +72,11 @@
   * [잔액 소진 알림 on/off 설정](api-reference/cash/setlowbalancealertswitch.md)
   * [자동 충전 on/off](api-reference/cash/toggleautorecharge.md)
   * [견적서 발급](api-reference/cash/getestimate.md)
+* [이미지 \(삭제 예정\)](api-reference/images/README.md)
+  * [이미지 생성](api-reference/images/createimages.md)
+  * [이미지 삭제](api-reference/images/deleteimage.md)
+  * [이미지 정보 조회](api-reference/images/getimageinfo.md)
+  * [이미지 리스트 조회](api-reference/images/getimagelist.md)
 * [발신번호](api-reference/senderid/README.md)
   * [문서 업로드](api-reference/senderid/uploaddocument.md)
   * [증빙자료 인증 요청](api-reference/senderid/createapprovalsenderids.md)
@@ -153,51 +161,20 @@
   * [테스트 이벤트 데이터 전송](api-reference/webhook/sendtestoutgoingdata.md)
   * [웹훅 수정](api-reference/webhook/updateoutgoingdata.md)
 
-## OLD API References <a id="old-versions"></a>
+## OLD-VERSIONS
 
 * [SMS API Version 1](old-versions/sms-api-version-1.md)
 * [SMS API Version 2](old-versions/sms-api-version-2.md)
 
-## OLD SDK <a id="old-versions-sdk"></a>
+## OLD-VERSIONS-SDK
 
+* [C](old-versions-sdk/c/README.md)
+* [Delphi](old-versions-sdk/delphi/README.md)
+  * [API Reference](old-versions-sdk/delphi/api-reference.md)
+  * [Examples](old-versions-sdk/delphi/examples.md)
+* [JAVA](old-versions-sdk/java/README.md)
 * [PHP](old-versions-sdk/php/README.md)
   * [PHP SDK v2](old-versions-sdk/php/php-sdk-v2/README.md)
     * [Example](old-versions-sdk/php/php-sdk-v2/example.md)
-  * [PHP SDK v1.2.1](old-versions-sdk/php/php-sdk-v1.2.1/README.md)
-    * [Examples](old-versions-sdk/php/php-sdk-v1.2.1/examples.md)
-    * [발신번호](old-versions-sdk/php/php-sdk-v1.2.1/undefined.md)
-    * [API Reference](old-versions-sdk/php/php-sdk-v1.2.1/api-reference.md)
 * [Python](old-versions-sdk/python/README.md)
-  * [Python SDK v2.0.3](old-versions-sdk/python/python-sdk-v2.0.3/README.md)
-    * [Examples](old-versions-sdk/python/python-sdk-v2.0.3/examples/README.md)
-      * [Message](old-versions-sdk/python/python-sdk-v2.0.3/examples/message.md)
-      * [GroupMessage](old-versions-sdk/python/python-sdk-v2.0.3/examples/groupmessage.md)
-      * [Image](old-versions-sdk/python/python-sdk-v2.0.3/examples/image.md)
-      * [SenderID](old-versions-sdk/python/python-sdk-v2.0.3/examples/senderid.md)
-  * [Python SDK v1.1](old-versions-sdk/python/python-sdk-v1.1/README.md)
-    * [Examples](old-versions-sdk/python/python-sdk-v1.1/examples.md)
-    * [API Reference](old-versions-sdk/python/python-sdk-v1.1/api-reference.md)
-    * [Profit Sharing](old-versions-sdk/python/python-sdk-v1.1/profit-sharing.md)
-* [JAVA](old-versions-sdk/java/README.md)
-  * [Java SDK v2.2](old-versions-sdk/java/java-sdk-v2.2/README.md)
-    * [Examples](old-versions-sdk/java/java-sdk-v2.2/examples/README.md)
-      * [Message](old-versions-sdk/java/java-sdk-v2.2/examples/message.md)
-      * [GroupMessage](old-versions-sdk/java/java-sdk-v2.2/examples/groupmessage.md)
-      * [Image](old-versions-sdk/java/java-sdk-v2.2/examples/image.md)
-      * [SenderID](old-versions-sdk/java/java-sdk-v2.2/examples/senderid.md)
-  * [Java SDK v2.1](old-versions-sdk/java/java-sdk-v2.1/README.md)
-    * [Examples](old-versions-sdk/java/java-sdk-v2.1/examples.md)
-    * [API Reference](old-versions-sdk/java/java-sdk-v2.1/api-reference.md)
-* [Delphi](old-versions-sdk/delphi/README.md)
-  * [Examples](old-versions-sdk/delphi/examples.md)
-  * [API Reference](old-versions-sdk/delphi/api-reference.md)
-* [C](old-versions-sdk/c/README.md)
-  * [C SDK v2.0](old-versions-sdk/c/c-sdk-v2.0/README.md)
-    * [Examples](old-versions-sdk/c/c-sdk-v2.0/examples/README.md)
-      * [Message](old-versions-sdk/c/c-sdk-v2.0/examples/message.md)
-      * [GroupMessage](old-versions-sdk/c/c-sdk-v2.0/examples/groupmessage.md)
-  * [C SDK v1.1](old-versions-sdk/c/c-sdk-v1.1/README.md)
-    * [Examples](old-versions-sdk/c/c-sdk-v1.1/examples.md)
-    * [API Reference](old-versions-sdk/c/c-sdk-v1.1/api-reference.md)
 * [에러코드 참고](old-versions-sdk/undefined.md)
-

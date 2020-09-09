@@ -1,16 +1,14 @@
 # 해외 문자 리포트 처리
 
 ## Request
-
-```text
+```
 POST https://api.coolsms.co.kr/messages/v4/overseas/report
 ```
 
 해외 문자 리포트 처리를 담당합니다.
 
 ### Request Structure
-
-```javascript
+```json
 {
     "msisdn": "any",
     "to": "string",
@@ -20,14 +18,14 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
     "scts": "any",
     "network-code": "any",
     "err-code": "any",
+    "api-key": "string",
     "message-timestamp": "any"
 }
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
+| :--- | :--: | :------: | :---------- |
 | msisdn | `any` |  | 설명 없음 |
 | to | `string` |  | 수신번호 |
 | messageId | `any` |  | 메시지 아이디 |
@@ -36,7 +34,11 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
 | scts | `any` |  | 설명 없음 |
 | network-code | `any` |  | 설명 없음 |
 | err-code | `any` |  | 설명 없음 |
+| api-key | `string` |  | 설명 없음 |
 | message-timestamp | `any` |  | 설명 없음 |
+
+
+---
 
 ## Samples
 
@@ -44,7 +46,7 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
 
 > **Sample Request**
 
-```javascript
+```json
 {
     "msisdn": "447700900000",
     "to": "AcmeInc",
@@ -60,7 +62,7 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
 
 > **Sample Response**
 
-```javascript
+```json
 {
     "_id": "M4V201FFFFFFFFFAAAAAAAAAAAAAZIB0",
     "kakaoOptions": {
@@ -95,15 +97,17 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
     "to": "01000000000",
     "customFields": {},
     "hint": {},
-    "dateCreated": "2020-01-02T00:39:42.431Z",
-    "dateUpdated": "2020-01-02T00:39:42.441Z"
+    "dateCreated": "2020-09-09T05:25:32.321Z",
+    "dateUpdated": "2020-09-09T05:25:32.334Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -131,10 +135,12 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/messages/v4/overseas/report";
@@ -152,10 +158,12 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
@@ -168,20 +176,23 @@ data = '{"msisdn":"447700900000","to":"AcmeInc","network-code":"12345","messageI
 response = requests.post(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X POST \
-    -H 'Content-Type: application/json' \
-    -d '{"msisdn":"447700900000","to":"AcmeInc","network-code":"12345","messageId":"0A0000001234567B","price":"0.03330000","status":"delivered","scts":"2001011400","err-code":"0","message-timestamp":"2020-01-01T12:00:00.000+00:00"}' \
-    http://api.coolsms.co.kr/messages/v4/overseas/report
+	-H 'Content-Type: application/json' \
+	-d '{"msisdn":"447700900000","to":"AcmeInc","network-code":"12345","messageId":"0A0000001234567B","price":"0.03330000","status":"delivered","scts":"2001011400","err-code":"0","message-timestamp":"2020-01-01T12:00:00.000+00:00"}' \
+	http://api.coolsms.co.kr/messages/v4/overseas/report
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
@@ -210,10 +221,12 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -242,12 +255,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -286,9 +301,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2020-01-02
+---
+
+> 문서 생성일 : 2020-09-09
 

@@ -1,24 +1,25 @@
 # 그룹 삭제
 
 ## Request
-
-```text
+```
 DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
 ```
 
 메시지 그룹을 삭제합니다. 삭제 후 발송 및 복구가 불가합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `message:write` | `role-message:write` | `ACTIVE` | `ACTIVE` | O |
+| :- | :- | :- | :- | :-: |
+| `message:write` | `role-message:write` | `ACTIVE` | `ACTIVE` |  |
 
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
+| :--: | :---------: |
 | :groupId | 메시지 그룹 아이디 |
+
+---
 
 ## Samples
 
@@ -26,13 +27,13 @@ DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
 
 > **Sample Request**
 
-```javascript
+```json
 {}
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
     "count": {
         "total": 0,
@@ -69,19 +70,20 @@ DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
         "appId": null,
         "version": null
     },
+    "serviceMethod": "MT",
     "sdkVersion": null,
     "osPlatform": null,
     "log": [
         {
             "message": "메시지 그룹이 생성되었습니다.",
-            "createAt": "2020-01-02T00:39:36.829Z"
+            "createAt": "2020-09-09T05:25:23.780Z"
         },
         {
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-            "createAt": "2020-01-02T00:39:36.829Z"
+            "createAt": "2020-09-09T05:25:23.780Z"
         },
         {
-            "createAt": "2020-01-02T00:39:40.240Z",
+            "createAt": "2020-09-09T05:25:29.292Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -91,22 +93,24 @@ DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
         },
         {
             "message": "일일 발송량을 초과하여 발송에 실패하였습니다.",
-            "createAt": "2020-01-02T00:39:40.692Z"
+            "createAt": "2020-09-09T05:25:29.322Z"
         },
         {
             "message": "일일 발송량을 초과하여 발송에 실패하였습니다.",
-            "createAt": "2020-01-02T00:39:40.718Z"
+            "createAt": "2020-09-09T05:25:29.347Z"
         },
         {
             "message": "메시지 그룹이 삭제되었습니다.",
-            "createAt": "2020-01-02T00:39:40.915Z"
+            "createAt": "2020-09-09T05:25:29.558Z"
         }
     ],
     "status": "DELETED",
-    "dateSent": "2020-01-02T00:39:40.240Z",
+    "dateSent": "2020-09-09T05:25:29.292Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
+    "prepaid": true,
+    "strict": true,
     "_id": "G4V20180307105937H3PTASXMNJG2JIO",
     "groupId": "G4V20180307105937H3PTASXMNJG2JIO",
     "accountId": "12925149",
@@ -130,15 +134,19 @@ DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
             "cta": 13
         }
     },
-    "dateCreated": "2020-01-02T00:39:36.831Z",
-    "dateUpdated": "2020-01-02T00:39:40.919Z"
+    "customFields": {},
+    "hint": {},
+    "dateCreated": "2020-09-09T05:25:23.783Z",
+    "dateUpdated": "2020-09-09T05:25:29.563Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -157,10 +165,12 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO";
@@ -176,10 +186,12 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
@@ -191,19 +203,22 @@ headers = {
 response = requests.delete(url, headers=headers)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X DELETE \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
@@ -220,10 +235,12 @@ request = Net::HTTP::Delete.new(uri.request_uri, headers)
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -251,12 +268,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -294,9 +313,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2020-01-02
+---
+
+> 문서 생성일 : 2020-09-09
 

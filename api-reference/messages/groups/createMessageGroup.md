@@ -1,40 +1,67 @@
-# 발송 요청
+# 그룹 생성
 
 ## Request
-
-```text
-POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/send
+```
+POST https://api.coolsms.co.kr/messages/v4/groups/
 ```
 
-그룹 메시지 발송을 요청합니다. 정상 접수된 메시지만 발송을 시도합니다.
+메시지 그룹을 생성합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `message:write` | `role-message:write` | `ACTIVE` | `ACTIVE` | O |
+| :- | :- | :- | :- | :-: |
+| `message:write` | `role-message:write` | `ACTIVE` | `ACTIVE` |  |
 
-### Path Parameters
+### Request Structure
+```json
+{
+    "appId": "string",
+    "strict": "boolean",
+    "sdkVersion": "string",
+    "osPlatform": "string",
+    "customFields": "object",
+    "hint": "object"
+}
+```
 
-| Name | Description |
-| :---: | :---: |
-| :groupId | 메시지 그룹 아이디 |
+### Body Params
+| Name | Type | Required | Description |
+| :--- | :--: | :------: | :---------- |
+| appId | `string` |  | 앱 아이디 |
+| strict | `boolean` |  | 설명 없음 |
+| sdkVersion | `string` |  | SDK 버전 |
+| osPlatform | `string` |  | OS 플렛폼 |
+| [customFields](#body-customfields) | `object` |  | 확장 필드로 사용. 키는 30자, 값은 100자 제한 |
+| [hint](#body-hint) | `object` |  | 설명 없음 |
+
+##### Body / customFields
+
+| Name | Type | Required | Description |
+| :--- | :--: | :------: | :---------- |
+
+##### Body / hint
+
+| Name | Type | Required | Description |
+| :--- | :--: | :------: | :---------- |
+
+
+---
 
 ## Samples
 
-### sendGroupMessage
+### 메시지 그룹 생성 POST /messages/v4/groups
 
 > **Sample Request**
 
-```javascript
+```json
 {}
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "_id": "G4V20180307105937H3PTASXMNJG2JIO",
     "count": {
         "total": 0,
         "sentTotal": 0,
@@ -44,7 +71,15 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/send
         "sentReplacement": 0,
         "refund": 0,
         "registeredFailed": 0,
-        "registeredSuccess": 1
+        "registeredSuccess": 0
+    },
+    "countForCharge": {
+        "sms": {},
+        "lms": {},
+        "mms": {},
+        "ata": {},
+        "cta": {},
+        "cti": {}
     },
     "balance": {
         "requested": 0,
@@ -53,7 +88,7 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/send
         "sum": 0
     },
     "point": {
-        "requested": 50,
+        "requested": 0,
         "replacement": 0,
         "refund": 0,
         "sum": 0
@@ -70,64 +105,40 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/send
         "appId": null,
         "version": null
     },
+    "serviceMethod": "MT",
     "sdkVersion": null,
     "osPlatform": null,
     "log": [
         {
-            "message": "메시지 그룹이 생성되었습니다.",
-            "createAt": "2020-01-02T00:39:36.829Z"
-        },
-        {
-            "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-            "createAt": "2020-01-02T00:39:36.829Z"
-        },
-        {
-            "createAt": "2020-01-02T00:39:40.240Z",
-            "message": "메시지를 발송했습니다.",
-            "oldBalance": 100,
-            "newBalance": 100,
-            "oldPoint": 100,
-            "newPoint": 50,
-            "totalPrice": 20
+            "createAt": "2020-09-09T05:25:24.149Z",
+            "message": "메시지 그룹이 생성되었습니다."
         }
     ],
-    "status": "SENDING",
-    "dateSent": "2020-01-02T00:39:40.240Z",
-    "scheduledDate": null,
+    "status": "PENDING",
+    "dateSent": null,
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
-    "groupId": "G4V20180307105937H3PTASXMNJG2JIO",
+    "prepaid": true,
+    "strict": false,
     "accountId": "12925149",
     "apiVersion": "4",
-    "countForCharge": {
-        "sms": {
-            "82": 1
-        },
-        "lms": {},
-        "mms": {},
-        "ata": {},
-        "cta": {},
-        "cti": {}
-    },
-    "price": {
-        "82": {
-            "sms": 20,
-            "lms": 50,
-            "mms": 200,
-            "ata": 19,
-            "cta": 13
-        }
-    },
-    "dateCreated": "2020-01-02T00:39:36.831Z",
-    "dateUpdated": "2020-01-02T00:39:40.240Z"
+    "customFields": {},
+    "hint": null,
+    "groupId": "G4V20200909142524CAADLKPMC1CIQSF",
+    "price": {},
+    "dateCreated": "2020-09-09T05:25:24.155Z",
+    "dateUpdated": "2020-09-09T05:25:24.155Z",
+    "_id": "G4V20200909142524CAADLKPMC1CIQSF"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -138,21 +149,22 @@ var options = {
   },
   method: 'POST',
   json: true,
-  url:
-    'http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/send'
+  url: 'http://api.coolsms.co.kr/messages/v4/groups'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/send";
+$url = "http://api.coolsms.co.kr/messages/v4/groups";
 
 $options = array(
     'http' => array(
@@ -165,14 +177,16 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/send"
+url = "http://api.coolsms.co.kr/messages/v4/groups"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
@@ -180,25 +194,28 @@ headers = {
 response = requests.post(url, headers=headers)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X POST \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/send
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	http://api.coolsms.co.kr/messages/v4/groups
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/send")
+uri = URI.parse("http://api.coolsms.co.kr/messages/v4/groups")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
@@ -209,10 +226,12 @@ request = Net::HTTP::Post.new(uri.request_uri, headers)
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -224,7 +243,7 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/send"
+  uri := "http://api.coolsms.co.kr/messages/v4/groups"
 
   req, err := http.NewRequest("POST", uri, nil)
   if err != nil { panic(err) }
@@ -240,12 +259,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -255,7 +276,7 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/send";
+    String targetUrl = "http://api.coolsms.co.kr/messages/v4/groups";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -283,9 +304,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2020-01-02
+---
+
+> 문서 생성일 : 2020-09-09
 
