@@ -1,28 +1,26 @@
-# 썸네일 업로드
+# 컨텐츠 이미지 업로드
 
 ## Request
-
-```text
-POST https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/images/thumbnail
+```
+POST https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/images/screenshots
 ```
 
-200x200 사이즈의 PNG, JPG, GIF 포맷의 썸네일 이미지 업로드
+800x600 사이즈의 PNG, JPG, GIF 포맷의 컨텐츠 이미지 업로드
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/authentication)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
+| :- | :- | :- | :- | :-: |
 | `appstore:write` | `role-appstore:write` | `ACTIVE` | `ACTIVE` | O |
 
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
+| :--: | :---------: |
 | :appId | 앱 아이디 |
 
 ### Request Structure
-
-```javascript
+```json
 {
     "image": "string",
     "name": "string"
@@ -30,39 +28,43 @@ POST https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/images/thumbnail
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
+| :--- | :--: | :------: | :---------- |
 | image | `string` | O | 800x600 사이즈의 PNG, JPG, GIF 포맷의 컨텐츠 이미지 |
 | name | `string` |  | 사진 이름 |
 
+
+---
+
 ## Samples
 
-### \(User\) 썸네일 이미지 업로드
+### (Private) 컨텐츠 이미지 업로드
 
 > **Sample Request**
 
-```javascript
+```json
 {
-    "image": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADIBAMAAABfdrOtAAAAG1BMVEU/j2////9vq5PP49vn8e2fx7e31clXnYGHuaX7Q2KjAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABrklEQVR4nO3UT0/CMBjH8ccx2I56IF6nkHglQoxHnX/gSKIvwBi9TyWel7gX7tP2GQpEE4revp+EluX3ZN3ariIAAAAAAAAAAAAAAAAA8JvjwrXZsb94Ldbj5HtgVdtKJuPLuXbX4xu9Gl5N5qv54GrSXwZWtbVeIdmt3qSQtwdJSsnOVvNHkcUyCFVxjiqZaTeTtBb/W5UctkGoipMW+YV2H9Jom4828tICq4rTqXtuJV7kWdtsX5tuoc17m59bYFVx9qpOrV1anburqf50DSRbTsyhhMCq4gZpdMK06xSluzp1jS7xorZYZykEVhU3yCw8Xqd2LxGeOp9+vUhaSwisKmqM7mhzEGma5c3u5A8GaarN6ZJuv43zqew+XcnUHu/bwusX+NQu8LCS3Rde11jWt7Burby0Z3D9rls491v2QtxnNpT2Y9St1RQ+b9yTh8CqItz713dbqZS0lrA8bmv5V5Cunz0LQtX2emEJhrU/IGd2QPb0pjJw/8LSWBCqtnd0oObuxHeH+GD9qE9c3G8Dq4qWnfju9ae9EwKrAgAAAAAAAAAAAAAAAPAfPgFZpkiD9I8rfAAAAABJRU5ErkJggg=="
+    "image": "iVBORw0KGgoAAAANSUhEUgAAAyA..."
 }
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "appId": "r4GIBRG3dQVe",
-    "imageName": "LSUtpt7GpRAWlkP.png",
-    "imageUrl": "https://coolsms-apps-test.s3.ap-northeast-2.amazonaws.com/r4GIBRG3dQVe/thumbnails/LSUtpt7GpRAWlkP.png",
-    "originalName": "LSUtpt7GpRAWlkP.png"
+    "appId": "Hi4LiQsWq3Hg",
+    "imageName": "ji95WNBarSxIGDR.png",
+    "imageUrl": "https://coolsms-apps-test.s3.ap-northeast-2.amazonaws.com/Hi4LiQsWq3Hg/screenshots/ji95WNBarSxIGDR.png",
+    "originalName": "ji95WNBarSxIGDR.png"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -73,46 +75,28 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    image: 'iVBORw0KGgoAAAANSUhEUgAAAMg...'
+    image: 'iVBORw0KGgoAAAANSUhEUgAAAyA...'
   },
   method: 'POST',
   json: true,
-  url: 'http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail'
+  url:
+    'http://api.coolsms.co.kr/appstore/v2/me/apps/Hi4LiQsWq3Hg/images/screenshots'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
-```
-{% endtab %}
 
-{% tab title="JQUERY" %}
-```javascript
-var options = {
-  headers: {
-    Authorization:
-      'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4',
-    'Content-Type': 'application/json'
-  },
-  body: {
-    image: 'iVBORw0KGgoAAAANSUhEUgAAAMg...'
-  },
-  method: 'POST',
-  url: 'http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail'
-};
-
-$.ajax(options).done(function(response) {
-  console.log(response);
-});
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail";
-$data = '{"image":"iVBORw0KGgoAAAANSUhEUgAAAMg..."}';
+$url = "http://api.coolsms.co.kr/appstore/v2/me/apps/Hi4LiQsWq3Hg/images/screenshots";
+$data = '{"image":"iVBORw0KGgoAAAANSUhEUgAAAyA..."}';
 
 $options = array(
     'http' => array(
@@ -126,51 +110,56 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail"
+url = "http://api.coolsms.co.kr/appstore/v2/me/apps/Hi4LiQsWq3Hg/images/screenshots"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
-data = '{"image":"iVBORw0KGgoAAAANSUhEUgAAAMg..."}'
+data = '{"image":"iVBORw0KGgoAAAANSUhEUgAAAyA..."}'
 
 response = requests.post(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X POST \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    -H 'Content-Type: application/json' \
-    -d '{"image":"iVBORw0KGgoAAAANSUhEUgAAAMg..."}' \
-    http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	-H 'Content-Type: application/json' \
+	-d '{"image":"iVBORw0KGgoAAAANSUhEUgAAAyA..."}' \
+	http://api.coolsms.co.kr/appstore/v2/me/apps/Hi4LiQsWq3Hg/images/screenshots
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail")
+uri = URI.parse("http://api.coolsms.co.kr/appstore/v2/me/apps/Hi4LiQsWq3Hg/images/screenshots")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
 data = {
-  "image": "iVBORw0KGgoAAAANSUhEUgAAAMg..."
+  "image": "iVBORw0KGgoAAAANSUhEUgAAAyA..."
 }
 http = Net::HTTP.new(uri.host, uri.port)
 request = Net::HTTP::Post.new(uri.request_uri, headers)
@@ -179,10 +168,12 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -194,8 +185,8 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail"
-  data := strings.NewReader(`{"image":"iVBORw0KGgoAAAANSUhEUgAAAMg..."}`)
+  uri := "http://api.coolsms.co.kr/appstore/v2/me/apps/Hi4LiQsWq3Hg/images/screenshots"
+  data := strings.NewReader(`{"image":"iVBORw0KGgoAAAANSUhEUgAAAyA..."}`)
 
   req, err := http.NewRequest("POST", uri, data)
   if err != nil { panic(err) }
@@ -212,12 +203,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -227,8 +220,8 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/appstore/v2/me/apps/r4GIBRG3dQVe/images/thumbnail";
-    String parameters = "{\"image\":\"iVBORw0KGgoAAAANSUhEUgAAAMg...\"}";
+    String targetUrl = "http://api.coolsms.co.kr/appstore/v2/me/apps/Hi4LiQsWq3Hg/images/screenshots";
+    String parameters = "{\"image\":\"iVBORw0KGgoAAAANSUhEUgAAAyA...\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -257,9 +250,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-10-28
+---
+
+> 문서 생성일 : 2020-09-23
 

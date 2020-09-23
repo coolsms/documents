@@ -1,37 +1,38 @@
 # 앱 정보/목록 조회
 
 ## Request
-
-```text
+```
 GET https://api.coolsms.co.kr/appstore/v2/apps
 ```
 
 로그인 하지 않은 사용자도 앱 정보/목록을 조회 할 수 있습니다.
 
 ### Query Params
-
-| Name | Type | Required | Allowed Operator [\[?\]](https://docs.coolsms.co.kr/api-reference/api-reference#operator) | Description |
-| :--- | :---: | :---: | :---: | :--- |
+| Name | Type | Required | Allowed Operator [[?]](https://docs.coolsms.co.kr/api-reference/overview#operator) | Description |
+| :--- | :--: | :------: | :--------------: | :---------- |
 | offset | `number` |  | eq | 검색 시작 지점 |
 | limit | `number` |  | eq | 한 페이지에 불러옥 목록 개수 |
 | accountId | `string` |  | eq | 계정 고유 아이디 |
 | appId | `string` |  | eq | 앱 아이디 |
 | appName | `string` |  | eq | 앱 이름 |
 | categories | `array` |  | eq | 카테고리 |
+| type | `string` |  | eq | 설명 없음 |
+
+---
 
 ## Samples
 
-### \(Public\) 앱 정보 및 목록 조회
+### (Public) 앱 정보 및 목록 조회
 
 > **Sample Request**
 
-```text
+```
 http://api.coolsms.co.kr/appstore/v2/apps
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 [
     {
         "thumbnail": {
@@ -44,7 +45,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -69,12 +77,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 0",
         "accountId": "12925149",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "6Got74RD01Pj",
-        "dateCreated": "2019-10-28T18:35:43.695Z",
-        "dateUpdated": "2019-10-28T18:35:43.695Z",
+        "appId": "hPJRWLEfNGk0",
+        "dateCreated": "2020-09-23T03:11:26.689Z",
+        "dateUpdated": "2020-09-23T03:11:26.689Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -92,7 +103,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -117,12 +135,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 1",
         "accountId": "12925149",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "jH2X4zZW8aCa",
-        "dateCreated": "2019-10-28T18:35:43.699Z",
-        "dateUpdated": "2019-10-28T18:35:43.699Z",
+        "appId": "UaW6vB3hnwOo",
+        "dateCreated": "2020-09-23T03:11:26.692Z",
+        "dateUpdated": "2020-09-23T03:11:26.692Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -140,7 +161,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -165,12 +193,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 2",
         "accountId": "12925149",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "ZUm545l76Wti",
-        "dateCreated": "2019-10-28T18:35:43.702Z",
-        "dateUpdated": "2019-10-28T18:35:43.702Z",
+        "appId": "9wXpeNe0Qz4r",
+        "dateCreated": "2020-09-23T03:11:26.697Z",
+        "dateUpdated": "2020-09-23T03:11:26.697Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -188,7 +219,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -213,12 +251,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 3",
         "accountId": "12925149",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "e7rSIe2iArsO",
-        "dateCreated": "2019-10-28T18:35:43.705Z",
-        "dateUpdated": "2019-10-28T18:35:43.705Z",
+        "appId": "uQ2q8i1kWp0H",
+        "dateCreated": "2020-09-23T03:11:26.706Z",
+        "dateUpdated": "2020-09-23T03:11:26.706Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -236,7 +277,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -261,12 +309,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 4",
         "accountId": "12925149",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "yw3xEdWUAtML",
-        "dateCreated": "2019-10-28T18:35:43.708Z",
-        "dateUpdated": "2019-10-28T18:35:43.708Z",
+        "appId": "wD5HK3eNdKPf",
+        "dateCreated": "2020-09-23T03:11:26.709Z",
+        "dateUpdated": "2020-09-23T03:11:26.709Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -284,7 +335,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -309,12 +367,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 0",
         "accountId": "487",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "98UzG2FxgGm3",
-        "dateCreated": "2019-10-28T18:35:43.713Z",
-        "dateUpdated": "2019-10-28T18:35:43.713Z",
+        "appId": "EMI2vNoSnwEo",
+        "dateCreated": "2020-09-23T03:11:26.713Z",
+        "dateUpdated": "2020-09-23T03:11:26.713Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -332,7 +393,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -357,12 +425,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 1",
         "accountId": "487",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "mVsmsflx6ghQ",
-        "dateCreated": "2019-10-28T18:35:43.716Z",
-        "dateUpdated": "2019-10-28T18:35:43.716Z",
+        "appId": "32I7BmCnzLIn",
+        "dateCreated": "2020-09-23T03:11:26.718Z",
+        "dateUpdated": "2020-09-23T03:11:26.718Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -380,7 +451,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -405,12 +483,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 2",
         "accountId": "487",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "6SmVwccYfBR9",
-        "dateCreated": "2019-10-28T18:35:43.719Z",
-        "dateUpdated": "2019-10-28T18:35:43.719Z",
+        "appId": "gysLsKHLJu4c",
+        "dateCreated": "2020-09-23T03:11:26.722Z",
+        "dateUpdated": "2020-09-23T03:11:26.722Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -428,7 +509,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -453,12 +541,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 3",
         "accountId": "487",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "cUxwqYNkPQWu",
-        "dateCreated": "2019-10-28T18:35:43.722Z",
-        "dateUpdated": "2019-10-28T18:35:43.722Z",
+        "appId": "H9VPni3WvM1q",
+        "dateCreated": "2020-09-23T03:11:26.725Z",
+        "dateUpdated": "2020-09-23T03:11:26.725Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -476,7 +567,14 @@ http://api.coolsms.co.kr/appstore/v2/apps
             "lms": 1,
             "mms": 1,
             "ata": 1,
-            "cta": 1
+            "cta": 1,
+            "cti": 0
+        },
+        "apphomeConfig": {
+            "primaryColor": null,
+            "secondaryColor": null,
+            "sideMenu": true,
+            "slogan": true
         },
         "appVersion": "1.0.1",
         "screenshots": [
@@ -501,12 +599,15 @@ http://api.coolsms.co.kr/appstore/v2/apps
         "reasonBlocked": null,
         "email": "test@testemail.com",
         "log": [],
+        "appDomain": null,
+        "customDomain": null,
+        "type": "APP",
         "appName": "Test App 4",
         "accountId": "487",
         "clientId": "CIDNURIGOCOOLSMS",
-        "appId": "LcEjT8p6VuDD",
-        "dateCreated": "2019-10-28T18:35:43.730Z",
-        "dateUpdated": "2019-10-28T18:35:43.730Z",
+        "appId": "LymWvQYhGYlA",
+        "dateCreated": "2020-09-23T03:11:26.728Z",
+        "dateUpdated": "2020-09-23T03:11:26.728Z",
         "redirectUri": "http://get.ms.coolsms.co.kr",
         "scope": [
             "message:read",
@@ -519,7 +620,9 @@ http://api.coolsms.co.kr/appstore/v2/apps
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -533,23 +636,12 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
-```
-{% endtab %}
 
-{% tab title="JQUERY" %}
-```javascript
-var options = {
-  method: 'GET',
-  url: 'http://api.coolsms.co.kr/appstore/v2/apps'
-};
-
-$.ajax(options).done(function(response) {
-  console.log(response);
-});
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/appstore/v2/apps";
@@ -565,10 +657,12 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
@@ -577,18 +671,21 @@ url = "http://api.coolsms.co.kr/appstore/v2/apps"
 response = requests.get(url)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X GET \
-    http://api.coolsms.co.kr/appstore/v2/apps
+	http://api.coolsms.co.kr/appstore/v2/apps
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
@@ -602,10 +699,12 @@ request = Net::HTTP::Get.new(uri.request_uri, )
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -631,12 +730,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -673,9 +774,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-10-28
+---
+
+> 문서 생성일 : 2020-09-23
 
