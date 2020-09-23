@@ -142,12 +142,10 @@
     * [앱 정보 업데이트](api-reference/appstore/me/updateApp.md)
     * [스테이지 LIVE로 변경](api-reference/appstore/me/updateStage.md)
 * [스토리지](api-reference/storage/README.md)
-  * [파일 삭제](api-reference/storage/deletefile.md)
-  * [파일 조회](api-reference/storage/getfileinfo.md)
-  * [파일 목록 조회](api-reference/storage/getfilelist.md)
-  * [파일 업로드](api-reference/storage/uploadfile.md)
-* [메시지 상태 코드](api-reference/message-status-codes.md)
-* [Terminology](api-reference/terminology.md)
+  * [파일 삭제](api-reference/storage/deleteFile.md)
+  * [파일 조회](api-reference/storage/getFileInfo.md)
+  * [파일 목록 조회](api-reference/storage/getFileList.md)
+  * [파일 업로드](api-reference/storage/uploadFile.md)
 * [쿼터, 사용자 일일 발송 제한](api-reference/quota/README.md)
   * [계정 쿼터 변경 추정](api-reference/quota/estimatequota.md)
   * [계정의 메시지 발송 한도 조회](api-reference/quota/getquota.md)
@@ -160,6 +158,8 @@
   * [웹훅 목록 조회](api-reference/webhook/readoutgoingdata.md)
   * [테스트 이벤트 데이터 전송](api-reference/webhook/sendtestoutgoingdata.md)
   * [웹훅 수정](api-reference/webhook/updateoutgoingdata.md)
+* [메시지 상태 코드](api-reference/message-status-codes.md)
+* [Terminology](api-reference/terminology.md)
 
 ## OLD-VERSIONS
 
