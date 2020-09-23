@@ -1,69 +1,74 @@
-# 내 회원 정보 수정
+# 사용자 정보 수정
 
 ## Request
-
-```text
-PUT https://api.coolsms.co.kr/users/v1/accounts/:accountId/me
+```
+PUT https://api.coolsms.co.kr/users/v1/member
 ```
 
-특정 계정의 내 회원 정보를 수정합니다.
+사용자의 정보를 수정합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `accounts:write` |  | `ACTIVE` | `ACTIVE` | O |
-
-### Path Parameters
-
-| Name | Description |
-| :---: | :---: |
-| :accountId | 계정 고유 아이디 |
+| :- | :- | :- | :- | :-: |
+| `users:write` |  |  | `ACTIVE` |  |
 
 ### Request Structure
-
-```javascript
+```json
 {
-    "role": "string",
-    "name": "string"
+    "email": "email",
+    "name": "string",
+    "selectedAccountId": "string"
 }
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
-| role | `string` |  | 권한 \(OWNER, DEVELOPER, MEMBER\) |
+| :--- | :--: | :------: | :---------- |
+| email | `email` |  | 이메일 |
 | name | `string` |  | 이름 |
+| selectedAccountId | `string` |  | 설명 없음 |
+
+
+---
 
 ## Samples
 
-### updateAccountMemberAboutMe.spec.js
+### updateMember.spec.js
 
 > **Sample Request**
 
-```javascript
+```json
 {
-    "name": "Member"
+    "name": "aasdasd"
 }
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "dateCreated": "2019-12-30T21:54:37.233Z",
-    "dateUpdated": "2019-12-30T21:54:37.244Z",
-    "memberId": "18010100001001",
-    "role": "MEMBER",
-    "name": "Member"
+    "name": "aasdasd",
+    "phoneNumber": null,
+    "extraPhoneNumbers": [],
+    "status": "ACTIVE",
+    "selectedAccountId": null,
+    "betaMicroservices": null,
+    "appId": null,
+    "memberId": "MEMBdsVeIG2Kp9",
+    "email": "test1@nurigo.net",
+    "loginSessions": [],
+    "dateCreated": "2020-09-23T03:49:36.934Z",
+    "dateUpdated": "2020-09-23T03:49:36.946Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -74,25 +79,27 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    name: 'Member'
+    name: 'aasdasd'
   },
   method: 'PUT',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/accounts/12925149/me'
+  url: 'http://api.coolsms.co.kr/users/v1/member'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/accounts/12925149/me";
-$data = '{"name":"Member"}';
+$url = "http://api.coolsms.co.kr/users/v1/member";
+$data = '{"name":"aasdasd"}';
 
 $options = array(
     'http' => array(
@@ -106,51 +113,56 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/accounts/12925149/me"
+url = "http://api.coolsms.co.kr/users/v1/member"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
-data = '{"name":"Member"}'
+data = '{"name":"aasdasd"}'
 
 response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X PUT \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    -H 'Content-Type: application/json' \
-    -d '{"name":"Member"}' \
-    http://api.coolsms.co.kr/users/v1/accounts/12925149/me
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	-H 'Content-Type: application/json' \
+	-d '{"name":"aasdasd"}' \
+	http://api.coolsms.co.kr/users/v1/member
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/12925149/me")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/member")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
 data = {
-  "name": "Member"
+  "name": "aasdasd"
 }
 http = Net::HTTP.new(uri.host, uri.port)
 request = Net::HTTP::Put.new(uri.request_uri, headers)
@@ -159,10 +171,12 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -174,8 +188,8 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/accounts/12925149/me"
-  data := strings.NewReader(`{"name":"Member"}`)
+  uri := "http://api.coolsms.co.kr/users/v1/member"
+  data := strings.NewReader(`{"name":"aasdasd"}`)
 
   req, err := http.NewRequest("PUT", uri, data)
   if err != nil { panic(err) }
@@ -192,12 +206,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -207,8 +223,8 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/12925149/me";
-    String parameters = "{\"name\":\"Member\"}";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/member";
+    String parameters = "{\"name\":\"aasdasd\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -237,9 +253,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

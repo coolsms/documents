@@ -1,92 +1,63 @@
-# 내 초대 조회
+# 내 계정 정보
 
 ## Request
-
-```text
-GET https://api.coolsms.co.kr/users/v1/invitations
+```
+GET https://api.coolsms.co.kr/users/v1/accounts/:accountId
 ```
 
-내가 받은 초대 목록을 조회합니다.
+내가 소속된 특정 계정에 대한 정보를 얻습니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
+| :- | :- | :- | :- | :-: |
 | `users:read` |  |  | `ACTIVE` `UNVERIFIED` |  |
+
+### Path Parameters
+
+| Name | Description |
+| :--: | :---------: |
+| :accountId | 계정 고유 아이디 |
+
+---
 
 ## Samples
 
-### getMyInvitations.spec.js
+### getAccount.spec.js
 
 > **Sample Request**
 
-```text
-http://api.coolsms.co.kr/users/v1/invitations
+```
+http://api.coolsms.co.kr/users/v1/accounts/20092346176897
 ```
 
 > **Sample Response**
 
-```javascript
-[
-    {
-        "email": "testOrigin@test.net",
-        "invitationId": "iqPkNRHy4atyQeepjeXDO",
-        "role": "MEMBER",
-        "dateCreated": "2019-12-30T21:54:38.414Z",
-        "dateUpdated": "2019-12-30T21:54:38.414Z",
-        "owner": {
-            "name": "test1",
-            "phoneNumber": null,
-            "status": "UNVERIFIED",
-            "selectedAccountId": "19123124878564",
-            "isAdmin": false,
-            "memberId": "MEMvt0ZepTNmxn",
-            "email": "test1@test.com",
-            "loginSessions": [],
-            "dateCreated": "2019-12-30T21:54:38.402Z",
-            "dateUpdated": "2019-12-30T21:54:38.405Z"
-        },
-        "account": {
-            "status": "ACTIVE",
-            "accountId": "19123124878564",
-            "name": "test1님의 계정",
-            "dateCreated": "2019-12-30T21:54:38.407Z",
-            "dateUpdated": "2019-12-30T21:54:38.407Z"
+```json
+{
+    "status": "ACTIVE",
+    "accountId": "20092346176897",
+    "name": "steven님의 계정",
+    "members": [
+        {
+            "dateCreated": "2020-09-23T03:49:34.870Z",
+            "dateUpdated": "2020-09-23T03:49:34.870Z",
+            "memberId": "MEMLU2vEl26-6v",
+            "role": "OWNER",
+            "name": "steven"
         }
-    },
-    {
-        "email": "testOrigin@test.net",
-        "invitationId": "UVyI3y01aLn_VU9FFSNEp",
-        "role": "DEVELOPER",
-        "dateCreated": "2019-12-30T21:54:38.416Z",
-        "dateUpdated": "2019-12-30T21:54:38.416Z",
-        "owner": {
-            "name": "test2",
-            "phoneNumber": null,
-            "status": "UNVERIFIED",
-            "selectedAccountId": "19123124878040",
-            "isAdmin": false,
-            "memberId": "MEMDZ1tMWeb3zZ",
-            "email": "test2@test.com",
-            "loginSessions": [],
-            "dateCreated": "2019-12-30T21:54:38.403Z",
-            "dateUpdated": "2019-12-30T21:54:38.409Z"
-        },
-        "account": {
-            "status": "ACTIVE",
-            "accountId": "19123124878040",
-            "name": "test2님의 계정",
-            "dateCreated": "2019-12-30T21:54:38.412Z",
-            "dateUpdated": "2019-12-30T21:54:38.412Z"
-        }
-    }
-]
+    ],
+    "dateCreated": "2020-09-23T03:49:36.429Z",
+    "dateUpdated": "2020-09-23T03:49:36.429Z"
+}
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -97,20 +68,22 @@ var options = {
   },
   method: 'GET',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/invitations'
+  url: 'http://api.coolsms.co.kr/users/v1/accounts/20092346176897'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/invitations";
+$url = "http://api.coolsms.co.kr/users/v1/accounts/20092346176897";
 
 $options = array(
     'http' => array(
@@ -123,14 +96,16 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/invitations"
+url = "http://api.coolsms.co.kr/users/v1/accounts/20092346176897"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
@@ -138,25 +113,28 @@ headers = {
 response = requests.get(url, headers=headers)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X GET \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/users/v1/invitations
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	http://api.coolsms.co.kr/users/v1/accounts/20092346176897
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/invitations")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/20092346176897")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
@@ -167,10 +145,12 @@ request = Net::HTTP::Get.new(uri.request_uri, headers)
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -182,7 +162,7 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/invitations"
+  uri := "http://api.coolsms.co.kr/users/v1/accounts/20092346176897"
 
   req, err := http.NewRequest("GET", uri, nil)
   if err != nil { panic(err) }
@@ -198,12 +178,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -213,7 +195,7 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/invitations";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/20092346176897";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -241,9 +223,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

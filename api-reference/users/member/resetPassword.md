@@ -1,55 +1,73 @@
-# 비밀번호 초기화 요청
+# 비밀번호 초기화
 
 ## Request
-
-```text
-POST https://api.coolsms.co.kr/users/v1/member/password/reset
+```
+PUT https://api.coolsms.co.kr/users/v1/member/password/reset/:hashId
 ```
 
-비밀번호 초기화 요청 메일을 보냅니다.
+비밀번호를 초기화합니다.
+
+### Path Parameters
+
+| Name | Description |
+| :--: | :---------: |
+| :hashId | 설명 없음 |
 
 ### Request Structure
-
-```javascript
+```json
 {
-    "email": "email"
+    "password": "string",
+    "passwordConfirmation": "string"
 }
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
-| email | `email` | O | 이메일 |
+| :--- | :--: | :------: | :---------- |
+| password | `string` | O | 비밀번호 |
+| passwordConfirmation | `string` | O | 비밀번호 확인 |
+
+
+---
 
 ## Samples
 
-### sendResetPassword.spec.js
+### resetPassword.spec.js
 
 > **Sample Request**
 
-```javascript
+```json
 {
-    "email": "i@nter.net"
+    "password": "asd456!",
+    "passwordConfirmation": "asd456!"
 }
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "_id": "5e0a721d47c7acc34afe304b",
-    "email": "i@nter.net",
-    "dateCreated": "2019-12-30T21:54:37.915Z",
-    "dateUpdated": "2019-12-30T21:54:37.915Z",
-    "hashId": "Q_NrW4f644AMgLGHQeneY"
+    "name": "steven",
+    "phoneNumber": null,
+    "extraPhoneNumbers": [],
+    "status": "UNVERIFIED",
+    "selectedAccountId": null,
+    "betaMicroservices": null,
+    "appId": null,
+    "memberId": "MEMxsEQm5AOJ_L",
+    "email": "steven@nurigo.net",
+    "loginSessions": [],
+    "dateCreated": "2020-09-23T03:49:37.060Z",
+    "dateUpdated": "2020-09-23T03:49:37.069Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -58,31 +76,35 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    email: 'i@nter.net'
+    password: 'asd456!',
+    passwordConfirmation: 'asd456!'
   },
-  method: 'POST',
+  method: 'PUT',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/member/password/reset'
+  url:
+    'http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/member/password/reset";
-$data = '{"email":"i@nter.net"}';
+$url = "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl";
+$data = '{"password":"asd456!","passwordConfirmation":"asd456!"}';
 
 $options = array(
     'http' => array(
         'header'  => "Content-Type: application/json\r\n",
         'content' => $data,
-        'method'  => 'POST'
+        'method'  => 'PUT'
     )
 );
 
@@ -90,60 +112,68 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/member/password/reset"
+url = "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl"
 headers = {
   "Content-Type": "application/json"
 }
-data = '{"email":"i@nter.net"}'
+data = '{"password":"asd456!","passwordConfirmation":"asd456!"}'
 
-response = requests.post(url, headers=headers, data=data)
+response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
-curl -X POST \
-    -H 'Content-Type: application/json' \
-    -d '{"email":"i@nter.net"}' \
-    http://api.coolsms.co.kr/users/v1/member/password/reset
+curl -X PUT \
+	-H 'Content-Type: application/json' \
+	-d '{"password":"asd456!","passwordConfirmation":"asd456!"}' \
+	http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/member/password/reset")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl")
 
 headers = {
   "Content-Type": "application/json"
 }
 data = {
-  "email": "i@nter.net"
+  "password": "asd456!",
+  "passwordConfirmation": "asd456!"
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Post.new(uri.request_uri, headers)
+request = Net::HTTP::Put.new(uri.request_uri, headers)
 request.body = data.to_json
 
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -155,10 +185,10 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/member/password/reset"
-  data := strings.NewReader(`{"email":"i@nter.net"}`)
+  uri := "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl"
+  data := strings.NewReader(`{"password":"asd456!","passwordConfirmation":"asd456!"}`)
 
-  req, err := http.NewRequest("POST", uri, data)
+  req, err := http.NewRequest("PUT", uri, data)
   if err != nil { panic(err) }
 
   req.Header.Set("Content-Type", "application/json")
@@ -172,12 +202,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -187,13 +219,13 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/member/password/reset";
-    String parameters = "{\"email\":\"i@nter.net\"}";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl";
+    String parameters = "{\"password\":\"asd456!\",\"passwordConfirmation\":\"asd456!\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("POST");
+    con.setRequestMethod("PUT");
 
     con.setRequestProperty("Content-Type", "application/json");
 
@@ -216,9 +248,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

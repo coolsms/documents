@@ -1,53 +1,101 @@
-# 초대 취소
+# 내 초대 조회
 
 ## Request
-
-```text
-DELETE https://api.coolsms.co.kr/users/v1/invitations/:invitationId
+```
+GET https://api.coolsms.co.kr/users/v1/invitations
 ```
 
-관리자\(OWNER\)가 자신의 계정의 초대를 취소합니다.
+내가 받은 초대 목록을 조회합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `accounts:write` | `role-accounts:write` | `ACTIVE` | `ACTIVE` |  |
+| :- | :- | :- | :- | :-: |
+| `users:read` |  |  | `ACTIVE` `UNVERIFIED` |  |
 
-### Path Parameters
-
-| Name | Description |
-| :---: | :---: |
-| :invitationId | 설명 없음 |
+---
 
 ## Samples
 
-### cancelInvitation.spec.js
+### getMyInvitations.spec.js
 
 > **Sample Request**
 
-```javascript
-{}
+```
+http://api.coolsms.co.kr/users/v1/invitations
 ```
 
 > **Sample Response**
 
-```javascript
-{
-    "invitationId": "CTbhz0F_j9_OWAVcrA3Gm",
-    "accountId": "19123124878249",
-    "memberId": "MEMh3vJg4c_elP",
-    "email": "test1@test.com",
-    "role": "MEMBER",
-    "dateCreated": "2019-12-30T21:54:38.382Z",
-    "dateUpdated": "2019-12-30T21:54:38.382Z"
-}
+```json
+[
+    {
+        "email": "testOrigin@test.net",
+        "invitationId": "iqPkNRHy4atyQeepjeXDO",
+        "role": "MEMBER",
+        "dateCreated": "2020-09-23T03:49:37.568Z",
+        "dateUpdated": "2020-09-23T03:49:37.568Z",
+        "owner": {
+            "name": "test1",
+            "phoneNumber": null,
+            "extraPhoneNumbers": [],
+            "status": "UNVERIFIED",
+            "selectedAccountId": "20092346177281",
+            "isAdmin": false,
+            "betaMicroservices": null,
+            "appId": null,
+            "memberId": "MEM_B4gsflbWHP",
+            "email": "test1@test.com",
+            "loginSessions": [],
+            "dateCreated": "2020-09-23T03:49:37.554Z",
+            "dateUpdated": "2020-09-23T03:49:37.557Z"
+        },
+        "account": {
+            "status": "ACTIVE",
+            "accountId": "20092346177281",
+            "name": "test1님의 계정",
+            "dateCreated": "2020-09-23T03:49:37.560Z",
+            "dateUpdated": "2020-09-23T03:49:37.560Z"
+        }
+    },
+    {
+        "email": "testOrigin@test.net",
+        "invitationId": "UVyI3y01aLn_VU9FFSNEp",
+        "role": "DEVELOPER",
+        "dateCreated": "2020-09-23T03:49:37.570Z",
+        "dateUpdated": "2020-09-23T03:49:37.570Z",
+        "owner": {
+            "name": "test2",
+            "phoneNumber": null,
+            "extraPhoneNumbers": [],
+            "status": "UNVERIFIED",
+            "selectedAccountId": "20092346177839",
+            "isAdmin": false,
+            "betaMicroservices": null,
+            "appId": null,
+            "memberId": "MEMLK8-w_DCsiB",
+            "email": "test2@test.com",
+            "loginSessions": [],
+            "dateCreated": "2020-09-23T03:49:37.555Z",
+            "dateUpdated": "2020-09-23T03:49:37.562Z"
+        },
+        "account": {
+            "status": "ACTIVE",
+            "accountId": "20092346177839",
+            "name": "test2님의 계정",
+            "dateCreated": "2020-09-23T03:49:37.565Z",
+            "dateUpdated": "2020-09-23T03:49:37.565Z"
+        }
+    }
+]
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -56,27 +104,29 @@ var options = {
     Authorization:
       'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4'
   },
-  method: 'DELETE',
+  method: 'GET',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm'
+  url: 'http://api.coolsms.co.kr/users/v1/invitations'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm";
+$url = "http://api.coolsms.co.kr/users/v1/invitations";
 
 $options = array(
     'http' => array(
         'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n",
-        'method'  => 'DELETE'
+        'method'  => 'GET'
     )
 );
 
@@ -84,54 +134,61 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm"
+url = "http://api.coolsms.co.kr/users/v1/invitations"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 
-response = requests.delete(url, headers=headers)
+response = requests.get(url, headers=headers)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
-curl -X DELETE \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm
+curl -X GET \
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	http://api.coolsms.co.kr/users/v1/invitations
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/invitations")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Delete.new(uri.request_uri, headers)
+request = Net::HTTP::Get.new(uri.request_uri, headers)
 
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -143,9 +200,9 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm"
+  uri := "http://api.coolsms.co.kr/users/v1/invitations"
 
-  req, err := http.NewRequest("DELETE", uri, nil)
+  req, err := http.NewRequest("GET", uri, nil)
   if err != nil { panic(err) }
 
   req.Header.Set("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4")
@@ -159,12 +216,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -174,12 +233,12 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/invitations";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("DELETE");
+    con.setRequestMethod("GET");
 
     con.setRequestProperty("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4");
 
@@ -202,9 +261,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

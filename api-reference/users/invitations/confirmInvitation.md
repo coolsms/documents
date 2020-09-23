@@ -1,18 +1,19 @@
-# 초대 수락\(회원\)
+# 초대 수락(회원)
 
 ## Request
-
-```text
+```
 POST https://api.coolsms.co.kr/users/v1/invitations/:invitationId
 ```
 
-이미 COOLSMS에 가입된 사용자가 다른 계정으로 부터 온 초대를 승락합니다.
+이미 가입된 사용자가 다른 계정으로 부터 온 초대를 승락합니다.
 
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
+| :--: | :---------: |
 | :invitationId | 설명 없음 |
+
+---
 
 ## Samples
 
@@ -20,42 +21,44 @@ POST https://api.coolsms.co.kr/users/v1/invitations/:invitationId
 
 > **Sample Request**
 
-```javascript
+```json
 {}
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
     "status": "ACTIVE",
-    "accountId": "19123124878303",
+    "accountId": "20092346177253",
     "name": "test1님의 계정",
     "members": [
         {
-            "dateCreated": "2019-12-30T21:54:34.962Z",
-            "dateUpdated": "2019-12-30T21:54:34.962Z",
-            "memberId": "MEMLYwuz6DSew2",
+            "dateCreated": "2020-09-23T03:49:34.870Z",
+            "dateUpdated": "2020-09-23T03:49:34.870Z",
+            "memberId": "MEMS0fMG0zeQea",
             "role": "OWNER",
             "name": "test1"
         },
         {
-            "dateCreated": "2019-12-30T21:54:34.962Z",
-            "dateUpdated": "2019-12-30T21:54:34.962Z",
-            "memberId": "MEM4Gefl_pMDHC",
+            "dateCreated": "2020-09-23T03:49:34.870Z",
+            "dateUpdated": "2020-09-23T03:49:34.870Z",
+            "memberId": "MEMaOsXHB7HHmU",
             "name": "test2",
             "role": "MEMBER"
         }
     ],
-    "dateCreated": "2019-12-30T21:54:38.355Z",
-    "dateUpdated": "2019-12-30T21:54:38.363Z"
+    "dateCreated": "2020-09-23T03:49:37.510Z",
+    "dateUpdated": "2020-09-23T03:49:37.518Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -69,10 +72,12 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm";
@@ -88,10 +93,12 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
@@ -100,18 +107,21 @@ url = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm"
 response = requests.post(url)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X POST \
-    http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm
+	http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
@@ -125,10 +135,12 @@ request = Net::HTTP::Post.new(uri.request_uri, )
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -154,12 +166,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -196,9 +210,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

@@ -1,11 +1,11 @@
-# 계정 전환
+# 사용자 전화번호 수정
 
 ## Request
 ```
-POST https://api.coolsms.co.kr/users/v1/accounts/:accountId/switch
+PUT https://api.coolsms.co.kr/users/v1/member/phone-number/
 ```
 
-계정 전환합니다.
+사용자의 전화번호를 수정합니다.
 
 ### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
@@ -13,29 +13,55 @@ POST https://api.coolsms.co.kr/users/v1/accounts/:accountId/switch
 | :- | :- | :- | :- | :-: |
 | `users:write` |  |  | `ACTIVE` |  |
 
-### Path Parameters
+### 2차 인증 필요
 
-| Name | Description |
-| :--: | :---------: |
-| :accountId | 계정 고유 아이디 |
+| ARS 전화 인증 | 이메일 OTP |
+| :---------: | :------: |
+|  |  |
+
+### Request Structure
+```json
+{
+    "phoneNumber": "string"
+}
+```
+
+### Body Params
+| Name | Type | Required | Description |
+| :--- | :--: | :------: | :---------- |
+| phoneNumber | `string` | O | 핸드폰 번호 |
+
 
 ---
 
 ## Samples
 
-### signup.spec.js
+### 전화번호 변경
 
 > **Sample Request**
 
 ```json
-{}
+{
+    "phoneNumber": "01000000000"
+}
 ```
 
 > **Sample Response**
 
 ```json
 {
-    "success": true
+    "name": "nickName",
+    "phoneNumber": "01000000000",
+    "extraPhoneNumbers": [],
+    "status": "ACTIVE",
+    "selectedAccountId": null,
+    "betaMicroservices": null,
+    "appId": null,
+    "memberId": "18010100001000",
+    "email": "contact@nurigo.net",
+    "dateCreated": "2020-09-23T03:49:37.196Z",
+    "dateUpdated": "2020-09-23T03:49:37.200Z",
+    "loginSessions": []
 }
 ```
 
@@ -51,11 +77,15 @@ var request = require('request');
 var options = {
   headers: {
     Authorization:
-      'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4'
+      'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4',
+    'Content-Type': 'application/json'
   },
-  method: 'POST',
+  body: {
+    phoneNumber: '01000000000'
+  },
+  method: 'PUT',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch'
+  url: 'http://api.coolsms.co.kr/users/v1/member/phone-number'
 };
 
 request(options, function(error, response, body) {
@@ -70,12 +100,14 @@ request(options, function(error, response, body) {
 
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch";
+$url = "http://api.coolsms.co.kr/users/v1/member/phone-number";
+$data = '{"phoneNumber":"01000000000"}';
 
 $options = array(
     'http' => array(
-        'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n",
-        'method'  => 'POST'
+        'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n" . "Content-Type: application/json\r\n",
+        'content' => $data,
+        'method'  => 'PUT'
     )
 );
 
@@ -92,12 +124,14 @@ var_dump($result);
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch"
+url = "http://api.coolsms.co.kr/users/v1/member/phone-number"
 headers = {
-  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
+  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
+  "Content-Type": "application/json"
 }
+data = '{"phoneNumber":"01000000000"}'
 
-response = requests.post(url, headers=headers)
+response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
 
@@ -108,9 +142,11 @@ print(response.text)
 
 ```curl
 #!/bin/bash
-curl -X POST \
+curl -X PUT \
 	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-	http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch
+	-H 'Content-Type: application/json' \
+	-d '{"phoneNumber":"01000000000"}' \
+	http://api.coolsms.co.kr/users/v1/member/phone-number
 ```
 {% endtab %}
 
@@ -121,13 +157,18 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/member/phone-number")
 
 headers = {
-  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
+  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
+  "Content-Type": "application/json"
+}
+data = {
+  "phoneNumber": "01000000000"
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Post.new(uri.request_uri, headers)
+request = Net::HTTP::Put.new(uri.request_uri, headers)
+request.body = data.to_json
 
 response = http.request(request)
 puts response.code
@@ -149,12 +190,14 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch"
+  uri := "http://api.coolsms.co.kr/users/v1/member/phone-number"
+  data := strings.NewReader(`{"phoneNumber":"01000000000"}`)
 
-  req, err := http.NewRequest("POST", uri, nil)
+  req, err := http.NewRequest("PUT", uri, data)
   if err != nil { panic(err) }
 
   req.Header.Set("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4")
+  req.Header.Set("Content-Type", "application/json")
 
   client := &http.Client{}
   resp, err := client.Do(req)
@@ -182,14 +225,16 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/member/phone-number";
+    String parameters = "{\"phoneNumber\":\"01000000000\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("POST");
+    con.setRequestMethod("PUT");
 
     con.setRequestProperty("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4");
+    con.setRequestProperty("Content-Type", "application/json");
 
     con.setDoOutput(true);
     DataOutputStream wr = new DataOutputStream(con.getOutputStream());

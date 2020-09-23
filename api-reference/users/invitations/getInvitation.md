@@ -1,8 +1,7 @@
 # 초대 조회
 
 ## Request
-
-```text
+```
 GET https://api.coolsms.co.kr/users/v1/invitations/:invitationId
 ```
 
@@ -11,8 +10,10 @@ GET https://api.coolsms.co.kr/users/v1/invitations/:invitationId
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
+| :--: | :---------: |
 | :invitationId | 설명 없음 |
+
+---
 
 ## Samples
 
@@ -20,36 +21,40 @@ GET https://api.coolsms.co.kr/users/v1/invitations/:invitationId
 
 > **Sample Request**
 
-```text
+```
 http://api.coolsms.co.kr/users/v1/invitations/BoMnjbF4JMaoeRlWX3fDe
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
+    "appId": null,
     "invitationId": "BoMnjbF4JMaoeRlWX3fDe",
     "role": "DEVELOPER",
     "email": "test33@nurigo.net",
-    "dateCreated": "2019-12-30T21:54:38.065Z",
-    "dateUpdated": "2019-12-30T21:54:38.065Z",
+    "dateCreated": "2020-09-23T03:49:37.275Z",
+    "dateUpdated": "2020-09-23T03:49:37.275Z",
     "account": {
         "status": "ACTIVE",
-        "accountId": "19123124878206",
+        "accountId": "20092346177278",
         "name": "test님의 계정",
-        "dateCreated": "2019-12-30T21:54:38.055Z",
-        "dateUpdated": "2019-12-30T21:54:38.055Z"
+        "dateCreated": "2020-09-23T03:49:37.273Z",
+        "dateUpdated": "2020-09-23T03:49:37.273Z"
     },
     "owner": {
         "name": "test",
         "phoneNumber": null,
+        "extraPhoneNumbers": [],
         "status": "UNVERIFIED",
-        "selectedAccountId": "19123124878206",
-        "memberId": "MEMr0pdGIA1mea",
+        "selectedAccountId": "20092346177278",
+        "betaMicroservices": null,
+        "appId": null,
+        "memberId": "MEMvVbBJP961jL",
         "email": "test@nurigo.net",
         "loginSessions": [],
-        "dateCreated": "2019-12-30T21:54:38.050Z",
-        "dateUpdated": "2019-12-30T21:54:38.052Z"
+        "dateCreated": "2020-09-23T03:49:37.268Z",
+        "dateUpdated": "2020-09-23T03:49:37.270Z"
     }
 }
 ```
@@ -57,7 +62,9 @@ http://api.coolsms.co.kr/users/v1/invitations/BoMnjbF4JMaoeRlWX3fDe
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -71,10 +78,12 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/users/v1/invitations/BoMnjbF4JMaoeRlWX3fDe";
@@ -90,10 +99,12 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
@@ -102,18 +113,21 @@ url = "http://api.coolsms.co.kr/users/v1/invitations/BoMnjbF4JMaoeRlWX3fDe"
 response = requests.get(url)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X GET \
-    http://api.coolsms.co.kr/users/v1/invitations/BoMnjbF4JMaoeRlWX3fDe
+	http://api.coolsms.co.kr/users/v1/invitations/BoMnjbF4JMaoeRlWX3fDe
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
@@ -127,10 +141,12 @@ request = Net::HTTP::Get.new(uri.request_uri, )
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -156,12 +172,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -198,9 +216,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

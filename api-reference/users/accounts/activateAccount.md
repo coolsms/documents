@@ -1,55 +1,76 @@
-# 휴면 회원 활성화
+# 휴면 계정 활성화
 
 ## Request
-
-```text
-PUT https://api.coolsms.co.kr/users/v1/member/activate
+```
+PUT https://api.coolsms.co.kr/users/v1/accounts/:accountId/activate
 ```
 
-휴면 처리된 사용자를 활성화 합니다.
+휴면 처리된 계정을 활성화합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `users:write` |  |  | `INACTIVE` |  |
+| :- | :- | :- | :- | :-: |
+| `accounts:write` | `role-accounts:write` | `INACTIVE` | `ACTIVE` |  |
 
 ### 2차 인증 필요
 
 | ARS 전화 인증 | 이메일 OTP |
-| :---: | :---: |
+| :---------: | :------: |
 |  |  |
+
+### Path Parameters
+
+| Name | Description |
+| :--: | :---------: |
+| :accountId | 계정 고유 아이디 |
+
+---
 
 ## Samples
 
-### activateMember.spec.js
+### activateAccount.spec.js
 
 > **Sample Request**
 
-```javascript
+```json
 {}
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "name": "test1",
-    "phoneNumber": null,
     "status": "ACTIVE",
-    "selectedAccountId": null,
-    "memberId": "MEMAYEjZTWlDds",
-    "email": "test1@test.com",
-    "loginSessions": [],
-    "dateCreated": "2019-12-30T21:54:37.691Z",
-    "dateUpdated": "2019-12-30T21:54:37.695Z"
+    "accountId": "214727",
+    "name": "누리테스트2",
+    "members": [
+        {
+            "dateCreated": "2020-09-23T03:49:36.505Z",
+            "dateUpdated": "2020-09-23T03:49:36.505Z",
+            "memberId": "18010100001000",
+            "role": "OWNER",
+            "name": "toss 0"
+        },
+        {
+            "dateCreated": "2020-09-23T03:49:36.505Z",
+            "dateUpdated": "2020-09-23T03:49:36.505Z",
+            "memberId": "18010100001001",
+            "role": "MEMBER",
+            "name": "toss 1"
+        }
+    ],
+    "dateCreated": "2020-09-23T03:49:36.508Z",
+    "dateUpdated": "2020-09-23T03:49:36.541Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -60,20 +81,22 @@ var options = {
   },
   method: 'PUT',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/member/activate'
+  url: 'http://api.coolsms.co.kr/users/v1/accounts/214727/activate'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/member/activate";
+$url = "http://api.coolsms.co.kr/users/v1/accounts/214727/activate";
 
 $options = array(
     'http' => array(
@@ -86,14 +109,16 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/member/activate"
+url = "http://api.coolsms.co.kr/users/v1/accounts/214727/activate"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
@@ -101,25 +126,28 @@ headers = {
 response = requests.put(url, headers=headers)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X PUT \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/users/v1/member/activate
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	http://api.coolsms.co.kr/users/v1/accounts/214727/activate
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/member/activate")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/214727/activate")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
@@ -130,10 +158,12 @@ request = Net::HTTP::Put.new(uri.request_uri, headers)
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -145,7 +175,7 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/member/activate"
+  uri := "http://api.coolsms.co.kr/users/v1/accounts/214727/activate"
 
   req, err := http.NewRequest("PUT", uri, nil)
   if err != nil { panic(err) }
@@ -161,12 +191,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -176,7 +208,7 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/member/activate";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/214727/activate";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -204,9 +236,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

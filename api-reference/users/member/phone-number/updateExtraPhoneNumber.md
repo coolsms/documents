@@ -1,71 +1,78 @@
-# 이메일 변경
+# 예비 사용자 전화번호 추가
 
 ## Request
-
-```text
-PUT https://api.coolsms.co.kr/users/v1/member/email
+```
+PUT https://api.coolsms.co.kr/users/v1/member/phone-number/extra
 ```
 
-사용자의 이메일을 변경합니다.
+사용자의 예비 전화번호를 추가합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
+| :- | :- | :- | :- | :-: |
 | `users:write` |  |  | `ACTIVE` |  |
 
 ### 2차 인증 필요
 
 | ARS 전화 인증 | 이메일 OTP |
-| :---: | :---: |
+| :---------: | :------: |
 |  |  |
 
 ### Request Structure
-
-```javascript
+```json
 {
-    "email": "email"
+    "phoneNumber": "string"
 }
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
-| email | `email` | O | 이메일 |
+| :--- | :--: | :------: | :---------- |
+| phoneNumber | `string` | O | 핸드폰 번호 |
+
+
+---
 
 ## Samples
 
-### updateEmail.spec.js
+### 내 예비 전화번호 변경
 
 > **Sample Request**
 
-```javascript
+```json
 {
-    "email": "newMail@test.com"
+    "phoneNumber": "01000000001"
 }
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "name": "test1",
+    "name": "nickName",
     "phoneNumber": null,
+    "extraPhoneNumbers": [
+        "01000000001"
+    ],
     "status": "ACTIVE",
     "selectedAccountId": null,
-    "memberId": "MEM9VZ6g8bic_m",
-    "email": "newMail@test.com",
+    "betaMicroservices": null,
+    "appId": null,
+    "memberId": "18010100001000",
+    "email": "contact@nurigo.net",
     "loginSessions": [],
-    "dateCreated": "2019-12-30T21:54:37.997Z",
-    "dateUpdated": "2019-12-30T21:54:38.003Z"
+    "dateCreated": "2020-09-23T03:49:37.229Z",
+    "dateUpdated": "2020-09-23T03:49:37.237Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -76,25 +83,27 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    email: 'newMail@test.com'
+    phoneNumber: '01000000001'
   },
   method: 'PUT',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/member/email'
+  url: 'http://api.coolsms.co.kr/users/v1/member/phone-number/extra'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/member/email";
-$data = '{"email":"newMail@test.com"}';
+$url = "http://api.coolsms.co.kr/users/v1/member/phone-number/extra";
+$data = '{"phoneNumber":"01000000001"}';
 
 $options = array(
     'http' => array(
@@ -108,51 +117,56 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/member/email"
+url = "http://api.coolsms.co.kr/users/v1/member/phone-number/extra"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
-data = '{"email":"newMail@test.com"}'
+data = '{"phoneNumber":"01000000001"}'
 
 response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X PUT \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    -H 'Content-Type: application/json' \
-    -d '{"email":"newMail@test.com"}' \
-    http://api.coolsms.co.kr/users/v1/member/email
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	-H 'Content-Type: application/json' \
+	-d '{"phoneNumber":"01000000001"}' \
+	http://api.coolsms.co.kr/users/v1/member/phone-number/extra
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/member/email")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/member/phone-number/extra")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
 data = {
-  "email": "newMail@test.com"
+  "phoneNumber": "01000000001"
 }
 http = Net::HTTP.new(uri.host, uri.port)
 request = Net::HTTP::Put.new(uri.request_uri, headers)
@@ -161,10 +175,12 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -176,8 +192,8 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/member/email"
-  data := strings.NewReader(`{"email":"newMail@test.com"}`)
+  uri := "http://api.coolsms.co.kr/users/v1/member/phone-number/extra"
+  data := strings.NewReader(`{"phoneNumber":"01000000001"}`)
 
   req, err := http.NewRequest("PUT", uri, data)
   if err != nil { panic(err) }
@@ -194,12 +210,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -209,8 +227,8 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/member/email";
-    String parameters = "{\"email\":\"newMail@test.com\"}";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/member/phone-number/extra";
+    String parameters = "{\"phoneNumber\":\"01000000001\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -239,9 +257,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

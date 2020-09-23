@@ -1,16 +1,14 @@
 # 회원가입
 
 ## Request
-
-```text
+```
 POST https://api.coolsms.co.kr/users/v1/signup
 ```
 
 ReCAPTCHA 인증을 포함한 회원가입 절차입니다.
 
 ### Request Structure
-
-```javascript
+```json
 {
     "email": "email",
     "password": "string",
@@ -22,9 +20,8 @@ ReCAPTCHA 인증을 포함한 회원가입 절차입니다.
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
+| :--- | :--: | :------: | :---------- |
 | email | `email` | O | 이메일 |
 | password | `string` | O | 비밀번호 |
 | passwordConfirmation | `string` | O | 비밀번호 확인 |
@@ -32,13 +29,16 @@ ReCAPTCHA 인증을 포함한 회원가입 절차입니다.
 | marketerAccountId | `string` |  | 설명 없음 |
 | name | `string` |  | 이름 |
 
+
+---
+
 ## Samples
 
 ### signup.spec.js
 
 > **Sample Request**
 
-```javascript
+```json
 {
     "email": "test1@nurigo.net",
     "password": "asd123!",
@@ -49,34 +49,37 @@ ReCAPTCHA 인증을 포함한 회원가입 절차입니다.
 
 > **Sample Response**
 
-```javascript
+```json
 {
     "account": {
         "status": "ACTIVE",
-        "accountId": "19123124878626",
+        "accountId": "20092346177374",
         "name": "test1님의 계정",
         "members": [
             {
-                "dateCreated": "2019-12-30T21:54:34.962Z",
-                "dateUpdated": "2019-12-30T21:54:34.962Z",
-                "memberId": "MEM09bYBYz8zcn",
+                "dateCreated": "2020-09-23T03:49:34.870Z",
+                "dateUpdated": "2020-09-23T03:49:34.870Z",
+                "memberId": "MEM0vLVIRYaMXk",
                 "role": "OWNER",
                 "name": "test1"
             }
         ],
-        "dateCreated": "2019-12-30T21:54:38.530Z",
-        "dateUpdated": "2019-12-30T21:54:38.530Z"
+        "dateCreated": "2020-09-23T03:49:37.685Z",
+        "dateUpdated": "2020-09-23T03:49:37.685Z"
     },
     "member": {
         "name": "test1",
         "phoneNumber": null,
+        "extraPhoneNumbers": [],
         "status": "UNVERIFIED",
-        "selectedAccountId": "19123124878626",
-        "memberId": "MEM09bYBYz8zcn",
+        "selectedAccountId": "20092346177374",
+        "betaMicroservices": null,
+        "appId": null,
+        "memberId": "MEM0vLVIRYaMXk",
         "email": "test1@nurigo.net",
         "loginSessions": [],
-        "dateCreated": "2019-12-30T21:54:38.525Z",
-        "dateUpdated": "2019-12-30T21:54:38.527Z"
+        "dateCreated": "2020-09-23T03:49:37.680Z",
+        "dateUpdated": "2020-09-23T03:49:37.682Z"
     }
 }
 ```
@@ -84,7 +87,9 @@ ReCAPTCHA 인증을 포함한 회원가입 절차입니다.
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -107,10 +112,12 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/users/v1/signup";
@@ -128,10 +135,12 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
@@ -144,20 +153,23 @@ data = '{"email":"test1@nurigo.net","password":"asd123!","passwordConfirmation":
 response = requests.post(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X POST \
-    -H 'Content-Type: application/json' \
-    -d '{"email":"test1@nurigo.net","password":"asd123!","passwordConfirmation":"asd123!","captcha":"DUMMY"}' \
-    http://api.coolsms.co.kr/users/v1/signup
+	-H 'Content-Type: application/json' \
+	-d '{"email":"test1@nurigo.net","password":"asd123!","passwordConfirmation":"asd123!","captcha":"DUMMY"}' \
+	http://api.coolsms.co.kr/users/v1/signup
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
@@ -181,10 +193,12 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -213,12 +227,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -257,9 +273,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

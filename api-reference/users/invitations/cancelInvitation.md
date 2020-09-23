@@ -1,60 +1,57 @@
-# 내 계정 정보
+# 초대 취소
 
 ## Request
-
-```text
-GET https://api.coolsms.co.kr/users/v1/accounts/:accountId
+```
+DELETE https://api.coolsms.co.kr/users/v1/invitations/:invitationId
 ```
 
-내가 소속된 특정 계정에 대한 정보를 얻습니다.
+관리자(OWNER)가 자신의 계정의 초대를 취소합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `users:read` |  |  | `ACTIVE` `UNVERIFIED` |  |
+| :- | :- | :- | :- | :-: |
+| `accounts:write` | `role-accounts:write` | `ACTIVE` | `ACTIVE` |  |
 
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
-| :accountId | 계정 고유 아이디 |
+| :--: | :---------: |
+| :invitationId | 설명 없음 |
+
+---
 
 ## Samples
 
-### getAccount.spec.js
+### cancelInvitation.spec.js
 
 > **Sample Request**
 
-```text
-http://api.coolsms.co.kr/users/v1/accounts/19123124876982
+```json
+{}
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "status": "ACTIVE",
-    "accountId": "19123124876982",
-    "name": "steven님의 계정",
-    "members": [
-        {
-            "dateCreated": "2019-12-30T21:54:34.962Z",
-            "dateUpdated": "2019-12-30T21:54:34.962Z",
-            "memberId": "MEM4B8DA70XR0T",
-            "role": "OWNER",
-            "name": "steven"
-        }
-    ],
-    "dateCreated": "2019-12-30T21:54:36.897Z",
-    "dateUpdated": "2019-12-30T21:54:36.897Z"
+    "appId": null,
+    "invitationId": "CTbhz0F_j9_OWAVcrA3Gm",
+    "accountId": "20092346177155",
+    "memberId": "MEMmxI4RtJLTvQ",
+    "email": "test1@test.com",
+    "role": "MEMBER",
+    "dateCreated": "2020-09-23T03:49:37.535Z",
+    "dateUpdated": "2020-09-23T03:49:37.535Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -63,27 +60,29 @@ var options = {
     Authorization:
       'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4'
   },
-  method: 'GET',
+  method: 'DELETE',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/accounts/19123124876982'
+  url: 'http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/accounts/19123124876982";
+$url = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm";
 
 $options = array(
     'http' => array(
         'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n",
-        'method'  => 'GET'
+        'method'  => 'DELETE'
     )
 );
 
@@ -91,54 +90,61 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/accounts/19123124876982"
+url = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 
-response = requests.get(url, headers=headers)
+response = requests.delete(url, headers=headers)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
-curl -X GET \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/users/v1/accounts/19123124876982
+curl -X DELETE \
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/19123124876982")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Get.new(uri.request_uri, headers)
+request = Net::HTTP::Delete.new(uri.request_uri, headers)
 
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -150,9 +156,9 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/accounts/19123124876982"
+  uri := "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm"
 
-  req, err := http.NewRequest("GET", uri, nil)
+  req, err := http.NewRequest("DELETE", uri, nil)
   if err != nil { panic(err) }
 
   req.Header.Set("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4")
@@ -166,12 +172,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -181,12 +189,12 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/19123124876982";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/invitations/CTbhz0F_j9_OWAVcrA3Gm";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("GET");
+    con.setRequestMethod("DELETE");
 
     con.setRequestProperty("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4");
 
@@ -209,9 +217,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

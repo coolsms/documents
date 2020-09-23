@@ -1,8 +1,7 @@
 # 메일 중복 검사
 
 ## Request
-
-```text
+```
 GET https://api.coolsms.co.kr/users/v1/existence/email/:email
 ```
 
@@ -11,8 +10,10 @@ GET https://api.coolsms.co.kr/users/v1/existence/email/:email
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
+| :--: | :---------: |
 | :email | 이메일 |
+
+---
 
 ## Samples
 
@@ -20,13 +21,13 @@ GET https://api.coolsms.co.kr/users/v1/existence/email/:email
 
 > **Sample Request**
 
-```text
+```
 http://api.coolsms.co.kr/users/v1/existence/email/test@test.net
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
     "email": "test@test.net",
     "result": true
@@ -36,7 +37,9 @@ http://api.coolsms.co.kr/users/v1/existence/email/test@test.net
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -50,10 +53,12 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/users/v1/existence/email/test@test.net";
@@ -69,10 +74,12 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
@@ -81,18 +88,21 @@ url = "http://api.coolsms.co.kr/users/v1/existence/email/test@test.net"
 response = requests.get(url)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X GET \
-    http://api.coolsms.co.kr/users/v1/existence/email/test@test.net
+	http://api.coolsms.co.kr/users/v1/existence/email/test@test.net
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
@@ -106,10 +116,12 @@ request = Net::HTTP::Get.new(uri.request_uri, )
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -135,12 +147,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -177,9 +191,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

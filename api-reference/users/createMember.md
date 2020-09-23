@@ -1,22 +1,20 @@
-# 비밀번호 초기화
+# 초대 수락(비회원)
 
 ## Request
-
-```text
-PUT https://api.coolsms.co.kr/users/v1/member/password/reset/:hashId
+```
+POST https://api.coolsms.co.kr/users/v1/signup/invitations/:invitationId
 ```
 
-비밀번호를 초기화합니다.
+기존에 사용하지 않았던 사용자가 초대로 인해 가입되고 초대된 계정에 들어가게 됩니다.
 
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
-| :hashId | 설명 없음 |
+| :--: | :---------: |
+| :invitationId | 설명 없음 |
 
 ### Request Structure
-
-```javascript
+```json
 {
     "password": "string",
     "passwordConfirmation": "string"
@@ -24,45 +22,61 @@ PUT https://api.coolsms.co.kr/users/v1/member/password/reset/:hashId
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
+| :--- | :--: | :------: | :---------- |
 | password | `string` | O | 비밀번호 |
 | passwordConfirmation | `string` | O | 비밀번호 확인 |
 
+
+---
+
 ## Samples
 
-### resetPassword.spec.js
+### createMember.spec.js
 
 > **Sample Request**
 
-```javascript
+```json
 {
-    "password": "asd456!",
-    "passwordConfirmation": "asd456!"
+    "password": "asd123!",
+    "passwordConfirmation": "asd123!"
 }
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "name": "steven",
-    "phoneNumber": null,
-    "status": "UNVERIFIED",
-    "selectedAccountId": null,
-    "memberId": "MEM2t-0uJh0lle",
-    "email": "steven@nurigo.net",
-    "loginSessions": [],
-    "dateCreated": "2019-12-30T21:54:37.846Z",
-    "dateUpdated": "2019-12-30T21:54:37.856Z"
+    "status": "ACTIVE",
+    "accountId": "20092346177223",
+    "name": "test1님의 계정",
+    "members": [
+        {
+            "dateCreated": "2020-09-23T03:49:34.870Z",
+            "dateUpdated": "2020-09-23T03:49:34.870Z",
+            "memberId": "MEMqdr_LD2zeTt",
+            "role": "OWNER",
+            "name": "test1"
+        },
+        {
+            "dateCreated": "2020-09-23T03:49:34.870Z",
+            "dateUpdated": "2020-09-23T03:49:34.870Z",
+            "memberId": "MEMFMElrsuh9aK",
+            "name": "newMember",
+            "role": "DEVELOPER"
+        }
+    ],
+    "dateCreated": "2020-09-23T03:49:37.632Z",
+    "dateUpdated": "2020-09-23T03:49:37.641Z"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -71,33 +85,35 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    password: 'asd456!',
-    passwordConfirmation: 'asd456!'
+    password: 'asd123!',
+    passwordConfirmation: 'asd123!'
   },
-  method: 'PUT',
+  method: 'POST',
   json: true,
   url:
-    'http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl'
+    'http://api.coolsms.co.kr/users/v1/signup/invitations/CTbhz0F_j9_OWAVcrA3Gm'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl";
-$data = '{"password":"asd456!","passwordConfirmation":"asd456!"}';
+$url = "http://api.coolsms.co.kr/users/v1/signup/invitations/CTbhz0F_j9_OWAVcrA3Gm";
+$data = '{"password":"asd123!","passwordConfirmation":"asd123!"}';
 
 $options = array(
     'http' => array(
         'header'  => "Content-Type: application/json\r\n",
         'content' => $data,
-        'method'  => 'PUT'
+        'method'  => 'POST'
     )
 );
 
@@ -105,61 +121,68 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl"
+url = "http://api.coolsms.co.kr/users/v1/signup/invitations/CTbhz0F_j9_OWAVcrA3Gm"
 headers = {
   "Content-Type": "application/json"
 }
-data = '{"password":"asd456!","passwordConfirmation":"asd456!"}'
+data = '{"password":"asd123!","passwordConfirmation":"asd123!"}'
 
-response = requests.put(url, headers=headers, data=data)
+response = requests.post(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
-curl -X PUT \
-    -H 'Content-Type: application/json' \
-    -d '{"password":"asd456!","passwordConfirmation":"asd456!"}' \
-    http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl
+curl -X POST \
+	-H 'Content-Type: application/json' \
+	-d '{"password":"asd123!","passwordConfirmation":"asd123!"}' \
+	http://api.coolsms.co.kr/users/v1/signup/invitations/CTbhz0F_j9_OWAVcrA3Gm
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/signup/invitations/CTbhz0F_j9_OWAVcrA3Gm")
 
 headers = {
   "Content-Type": "application/json"
 }
 data = {
-  "password": "asd456!",
-  "passwordConfirmation": "asd456!"
+  "password": "asd123!",
+  "passwordConfirmation": "asd123!"
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Put.new(uri.request_uri, headers)
+request = Net::HTTP::Post.new(uri.request_uri, headers)
 request.body = data.to_json
 
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -171,10 +194,10 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl"
-  data := strings.NewReader(`{"password":"asd456!","passwordConfirmation":"asd456!"}`)
+  uri := "http://api.coolsms.co.kr/users/v1/signup/invitations/CTbhz0F_j9_OWAVcrA3Gm"
+  data := strings.NewReader(`{"password":"asd123!","passwordConfirmation":"asd123!"}`)
 
-  req, err := http.NewRequest("PUT", uri, data)
+  req, err := http.NewRequest("POST", uri, data)
   if err != nil { panic(err) }
 
   req.Header.Set("Content-Type", "application/json")
@@ -188,12 +211,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -203,13 +228,13 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/member/password/reset/W4MPzsVpGy9KBOjvF1xRl";
-    String parameters = "{\"password\":\"asd456!\",\"passwordConfirmation\":\"asd456!\"}";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/signup/invitations/CTbhz0F_j9_OWAVcrA3Gm";
+    String parameters = "{\"password\":\"asd123!\",\"passwordConfirmation\":\"asd123!\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("PUT");
+    con.setRequestMethod("POST");
 
     con.setRequestProperty("Content-Type", "application/json");
 
@@ -232,9 +257,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 

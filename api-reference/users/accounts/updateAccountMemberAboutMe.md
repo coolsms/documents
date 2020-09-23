@@ -1,101 +1,107 @@
-# 휴면 계정 활성화
+# 내 회원 정보 수정
 
 ## Request
-
-```text
-PUT https://api.coolsms.co.kr/users/v1/accounts/:accountId/activate
+```
+PUT https://api.coolsms.co.kr/users/v1/accounts/:accountId/me
 ```
 
-휴면 처리된 계정을 활성화합니다.
+특정 계정의 내 회원 정보를 수정합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `accounts:write` | `role-accounts:write` | `INACTIVE` | `ACTIVE` |  |
-
-### 2차 인증 필요
-
-| ARS 전화 인증 | 이메일 OTP |
-| :---: | :---: |
-|  |  |
+| :- | :- | :- | :- | :-: |
+| `accounts:write` |  | `ACTIVE` | `ACTIVE` | O |
 
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
+| :--: | :---------: |
 | :accountId | 계정 고유 아이디 |
+
+### Request Structure
+```json
+{
+    "role": "string",
+    "name": "string"
+}
+```
+
+### Body Params
+| Name | Type | Required | Description |
+| :--- | :--: | :------: | :---------- |
+| role | `string` |  | 권한 (OWNER, DEVELOPER, MEMBER) |
+| name | `string` |  | 이름 |
+
+
+---
 
 ## Samples
 
-### activateAccount.spec.js
+### updateAccountMemberAboutMe.spec.js
 
 > **Sample Request**
 
-```javascript
-{}
+```json
+{
+    "name": "Member"
+}
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "status": "ACTIVE",
-    "accountId": "214727",
-    "name": "누리테스트2",
-    "members": [
-        {
-            "dateCreated": "2019-12-30T21:54:37.043Z",
-            "dateUpdated": "2019-12-30T21:54:37.043Z",
-            "memberId": "18010100001000",
-            "role": "OWNER",
-            "name": "toss 0"
-        },
-        {
-            "dateCreated": "2019-12-30T21:54:37.043Z",
-            "dateUpdated": "2019-12-30T21:54:37.043Z",
-            "memberId": "18010100001001",
-            "role": "MEMBER",
-            "name": "toss 1"
-        }
-    ],
-    "dateCreated": "2019-12-30T21:54:37.046Z",
-    "dateUpdated": "2019-12-30T21:54:37.120Z"
+    "dateCreated": "2020-09-23T03:49:36.606Z",
+    "dateUpdated": "2020-09-23T03:49:36.618Z",
+    "memberId": "18010100001001",
+    "role": "MEMBER",
+    "name": "Member"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
 var options = {
   headers: {
     Authorization:
-      'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4'
+      'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4',
+    'Content-Type': 'application/json'
+  },
+  body: {
+    name: 'Member'
   },
   method: 'PUT',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/accounts/214727/activate'
+  url: 'http://api.coolsms.co.kr/users/v1/accounts/12925149/me'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/accounts/214727/activate";
+$url = "http://api.coolsms.co.kr/users/v1/accounts/12925149/me";
+$data = '{"name":"Member"}';
 
 $options = array(
     'http' => array(
-        'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n",
+        'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n" . "Content-Type: application/json\r\n",
+        'content' => $data,
         'method'  => 'PUT'
     )
 );
@@ -104,54 +110,70 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/accounts/214727/activate"
+url = "http://api.coolsms.co.kr/users/v1/accounts/12925149/me"
 headers = {
-  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
+  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
+  "Content-Type": "application/json"
 }
+data = '{"name":"Member"}'
 
-response = requests.put(url, headers=headers)
+response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X PUT \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/users/v1/accounts/214727/activate
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	-H 'Content-Type: application/json' \
+	-d '{"name":"Member"}' \
+	http://api.coolsms.co.kr/users/v1/accounts/12925149/me
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/214727/activate")
+uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/12925149/me")
 
 headers = {
-  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
+  "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
+  "Content-Type": "application/json"
+}
+data = {
+  "name": "Member"
 }
 http = Net::HTTP.new(uri.host, uri.port)
 request = Net::HTTP::Put.new(uri.request_uri, headers)
+request.body = data.to_json
 
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -163,12 +185,14 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/accounts/214727/activate"
+  uri := "http://api.coolsms.co.kr/users/v1/accounts/12925149/me"
+  data := strings.NewReader(`{"name":"Member"}`)
 
-  req, err := http.NewRequest("PUT", uri, nil)
+  req, err := http.NewRequest("PUT", uri, data)
   if err != nil { panic(err) }
 
   req.Header.Set("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4")
+  req.Header.Set("Content-Type", "application/json")
 
   client := &http.Client{}
   resp, err := client.Do(req)
@@ -179,12 +203,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -194,7 +220,8 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/214727/activate";
+    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/12925149/me";
+    String parameters = "{\"name\":\"Member\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -202,6 +229,7 @@ public class Request {
     con.setRequestMethod("PUT");
 
     con.setRequestProperty("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4");
+    con.setRequestProperty("Content-Type", "application/json");
 
     con.setDoOutput(true);
     DataOutputStream wr = new DataOutputStream(con.getOutputStream());
@@ -222,9 +250,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-30
+---
+
+> 문서 생성일 : 2020-09-23
 
