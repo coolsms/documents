@@ -88,8 +88,6 @@ LIVE 상태가 아닐 때에는 수익금 설정이 자유로우나 LIVE 전환 
 
 {% tabs %}
 
-
-
 {% embed url="https://gist.github.com/KimGenius/d89c97a4339e35ca87c9ef55013324f6" caption="" %}
 
 {% embed url="https://gist.github.com/KimGenius/62df46b0ba6578f12bed88bcfc95d6af" caption="" %}

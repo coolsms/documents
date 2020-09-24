@@ -1,28 +1,28 @@
-# 계정 전환
+# 파일 삭제
 
 ## Request
 
 ```text
-POST https://api.coolsms.co.kr/users/v1/accounts/:accountId/switch
+DELETE https://api.coolsms.co.kr/storage/v1/files/:fileId
 ```
 
-계정 전환합니다.
+파일을 삭제합니다.
 
 ### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
 | :--- | :--- | :--- | :--- | :---: |
-| `users:write` |  |  | `ACTIVE` |  |
+| `storage:write` |  | `ACTIVE` | `ACTIVE` |  |
 
 ### Path Parameters
 
 | Name | Description |
 | :---: | :---: |
-| :accountId | 계정 고유 아이디 |
+| :fileId | 파일 고유 아이디 |
 
 ## Samples
 
-### signup.spec.js
+### deleteFile.spec.js
 
 > **Sample Request**
 
@@ -34,7 +34,23 @@ POST https://api.coolsms.co.kr/users/v1/accounts/:accountId/switch
 
 ```javascript
 {
-    "success": true
+    "kakao": {
+        "daou": null,
+        "biztalk": null
+    },
+    "type": "DOCUMENT",
+    "originalName": "Es-lm.png",
+    "link": null,
+    "width": null,
+    "height": null,
+    "fileSize": null,
+    "fileId": "ST01FE190131163307869k130jGVVa01",
+    "accountId": "50192038501729",
+    "name": "Es-lm.png",
+    "url": "https://coolsms-storage-test.s3.ap-northeast-2.amazonaws.com/50192038501729/ST01FE190131163307869k130jGVVa01",
+    "references": [],
+    "dateCreated": "2020-09-23T03:33:43.412Z",
+    "dateUpdated": "2020-09-23T03:33:43.412Z"
 }
 ```
 
@@ -50,9 +66,10 @@ var options = {
     Authorization:
       'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4'
   },
-  method: 'POST',
+  method: 'DELETE',
   json: true,
-  url: 'http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch'
+  url:
+    'http://api.coolsms.co.kr/storage/v1/files/ST01FE190131163307869k130jGVVa01'
 };
 
 request(options, function(error, response, body) {
@@ -65,12 +82,12 @@ request(options, function(error, response, body) {
 {% tab title="PHP" %}
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch";
+$url = "http://api.coolsms.co.kr/storage/v1/files/ST01FE190131163307869k130jGVVa01";
 
 $options = array(
     'http' => array(
         'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n",
-        'method'  => 'POST'
+        'method'  => 'DELETE'
     )
 );
 
@@ -85,12 +102,12 @@ var_dump($result);
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch"
+url = "http://api.coolsms.co.kr/storage/v1/files/ST01FE190131163307869k130jGVVa01"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 
-response = requests.post(url, headers=headers)
+response = requests.delete(url, headers=headers)
 print(response.status_code)
 print(response.text)
 ```
@@ -99,9 +116,9 @@ print(response.text)
 {% tab title="CURL" %}
 ```text
 #!/bin/bash
-curl -X POST \
+curl -X DELETE \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch
+    http://api.coolsms.co.kr/storage/v1/files/ST01FE190131163307869k130jGVVa01
 ```
 {% endtab %}
 
@@ -111,13 +128,13 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch")
+uri = URI.parse("http://api.coolsms.co.kr/storage/v1/files/ST01FE190131163307869k130jGVVa01")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Post.new(uri.request_uri, headers)
+request = Net::HTTP::Delete.new(uri.request_uri, headers)
 
 response = http.request(request)
 puts response.code
@@ -137,9 +154,9 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch"
+  uri := "http://api.coolsms.co.kr/storage/v1/files/ST01FE190131163307869k130jGVVa01"
 
-  req, err := http.NewRequest("POST", uri, nil)
+  req, err := http.NewRequest("DELETE", uri, nil)
   if err != nil { panic(err) }
 
   req.Header.Set("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4")
@@ -168,12 +185,12 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/users/v1/accounts/19021254859648/switch";
+    String targetUrl = "http://api.coolsms.co.kr/storage/v1/files/ST01FE190131163307869k130jGVVa01";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("POST");
+    con.setRequestMethod("DELETE");
 
     con.setRequestProperty("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4");
 
