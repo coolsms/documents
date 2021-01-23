@@ -64,7 +64,6 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
 
 ```json
 {
-    "_id": "M4V201FFFFFFFFFAAAAAAAAAAAAAZIB0",
     "kakaoOptions": {
         "senderKey": null,
         "templateCode": null,
@@ -89,6 +88,9 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
     "replacement": false,
     "autoTypeDetect": true,
     "routedQueue": null,
+    "resendCount": 0,
+    "usedQueue": [],
+    "_id": "M4V201FFFFFFFFFAAAAAAAAAAAAAZIB0",
     "messageId": "M4V201FFFFFFFFFAAAAAAAAAAAAAZIB0",
     "groupId": "G4V20180307TTTTTTTTAAATTTTTTTTTT",
     "accountId": "12925149",
@@ -97,8 +99,8 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
     "to": "01000000000",
     "customFields": {},
     "hint": {},
-    "dateCreated": "2020-09-09T05:25:32.321Z",
-    "dateUpdated": "2020-09-09T05:25:32.334Z"
+    "dateCreated": "2021-01-23T10:47:52.313Z",
+    "dateUpdated": "2021-01-23T10:47:52.321Z"
 }
 ```
 
@@ -309,5 +311,5 @@ public class Request {
 
 ---
 
-> 문서 생성일 : 2020-09-09
+> 문서 생성일 : 2021-01-23
 

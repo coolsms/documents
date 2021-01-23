@@ -52,8 +52,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-16T23:00:00.000Z",
+        "date": "2021-01-01T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -72,8 +73,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-15T23:00:00.000Z",
+        "date": "2020-12-31T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -92,8 +94,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-14T23:00:00.000Z",
+        "date": "2020-12-30T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -112,8 +115,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-13T23:00:00.000Z",
+        "date": "2020-12-29T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -132,8 +136,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-12T23:00:00.000Z",
+        "date": "2020-12-28T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -152,8 +157,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-11T23:00:00.000Z",
+        "date": "2020-12-27T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -172,8 +178,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-10T23:00:00.000Z",
+        "date": "2020-12-26T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -192,8 +199,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-09T23:00:00.000Z",
+        "date": "2020-12-25T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -212,8 +220,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-08T23:00:00.000Z",
+        "date": "2020-12-24T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -232,8 +241,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-07T23:00:00.000Z",
+        "date": "2020-12-23T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -252,8 +262,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-06T23:00:00.000Z",
+        "date": "2020-12-22T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -272,8 +283,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-05T23:00:00.000Z",
+        "date": "2020-12-21T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -292,8 +304,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-04T23:00:00.000Z",
+        "date": "2020-12-20T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -312,8 +325,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-03T23:00:00.000Z",
+        "date": "2020-12-19T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -332,8 +346,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-02T23:00:00.000Z",
+        "date": "2020-12-18T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -352,8 +367,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-08-01T23:00:00.000Z",
+        "date": "2020-12-17T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -372,8 +388,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-07-31T23:00:00.000Z",
+        "date": "2020-12-16T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -392,8 +409,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-07-30T23:00:00.000Z",
+        "date": "2020-12-15T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -412,8 +430,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": false,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-07-29T23:00:00.000Z",
+        "date": "2020-12-14T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -432,8 +451,9 @@ http://api.coolsms.co.kr/messages/v4/statistics/daily
         "taxIssued": false,
         "profitSettlement": true,
         "profit": 0,
+        "masterAccountId": null,
         "accountId": "12925149",
-        "date": "2020-07-28T23:00:00.000Z",
+        "date": "2020-12-13T00:00:00.000Z",
         "count": {
             "4000": {
                 "sms": 10
@@ -622,5 +642,5 @@ public class Request {
 
 ---
 
-> 문서 생성일 : 2020-09-09
+> 문서 생성일 : 2021-01-23
 
