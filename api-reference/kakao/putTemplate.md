@@ -1,28 +1,20 @@
 # 템플릿 추가
 
 ## Request
-
-```text
-POST https://api.coolsms.co.kr/kakao/v1/templates/:service
+```
+POST https://api.coolsms.co.kr/kakao/v1/templates
 ```
 
-템플릿을 새롭게 등록하거나 기존에 등록된 템플릿에 연동처를 추가합니다. 새로운 템플릿은 content가 필드가 필수 입력 값이며 연동처만 추가할 경우 content, buttons 필드를 입력할 수 없습니다.
+템플릿을 새롭게 등록합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
+| :- | :- | :- | :- | :-: |
 | `kakao:write` | `role-kakao:write` | `ACTIVE` | `ACTIVE` | O |
 
-### Path Parameters
-
-| Name | Description |
-| :---: | :---: |
-| :service | 카카오톡채널 연동처 |
-
 ### Request Structure
-
-```javascript
+```json
 {
     "pfId": "string",
     "name": "string",
@@ -32,18 +24,18 @@ POST https://api.coolsms.co.kr/kakao/v1/templates/:service
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
+| :--- | :--: | :------: | :---------- |
 | pfId | `string` | O | 카카오톡채널 고유 아이디 |
 | name | `string` | O | 이름 |
-| content | `string` |  | 템플릿 내용 |
-| [buttons](puttemplate.md#body-buttons) | `array` |  | 템플릿에 들어가는 버튼들 |
+| content | `string` | O | 템플릿 내용 |
+| [buttons](#body-buttons) | `array` |  | 템플릿에 들어가는 버튼들 |
 
-#### Body / buttons
+
+##### Body / buttons
 
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
+| :--- | :--: | :------: | :---------- |
 | buttonType | `string` | O | 설명 없음 |
 | buttonName | `string` | O | 설명 없음 |
 | linkMo | `string` |  | Mobile 주소 |
@@ -51,15 +43,18 @@ POST https://api.coolsms.co.kr/kakao/v1/templates/:service
 | linkAnd | `string` |  | Android 주소 |
 | linkIos | `string` |  | IOS 주소 |
 
+
+---
+
 ## Samples
 
 ### 템플릿 등록
 
 > **Sample Request**
 
-```javascript
+```json
 {
-    "pfId": "PF01ID191217222935642Q2MUULrmv47",
+    "pfId": "PF01ID210129012914478ZRQ3mr...",
     "name": "회원가입",
     "content": "#{홍길동}님 회원가입을 환영 합니다."
 }
@@ -67,30 +62,33 @@ POST https://api.coolsms.co.kr/kakao/v1/templates/:service
 
 > **Sample Response**
 
-```javascript
+```json
 {
+    "isHidden": false,
     "name": "회원가입",
-    "pfId": "PF01ID191217222935642Q2MUULrmv47",
+    "pfId": "PF01ID210129012914478ZRQ3mrGoR8n",
     "accountId": "12925149",
     "buttons": [],
     "codes": [
         {
             "status": "PENDING",
-            "comments": [],
-            "service": "daou"
+            "service": "biz",
+            "comments": []
         }
     ],
     "content": "#{홍길동}님 회원가입을 환영 합니다.",
-    "dateCreated": "2019-12-17T22:29:36.611Z",
-    "dateUpdated": "2019-12-17T22:29:36.611Z",
-    "templateId": "KA01TP191217222936612vvrQqJ8zy0B"
+    "dateCreated": "2021-01-29T01:29:15.333Z",
+    "dateUpdated": "2021-01-29T01:29:15.333Z",
+    "templateId": "KA01TP2101290129153361LAHOSycWm7"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -101,27 +99,29 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    pfId: 'PF01ID191217222935642Q2MUUL...',
+    pfId: 'PF01ID210129012914478ZRQ3mr...',
     name: '회원가입',
     content: '#{홍길동}님 회원가입을 환영 합니다.'
   },
   method: 'POST',
   json: true,
-  url: 'http://api.coolsms.co.kr/kakao/v1/templates/daou'
+  url: 'http://api.coolsms.co.kr/kakao/v1/templates'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/kakao/v1/templates/daou";
-$data = '{"pfId":"PF01ID191217222935642Q2MUUL...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}';
+$url = "http://api.coolsms.co.kr/kakao/v1/templates";
+$data = '{"pfId":"PF01ID210129012914478ZRQ3mr...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}';
 
 $options = array(
     'http' => array(
@@ -135,51 +135,56 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/kakao/v1/templates/daou"
+url = "http://api.coolsms.co.kr/kakao/v1/templates"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
-data = '{"pfId":"PF01ID191217222935642Q2MUUL...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}'
+data = '{"pfId":"PF01ID210129012914478ZRQ3mr...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}'
 
 response = requests.post(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X POST \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    -H 'Content-Type: application/json' \
-    -d '{"pfId":"PF01ID191217222935642Q2MUUL...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}' \
-    http://api.coolsms.co.kr/kakao/v1/templates/daou
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	-H 'Content-Type: application/json' \
+	-d '{"pfId":"PF01ID210129012914478ZRQ3mr...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}' \
+	http://api.coolsms.co.kr/kakao/v1/templates
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/templates/daou")
+uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/templates")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
 data = {
-  "pfId": "PF01ID191217222935642Q2MUUL...",
+  "pfId": "PF01ID210129012914478ZRQ3mr...",
   "name": "회원가입",
   "content": "#{홍길동}님 회원가입을 환영 합니다."
 }
@@ -190,10 +195,12 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -205,8 +212,8 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/kakao/v1/templates/daou"
-  data := strings.NewReader(`{"pfId":"PF01ID191217222935642Q2MUUL...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}`)
+  uri := "http://api.coolsms.co.kr/kakao/v1/templates"
+  data := strings.NewReader(`{"pfId":"PF01ID210129012914478ZRQ3mr...","name":"회원가입","content":"#{홍길동}님 회원가입을 환영 합니다."}`)
 
   req, err := http.NewRequest("POST", uri, data)
   if err != nil { panic(err) }
@@ -223,12 +230,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -238,8 +247,8 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/templates/daou";
-    String parameters = "{\"pfId\":\"PF01ID191217222935642Q2MUUL...\",\"name\":\"회원가입\",\"content\":\"#{홍길동}님 회원가입을 환영 합니다.\"}";
+    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/templates";
+    String parameters = "{\"pfId\":\"PF01ID210129012914478ZRQ3mr...\",\"name\":\"회원가입\",\"content\":\"#{홍길동}님 회원가입을 환영 합니다.\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -268,9 +277,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-17
+---
+
+> 문서 생성일 : 2021-01-29
 

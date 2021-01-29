@@ -5,7 +5,7 @@
 DELETE https://api.coolsms.co.kr/kakao/v1/plus-friends/:pfId
 ```
 
-COOLSMS와 연동된 카카오톡채널을 COOLSMS에서만 삭제합니다. COOLSMS와의 연동만 끊길 뿐 카카오톡채널이 삭제되지는 않습니다.
+연동된 카카오톡채널을 삭제합니다. 연동만 끊길 뿐 카카오톡채널이 삭제되지는 않습니다.
 
 ### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
@@ -46,8 +46,8 @@ COOLSMS와 연동된 카카오톡채널을 COOLSMS에서만 삭제합니다. COO
             "categoryCode": "11111111111"
         }
     ],
-    "dateCreated": "2019-12-17T22:29:35.833Z",
-    "dateUpdated": "2019-12-17T22:29:35.833Z"
+    "dateCreated": "2021-01-29T01:29:14.661Z",
+    "dateUpdated": "2021-01-29T01:29:14.661Z"
 }
 ```
 
@@ -185,7 +185,7 @@ func main() {
 {% tab title="JAVA" %}
 
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -231,5 +231,5 @@ public class Request {
 
 ---
 
-> 문서 생성일 : 2019-12-17
+> 문서 생성일 : 2021-01-29
 

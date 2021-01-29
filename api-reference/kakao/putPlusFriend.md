@@ -1,69 +1,80 @@
-# 카카오톡채널 연동 토큰 신청
+# 카카오톡채널 추가
 
 ## Request
-
-```text
-POST https://api.coolsms.co.kr/kakao/v1/plus-friends/:service/token
+```
+POST https://api.coolsms.co.kr/kakao/v1/plus-friends
 ```
 
-카카오톡채널 연동을 위해 카카오톡으로 토큰을 발급 받을 수 있도록 요청합니다.
+카카오톡채널을 연동합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
+| :- | :- | :- | :- | :-: |
 | `kakao:write` | `role-kakao:write` | `ACTIVE` | `ACTIVE` | O |
 
-### Path Parameters
-
-| Name | Description |
-| :---: | :---: |
-| :service | 카카오톡채널 연동처 |
-
 ### Request Structure
-
-```javascript
+```json
 {
     "searchId": "string",
     "phoneNumber": "string",
-    "categoryCode": "string"
+    "categoryCode": "string",
+    "token": "string"
 }
 ```
 
 ### Body Params
-
 | Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
+| :--- | :--: | :------: | :---------- |
 | searchId | `string` | O | 카카오톡채널 검색용 아이디 |
 | phoneNumber | `string` | O | 핸드폰 번호 |
 | categoryCode | `string` | O | 카카오톡채널 카테고리 코드 |
+| token | `string` | O | 연동 시 카카오톡으로 사용자에게 오는 토큰 |
+
+
+---
 
 ## Samples
 
-### 플러스 친구 연동을 위한 토큰 요청
+### putPlusFriend.spec.js
 
 > **Sample Request**
 
-```javascript
+```json
 {
     "searchId": "NURIGO",
     "phoneNumber": "01055555555",
-    "categoryCode": "11111111111"
+    "categoryCode": "02536589547",
+    "token": "123456789"
 }
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "success": true
+    "accountId": "19301859371938",
+    "phoneNumber": "01055555555",
+    "searchId": "NURIGO",
+    "dateCreated": "2021-01-29T01:29:15.073Z",
+    "dateUpdated": "2021-01-29T01:29:15.073Z",
+    "pfId": "KA01PF2101290129150788YcojGcrNIN",
+    "senderKeys": [
+        {
+            "service": "biz",
+            "key": "12646846a8ds4f6a84fs6a8sf4",
+            "categoryCode": "02536589547"
+        }
+    ]
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -76,25 +87,28 @@ var options = {
   body: {
     searchId: 'NURIGO',
     phoneNumber: '01055555555',
-    categoryCode: '11111111111'
+    categoryCode: '02536589547',
+    token: '123456789'
   },
   method: 'POST',
   json: true,
-  url: 'http://api.coolsms.co.kr/kakao/v1/plus-friends/daou/token'
+  url: 'http://api.coolsms.co.kr/kakao/v1/plus-friends'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/kakao/v1/plus-friends/daou/token";
-$data = '{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"11111111111"}';
+$url = "http://api.coolsms.co.kr/kakao/v1/plus-friends";
+$data = '{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"02536589547","token":"123456789"}';
 
 $options = array(
     'http' => array(
@@ -108,44 +122,49 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/kakao/v1/plus-friends/daou/token"
+url = "http://api.coolsms.co.kr/kakao/v1/plus-friends"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
-data = '{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"11111111111"}'
+data = '{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"02536589547","token":"123456789"}'
 
 response = requests.post(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
 curl -X POST \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    -H 'Content-Type: application/json' \
-    -d '{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"11111111111"}' \
-    http://api.coolsms.co.kr/kakao/v1/plus-friends/daou/token
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	-H 'Content-Type: application/json' \
+	-d '{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"02536589547","token":"123456789"}' \
+	http://api.coolsms.co.kr/kakao/v1/plus-friends
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/plus-friends/daou/token")
+uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/plus-friends")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
@@ -154,7 +173,8 @@ headers = {
 data = {
   "searchId": "NURIGO",
   "phoneNumber": "01055555555",
-  "categoryCode": "11111111111"
+  "categoryCode": "02536589547",
+  "token": "123456789"
 }
 http = Net::HTTP.new(uri.host, uri.port)
 request = Net::HTTP::Post.new(uri.request_uri, headers)
@@ -163,10 +183,12 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -178,8 +200,8 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/kakao/v1/plus-friends/daou/token"
-  data := strings.NewReader(`{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"11111111111"}`)
+  uri := "http://api.coolsms.co.kr/kakao/v1/plus-friends"
+  data := strings.NewReader(`{"searchId":"NURIGO","phoneNumber":"01055555555","categoryCode":"02536589547","token":"123456789"}`)
 
   req, err := http.NewRequest("POST", uri, data)
   if err != nil { panic(err) }
@@ -196,12 +218,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -211,8 +235,8 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/plus-friends/daou/token";
-    String parameters = "{\"searchId\":\"NURIGO\",\"phoneNumber\":\"01055555555\",\"categoryCode\":\"11111111111\"}";
+    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/plus-friends";
+    String parameters = "{\"searchId\":\"NURIGO\",\"phoneNumber\":\"01055555555\",\"categoryCode\":\"02536589547\",\"token\":\"123456789\"}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -241,9 +265,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-17
+---
+
+> 문서 생성일 : 2021-01-29
 

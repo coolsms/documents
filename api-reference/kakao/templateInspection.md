@@ -1,59 +1,72 @@
-# 카카오톡채널 조회
+# 템플릿 검수 요청
 
 ## Request
-
-```text
-GET https://api.coolsms.co.kr/kakao/v1/plus-friends/:pfId
+```
+PUT https://api.coolsms.co.kr/kakao/v1/templates/:templateId/inspection
 ```
 
-카카오톡채널의 아이디로 카카오톡채널의 정보를 불러옵니다.
+템플릿을 검수 요청합니다.
 
-### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `kakao:read` | `role-kakao:read` |  |  |  |
+| :- | :- | :- | :- | :-: |
+| `kakao:write` | `role-kakao:write` | `ACTIVE` | `ACTIVE` | O |
 
 ### Path Parameters
 
 | Name | Description |
-| :---: | :---: |
-| :pfId | 카카오톡채널 고유 아이디 |
+| :--: | :---------: |
+| :templateId | 템플릿 고유 아이디 |
+
+---
 
 ## Samples
 
-### getPlusFriend.spec.js
+### 검수 요청
 
 > **Sample Request**
 
-```text
-http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1
+```json
+{}
 ```
 
 > **Sample Response**
 
-```javascript
+```json
 {
-    "pfId": "KA01PF190227072057634pRBhbpAw1w1",
-    "searchId": "NURIGO",
-    "accountId": "19301859371111",
-    "phoneNumber": "01011111111",
-    "senderKeys": [
+    "isHidden": false,
+    "accountId": "12925149",
+    "templateId": "KA01TP210129012915683jFg9IasFP0w",
+    "name": "A2",
+    "pfId": "PF01ID210129012914486vjjt6UYpC0m",
+    "codes": [
         {
+            "status": "REJECTED",
+            "code": "bizp_20190312165039251028888882",
             "service": "daou",
-            "key": "13h39gehsgb93ghe9sjf9h2r",
-            "categoryCode": "11111111111"
+            "comments": []
+        },
+        {
+            "status": "INSPECTING",
+            "code": "bizp_20190312165039251028888882",
+            "service": "biz",
+            "comments": []
         }
     ],
-    "dateCreated": "2019-12-17T22:29:35.942Z",
-    "dateUpdated": "2019-12-17T22:29:35.942Z"
+    "content": "testMessage",
+    "dateCreated": "2021-01-29T01:29:15.683Z",
+    "dateUpdated": "2021-01-29T01:29:15.713Z",
+    "buttons": []
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
+
 {% tab title="NODE" %}
+
 ```javascript
 var request = require('request');
 
@@ -62,28 +75,30 @@ var options = {
     Authorization:
       'HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4'
   },
-  method: 'GET',
+  method: 'PUT',
   json: true,
   url:
-    'http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1'
+    'http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012915683jFg9IasFP0w/inspection'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
+
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
+
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1";
+$url = "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012915683jFg9IasFP0w/inspection";
 
 $options = array(
     'http' => array(
         'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n",
-        'method'  => 'GET'
+        'method'  => 'PUT'
     )
 );
 
@@ -91,54 +106,61 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
+
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
+
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1"
+url = "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012915683jFg9IasFP0w/inspection"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 
-response = requests.get(url, headers=headers)
+response = requests.put(url, headers=headers)
 print(response.status_code)
 print(response.text)
+
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+
+```curl
 #!/bin/bash
-curl -X GET \
-    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-    http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1
+curl -X PUT \
+	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+	http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012915683jFg9IasFP0w/inspection
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
+
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1")
+uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012915683jFg9IasFP0w/inspection")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4"
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Get.new(uri.request_uri, headers)
+request = Net::HTTP::Put.new(uri.request_uri, headers)
 
 response = http.request(request)
 puts response.code
 puts response.body
+
 ```
 {% endtab %}
 
 {% tab title="GO" %}
+
 ```go
 package main
 
@@ -150,9 +172,9 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1"
+  uri := "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012915683jFg9IasFP0w/inspection"
 
-  req, err := http.NewRequest("GET", uri, nil)
+  req, err := http.NewRequest("PUT", uri, nil)
   if err != nil { panic(err) }
 
   req.Header.Set("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4")
@@ -166,12 +188,14 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
+
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
+
 ```java
-package coolsms;
+package solapi;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -181,12 +205,12 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/plus-friends/KA01PF190227072057634pRBhbpAw1w1";
+    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012915683jFg9IasFP0w/inspection";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("GET");
+    con.setRequestMethod("PUT");
 
     con.setRequestProperty("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4");
 
@@ -209,9 +233,13 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
+
 ```
 {% endtab %}
+
 {% endtabs %}
 
-> 문서 생성일 : 2019-12-17
+---
+
+> 문서 생성일 : 2021-01-29
 
