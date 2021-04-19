@@ -224,7 +224,7 @@ curl -X POST https://api.coolsms.co.kr/oauth2/v1/access_token
 `nonce` 란 어떤 요청 중에 일시적인 `key` 역할을 하는 단어를 말합니다.  
 아래의 이미지에서는 `state`값에 대한 역할을 보여주고 있습니다.
 
-![state&#xC5ED;&#xD560;](../../.gitbook/assets/state-flow.png)
+![state&#xC5ED;&#xD560;](../../.gitbook/assets/state-flow%20%282%29.png)
 
 ## 권한\(Scope\) 에러처리
 

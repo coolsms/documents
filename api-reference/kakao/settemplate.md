@@ -1,26 +1,28 @@
 # 템플릿 정보 수정
 
 ## Request
-```
+
+```text
 PUT https://api.coolsms.co.kr/kakao/v1/templates/:templateId
 ```
 
 템플릿의 정보를 수정합니다.
 
-### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :- | :- | :- | :- | :-: |
+| :--- | :--- | :--- | :--- | :---: |
 | `kakao:write` | `role-kakao:write` | `ACTIVE` | `ACTIVE` | O |
 
 ### Path Parameters
 
 | Name | Description |
-| :--: | :---------: |
+| :---: | :---: |
 | :templateId | 템플릿 고유 아이디 |
 
 ### Request Structure
-```json
+
+```javascript
 {
     "name": "string",
     "content": "string",
@@ -29,17 +31,17 @@ PUT https://api.coolsms.co.kr/kakao/v1/templates/:templateId
 ```
 
 ### Body Params
+
 | Name | Type | Required | Description |
-| :--- | :--: | :------: | :---------- |
+| :--- | :---: | :---: | :--- |
 | name | `string` |  | 이름 |
 | content | `string` |  | 템플릿 내용 |
-| [buttons](#body-buttons) | `array` |  | 템플릿에 들어가는 버튼들 |
+| [buttons](settemplate.md#body-buttons) | `array` |  | 템플릿에 들어가는 버튼들 |
 
-
-##### Body / buttons
+#### Body / buttons
 
 | Name | Type | Required | Description |
-| :--- | :--: | :------: | :---------- |
+| :--- | :---: | :---: | :--- |
 | buttonType | `string` | O | 설명 없음 |
 | buttonName | `string` | O | 설명 없음 |
 | linkMo | `string` |  | Mobile 주소 |
@@ -47,16 +49,13 @@ PUT https://api.coolsms.co.kr/kakao/v1/templates/:templateId
 | linkAnd | `string` |  | Android 주소 |
 | linkIos | `string` |  | IOS 주소 |
 
-
----
-
 ## Samples
 
 ### setTemplate.spec.js
 
 > **Sample Request**
 
-```json
+```javascript
 {
     "content": "#{홍길동}님 회원가입을 환영 합니다."
 }
@@ -64,7 +63,7 @@ PUT https://api.coolsms.co.kr/kakao/v1/templates/:templateId
 
 > **Sample Response**
 
-```json
+```javascript
 {
     "daou": {
         "isHidden": false,
@@ -122,9 +121,7 @@ PUT https://api.coolsms.co.kr/kakao/v1/templates/:templateId
 > **Sample Code**
 
 {% tabs %}
-
 {% tab title="NODE" %}
-
 ```javascript
 var request = require('request');
 
@@ -147,12 +144,10 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
-
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
-
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012914483sPPFSMwFonK";
@@ -170,12 +165,10 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
-
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
-
 ```python
 import requests
 
@@ -189,24 +182,21 @@ data = '{"content":"#{홍길동}님 회원가입을 환영 합니다."}'
 response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
-
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-
-```curl
+```text
 #!/bin/bash
 curl -X PUT \
-	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-	-H 'Content-Type: application/json' \
-	-d '{"content":"#{홍길동}님 회원가입을 환영 합니다."}' \
-	http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012914483sPPFSMwFonK
+    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+    -H 'Content-Type: application/json' \
+    -d '{"content":"#{홍길동}님 회원가입을 환영 합니다."}' \
+    http://api.coolsms.co.kr/kakao/v1/templates/KA01TP210129012914483sPPFSMwFonK
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
-
 ```ruby
 require 'net/http'
 require 'uri'
@@ -228,12 +218,10 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
-
 ```
 {% endtab %}
 
 {% tab title="GO" %}
-
 ```go
 package main
 
@@ -263,12 +251,10 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
-
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 package solapi;
 
@@ -310,13 +296,9 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
-
 ```
 {% endtab %}
-
 {% endtabs %}
-
----
 
 > 문서 생성일 : 2021-01-29
 

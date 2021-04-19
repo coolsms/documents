@@ -1,75 +1,85 @@
-# 그룹 메시지 삭제
+# 템플릿 숨김 설정
 
 ## Request
-```
-DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId/messages
+
+```text
+PUT https://api.coolsms.co.kr/kakao/v1/templates/:templateId/hide
 ```
 
-그룹에 속한 메시지 일부분을 삭제합니다.
+템플릿의 숨김 여부를 설정합니다.
 
-### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :- | :- | :- | :- | :-: |
-| `message:write` | `role-message:write` | `ACTIVE` | `ACTIVE` |  |
+| :--- | :--- | :--- | :--- | :---: |
+| `kakao:write` | `role-kakao:write` | `ACTIVE` | `ACTIVE` | O |
 
 ### Path Parameters
 
 | Name | Description |
-| :--: | :---------: |
-| :groupId | 메시지 그룹 아이디 |
+| :---: | :---: |
+| :templateId | 템플릿 고유 아이디 |
 
 ### Request Structure
-```json
+
+```javascript
 {
-    "messageIds": "array"
+    "isHidden": "boolean"
 }
 ```
 
 ### Body Params
+
 | Name | Type | Required | Description |
-| :--- | :--: | :------: | :---------- |
-| messageIds | `array` | O | 메시지 아이디 목록 |
-
-
-
----
+| :--- | :---: | :---: | :--- |
+| isHidden | `boolean` | O | 설명 없음 |
 
 ## Samples
 
-### DELETE /messages/v4/groups/{groupId}/messages
+### hidTemplate.spec.js
 
 > **Sample Request**
 
-```json
+```javascript
 {
-    "messageIds": [
-        "M4V20200308120044DTYYJBBYLPQZIB1"
-    ]
+    "isHidden": true
 }
 ```
 
 > **Sample Response**
 
-```json
+```javascript
 {
-    "groupId": "G4V20180307105937H3PTASXMNJG2JIB",
-    "errorCount": 0,
-    "resultList": [
+    "isHidden": true,
+    "accountId": "12925149",
+    "templateId": "KA01TP200923054509625rpI2FXLASpp",
+    "name": "THISISNAME",
+    "pfId": "KA01PF06981701923709182736123232",
+    "codes": [
         {
-            "messageId": "M4V20200308120044DTYYJBBYLPQZIB1",
-            "resultCode": "Success"
+            "status": "PENDING",
+            "code": "bizp_201903121650392510222222",
+            "service": "daou",
+            "comments": []
+        },
+        {
+            "status": "APPROVED",
+            "comments": [],
+            "code": "bizp_201903121650392510211111",
+            "service": "biz"
         }
-    ]
+    ],
+    "content": "#{홍길동}님 회원가입을 환영 합니다.",
+    "dateCreated": "2021-01-29T01:29:15.439Z",
+    "dateUpdated": "2021-01-29T01:29:15.445Z",
+    "buttons": []
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
-
 {% tab title="NODE" %}
-
 ```javascript
 var request = require('request');
 
@@ -80,34 +90,32 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    messageIds: 'M4V20200308120044DTYYJBBYLP...'
+    isHidden: true
   },
-  method: 'DELETE',
+  method: 'PUT',
   json: true,
   url:
-    'http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIB/messages'
+    'http://api.coolsms.co.kr/kakao/v1/templates/KA01TP200923054509625rpI2FXLASpp/hide'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
-
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
-
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIB/messages";
-$data = '{"messageIds":"M4V20200308120044DTYYJBBYLP..."}';
+$url = "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP200923054509625rpI2FXLASpp/hide";
+$data = '{"isHidden":true}';
 
 $options = array(
     'http' => array(
         'header'  => "Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4\r\n" . "Content-Type: application/json\r\n",
         'content' => $data,
-        'method'  => 'DELETE'
+        'method'  => 'PUT'
     )
 );
 
@@ -115,70 +123,63 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
-
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
-
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIB/messages"
+url = "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP200923054509625rpI2FXLASpp/hide"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
-data = '{"messageIds":"M4V20200308120044DTYYJBBYLP..."}'
+data = '{"isHidden":true}'
 
-response = requests.delete(url, headers=headers, data=data)
+response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
-
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-
-```curl
+```text
 #!/bin/bash
-curl -X DELETE \
-	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-	-H 'Content-Type: application/json' \
-	-d '{"messageIds":"M4V20200308120044DTYYJBBYLP..."}' \
-	http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIB/messages
+curl -X PUT \
+    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+    -H 'Content-Type: application/json' \
+    -d '{"isHidden":true}' \
+    http://api.coolsms.co.kr/kakao/v1/templates/KA01TP200923054509625rpI2FXLASpp/hide
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
-
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIB/messages")
+uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/templates/KA01TP200923054509625rpI2FXLASpp/hide")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
 data = {
-  "messageIds": "M4V20200308120044DTYYJBBYLP..."
+  "isHidden": true
 }
 http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Delete.new(uri.request_uri, headers)
+request = Net::HTTP::Put.new(uri.request_uri, headers)
 request.body = data.to_json
 
 response = http.request(request)
 puts response.code
 puts response.body
-
 ```
 {% endtab %}
 
 {% tab title="GO" %}
-
 ```go
 package main
 
@@ -190,10 +191,10 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIB/messages"
-  data := strings.NewReader(`{"messageIds":"M4V20200308120044DTYYJBBYLP..."}`)
+  uri := "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP200923054509625rpI2FXLASpp/hide"
+  data := strings.NewReader(`{"isHidden":true}`)
 
-  req, err := http.NewRequest("DELETE", uri, data)
+  req, err := http.NewRequest("PUT", uri, data)
   if err != nil { panic(err) }
 
   req.Header.Set("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4")
@@ -208,12 +209,10 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
-
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 package solapi;
 
@@ -225,13 +224,13 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIB/messages";
-    String parameters = "{\"messageIds\":\"M4V20200308120044DTYYJBBYLP...\"}";
+    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/templates/KA01TP200923054509625rpI2FXLASpp/hide";
+    String parameters = "{\"isHidden\":true}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-    con.setRequestMethod("DELETE");
+    con.setRequestMethod("PUT");
 
     con.setRequestProperty("Authorization", "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4");
     con.setRequestProperty("Content-Type", "application/json");
@@ -255,13 +254,9 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
-
 ```
 {% endtab %}
-
 {% endtabs %}
 
----
-
-> 문서 생성일 : 2021-01-23
+> 문서 생성일 : 2021-01-29
 

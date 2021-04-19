@@ -1,26 +1,28 @@
 # 앱에 앱홈 도메인 업데이트
 
 ## Request
-```
+
+```text
 PUT https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/apphome
 ```
 
 앱홈 서비스를 이용하기 위한 도메인을 변경합니다.
 
-### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :- | :- | :- | :- | :-: |
+| :--- | :--- | :--- | :--- | :---: |
 | `appstore:write` | `role-appstore:write` | `ACTIVE` | `ACTIVE` | O |
 
 ### Path Parameters
 
 | Name | Description |
-| :--: | :---------: |
+| :---: | :---: |
 | :appId | 앱 아이디 |
 
 ### Request Structure
-```json
+
+```javascript
 {
     "domainPrefix": "string",
     "customDomain": "string",
@@ -32,8 +34,9 @@ PUT https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/apphome
 ```
 
 ### Body Params
+
 | Name | Type | Required | Description |
-| :--- | :--: | :------: | :---------- |
+| :--- | :---: | :---: | :--- |
 | domainPrefix | `string` |  | 설명 없음 |
 | customDomain | `string` |  | 설명 없음 |
 | primaryColor | `string` |  | 설명 없음 |
@@ -41,16 +44,13 @@ PUT https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/apphome
 | sideMenu | `boolean` |  | 설명 없음 |
 | slogan | `boolean` |  | 설명 없음 |
 
-
----
-
 ## Samples
 
 ### 앱홈 도메인 업데이트
 
 > **Sample Request**
 
-```json
+```javascript
 {
     "domainPrefix": "4989",
     "primaryColor": "#fff",
@@ -60,7 +60,7 @@ PUT https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/apphome
 
 > **Sample Response**
 
-```json
+```javascript
 {
     "_id": "5f6abce01fc3322e3a5d7edb",
     "thumbnail": {
@@ -109,9 +109,7 @@ PUT https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/apphome
 > **Sample Code**
 
 {% tabs %}
-
 {% tab title="NODE" %}
-
 ```javascript
 var request = require('request');
 
@@ -135,12 +133,10 @@ request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
-
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
-
 ```php
 <?php
 $url = "http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome";
@@ -158,12 +154,10 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
-
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
-
 ```python
 import requests
 
@@ -177,24 +171,21 @@ data = '{"domainPrefix":"4989","primaryColor":"#fff","slogan":false}'
 response = requests.put(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
-
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-
-```curl
+```text
 #!/bin/bash
 curl -X PUT \
-	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-	-H 'Content-Type: application/json' \
-	-d '{"domainPrefix":"4989","primaryColor":"#fff","slogan":false}' \
-	http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome
+    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+    -H 'Content-Type: application/json' \
+    -d '{"domainPrefix":"4989","primaryColor":"#fff","slogan":false}' \
+    http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
-
 ```ruby
 require 'net/http'
 require 'uri'
@@ -218,12 +209,10 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
-
 ```
 {% endtab %}
 
 {% tab title="GO" %}
-
 ```go
 package main
 
@@ -253,12 +242,10 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
-
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 package solapi;
 
@@ -300,13 +287,9 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
-
 ```
 {% endtab %}
-
 {% endtabs %}
-
----
 
 > 문서 생성일 : 2020-09-23
 

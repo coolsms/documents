@@ -1,94 +1,115 @@
-# 템플릿 댓글 추가
+# 앱에 앱홈 도메인 생성
 
 ## Request
-```
-POST https://api.coolsms.co.kr/kakao/v1/templates/:templateId/comment
+
+```text
+POST https://api.coolsms.co.kr/appstore/v2/me/apps/:appId/apphome
 ```
 
-템플릿에 댓글을 추가합니다.
+앱홈 서비스를 이용하기 위한 도메인을 생성합니다.
 
-### Authorization 인증 필요 [[?]](https://docs.coolsms.co.kr/authentication/overview#authorization)
+### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
 | 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :- | :- | :- | :- | :-: |
-| `kakao:write` | `role-kakao:write` | `ACTIVE` | `ACTIVE` | O |
+| :--- | :--- | :--- | :--- | :---: |
+| `appstore:write` | `role-appstore:write` | `ACTIVE` | `ACTIVE` | O |
 
 ### Path Parameters
 
 | Name | Description |
-| :--: | :---------: |
-| :templateId | 템플릿 고유 아이디 |
+| :---: | :---: |
+| :appId | 앱 아이디 |
 
 ### Request Structure
-```json
+
+```javascript
 {
-    "comment": "string"
+    "domainPrefix": "string",
+    "customDomain": "string",
+    "primaryColor": "string",
+    "secondaryColor": "string",
+    "sideMenu": "boolean",
+    "slogan": "boolean"
 }
 ```
 
 ### Body Params
+
 | Name | Type | Required | Description |
-| :--- | :--: | :------: | :---------- |
-| comment | `string` | O | 템플릿에 다는 댓글 |
-
-
----
+| :--- | :---: | :---: | :--- |
+| domainPrefix | `string` | O | 설명 없음 |
+| customDomain | `string` |  | 설명 없음 |
+| primaryColor | `string` |  | 설명 없음 |
+| secondaryColor | `string` |  | 설명 없음 |
+| sideMenu | `boolean` |  | 설명 없음 |
+| slogan | `boolean` |  | 설명 없음 |
 
 ## Samples
 
-### putTemplateComment.spec.js
+### 앱홈 도메인 생성
 
 > **Sample Request**
 
-```json
+```javascript
 {
-    "comment": "템플릿 등록 문의드립니다."
+    "domainPrefix": "4989",
+    "primaryColor": "#fff",
+    "slogan": false
 }
 ```
 
 > **Sample Response**
 
-```json
+```javascript
 {
-    "isHidden": false,
+    "_id": "5f6abce01fc3322e3a5d7ed8",
+    "thumbnail": {
+        "name": null,
+        "url": null,
+        "originalName": null
+    },
+    "profit": {
+        "sms": 0,
+        "lms": 0,
+        "mms": 0,
+        "ata": 0,
+        "cta": 0,
+        "cti": 0
+    },
+    "apphomeConfig": {
+        "primaryColor": "#fff",
+        "secondaryColor": null,
+        "sideMenu": true,
+        "slogan": false
+    },
+    "appVersion": null,
+    "screenshots": [],
+    "homepage": null,
+    "categories": [],
+    "intro": null,
+    "description": null,
+    "stage": "LIVE",
+    "status": "ACTIVE",
+    "reasonBlocked": null,
+    "email": null,
+    "log": [],
+    "appDomain": "4989.solapi.net",
+    "customDomain": null,
+    "type": "SITE",
     "accountId": "12925149",
-    "templateId": "TP01ID210129012914481fgdyWTTnQvt",
-    "name": "A10",
-    "pfId": "PF01ID210129012914481fewY2wqZTeJ",
-    "codes": [
-        {
-            "status": "REJECTED",
-            "service": "daou",
-            "code": "bizp_2019031216503925102888888",
-            "comments": []
-        },
-        {
-            "status": "REJECTED",
-            "service": "biz",
-            "code": "bizp_2019031216503925102888888",
-            "comments": [
-                {
-                    "isAdmin": false,
-                    "memberId": "18010100001000",
-                    "content": "템플릿 등록 문의드립니다.",
-                    "dateCreated": "2021-01-29T01:29:15.477Z"
-                }
-            ]
-        }
-    ],
-    "content": "testMessage",
-    "dateCreated": "2021-01-29T01:29:14.481Z",
-    "dateUpdated": "2021-01-29T01:29:15.476Z",
-    "buttons": []
+    "appName": "A-APP",
+    "appId": "ACMn6vXrElA",
+    "clientId": "CIDL39VZZN8HO8UA",
+    "dateCreated": "2020-09-23T03:11:28.370Z",
+    "dateUpdated": "2020-09-23T03:11:28.382Z",
+    "CNAME": "hosting.solapi.net"
 }
 ```
 
 > **Sample Code**
 
 {% tabs %}
-
 {% tab title="NODE" %}
-
 ```javascript
 var request = require('request');
 
@@ -99,28 +120,27 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: {
-    comment: '템플릿 등록 문의드립니다.'
+    domainPrefix: '4989',
+    primaryColor: '#fff',
+    slogan: false
   },
   method: 'POST',
   json: true,
-  url:
-    'http://api.coolsms.co.kr/kakao/v1/templates/TP01ID210129012914481fgdyWTTnQvt/comment'
+  url: 'http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome'
 };
 
 request(options, function(error, response, body) {
   if (error) throw error;
   console.log('result :', body);
 });
-
 ```
 {% endtab %}
 
 {% tab title="PHP" %}
-
 ```php
 <?php
-$url = "http://api.coolsms.co.kr/kakao/v1/templates/TP01ID210129012914481fgdyWTTnQvt/comment";
-$data = '{"comment":"템플릿 등록 문의드립니다."}';
+$url = "http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome";
+$data = '{"domainPrefix":"4989","primaryColor":"#fff","slogan":false}';
 
 $options = array(
     'http' => array(
@@ -134,56 +154,53 @@ $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 
 var_dump($result);
-
 ```
 {% endtab %}
 
 {% tab title="PYTHON" %}
-
 ```python
 import requests
 
-url = "http://api.coolsms.co.kr/kakao/v1/templates/TP01ID210129012914481fgdyWTTnQvt/comment"
+url = "http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome"
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
-data = '{"comment":"템플릿 등록 문의드립니다."}'
+data = '{"domainPrefix":"4989","primaryColor":"#fff","slogan":false}'
 
 response = requests.post(url, headers=headers, data=data)
 print(response.status_code)
 print(response.text)
-
 ```
 {% endtab %}
 
 {% tab title="CURL" %}
-
-```curl
+```text
 #!/bin/bash
 curl -X POST \
-	-H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
-	-H 'Content-Type: application/json' \
-	-d '{"comment":"템플릿 등록 문의드립니다."}' \
-	http://api.coolsms.co.kr/kakao/v1/templates/TP01ID210129012914481fgdyWTTnQvt/comment
+    -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
+    -H 'Content-Type: application/json' \
+    -d '{"domainPrefix":"4989","primaryColor":"#fff","slogan":false}' \
+    http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome
 ```
 {% endtab %}
 
 {% tab title="RUBY" %}
-
 ```ruby
 require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://api.coolsms.co.kr/kakao/v1/templates/TP01ID210129012914481fgdyWTTnQvt/comment")
+uri = URI.parse("http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome")
 
 headers = {
   "Authorization": "HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4",
   "Content-Type": "application/json"
 }
 data = {
-  "comment": "템플릿 등록 문의드립니다."
+  "domainPrefix": "4989",
+  "primaryColor": "#fff",
+  "slogan": false
 }
 http = Net::HTTP.new(uri.host, uri.port)
 request = Net::HTTP::Post.new(uri.request_uri, headers)
@@ -192,12 +209,10 @@ request.body = data.to_json
 response = http.request(request)
 puts response.code
 puts response.body
-
 ```
 {% endtab %}
 
 {% tab title="GO" %}
-
 ```go
 package main
 
@@ -209,8 +224,8 @@ import (
 )
 
 func main() {
-  uri := "http://api.coolsms.co.kr/kakao/v1/templates/TP01ID210129012914481fgdyWTTnQvt/comment"
-  data := strings.NewReader(`{"comment":"템플릿 등록 문의드립니다."}`)
+  uri := "http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome"
+  data := strings.NewReader(`{"domainPrefix":"4989","primaryColor":"#fff","slogan":false}`)
 
   req, err := http.NewRequest("POST", uri, data)
   if err != nil { panic(err) }
@@ -227,12 +242,10 @@ func main() {
   str := string(bytes)
   fmt.Println(str)
 }
-
 ```
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 package solapi;
 
@@ -244,8 +257,8 @@ import java.net.URL;
 
 public class Request {
   public static void main(String[] args) throws Exception {
-    String targetUrl = "http://api.coolsms.co.kr/kakao/v1/templates/TP01ID210129012914481fgdyWTTnQvt/comment";
-    String parameters = "{\"comment\":\"템플릿 등록 문의드립니다.\"}";
+    String targetUrl = "http://api.coolsms.co.kr/appstore/v2/me/apps/ACMn6vXrElA/apphome";
+    String parameters = "{\"domainPrefix\":\"4989\",\"primaryColor\":\"#fff\",\"slogan\":false}";
 
     URL url = new URL(targetUrl);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -274,13 +287,9 @@ public class Request {
     System.out.println("HTTP body : " + response.toString());
   }
 }
-
 ```
 {% endtab %}
-
 {% endtabs %}
 
----
-
-> 문서 생성일 : 2021-01-29
+> 문서 생성일 : 2020-09-23
 
