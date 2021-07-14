@@ -49,7 +49,7 @@ http://api.coolsms.co.kr/messages/v4/statistics
             "pointAvg": 1,
             "dayPeriod": [
                 {
-                    "_id": "2021-07-14T07:04:22.867Z",
+                    "_id": "2021-07-14T07:12:48.791Z",
                     "month": "2021/07",
                     "date": "2021/07/14",
                     "balance": 1,
@@ -173,7 +173,7 @@ http://api.coolsms.co.kr/messages/v4/statistics
     },
     "dayPeriod": [
         {
-            "_id": "2021-07-14T07:04:22.867Z",
+            "_id": "2021-07-14T07:12:48.791Z",
             "month": "2021/07",
             "date": "2021/07/14",
             "balance": 1,

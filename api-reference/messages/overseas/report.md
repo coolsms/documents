@@ -118,8 +118,8 @@ POST https://api.coolsms.co.kr/messages/v4/overseas/report
     "customFields": {},
     "queues": [],
     "hint": {},
-    "dateCreated": "2021-07-14T07:04:25.698Z",
-    "dateUpdated": "2021-07-14T07:04:25.709Z"
+    "dateCreated": "2021-07-14T07:12:51.701Z",
+    "dateUpdated": "2021-07-14T07:12:51.712Z"
 }
 ```
 

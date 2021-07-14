@@ -379,11 +379,11 @@ http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO
     "log": [
         {
             "message": "메시지 그룹이 생성되었습니다.",
-            "createAt": "2021-07-14T07:04:15.917Z"
+            "createAt": "2021-07-14T07:12:41.876Z"
         },
         {
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-            "createAt": "2021-07-14T07:04:15.917Z"
+            "createAt": "2021-07-14T07:12:41.876Z"
         }
     ],
     "status": "PENDING",
@@ -402,8 +402,8 @@ http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO
     "price": {},
     "customFields": {},
     "hint": {},
-    "dateCreated": "2021-07-14T07:04:15.920Z",
-    "dateUpdated": "2021-07-14T07:04:15.920Z"
+    "dateCreated": "2021-07-14T07:12:41.879Z",
+    "dateUpdated": "2021-07-14T07:12:41.879Z"
 }
 ```
 

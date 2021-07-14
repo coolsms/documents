@@ -96,14 +96,14 @@ DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
     "log": [
         {
             "message": "메시지 그룹이 생성되었습니다.",
-            "createAt": "2021-07-14T07:04:15.917Z"
+            "createAt": "2021-07-14T07:12:41.876Z"
         },
         {
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-            "createAt": "2021-07-14T07:04:15.917Z"
+            "createAt": "2021-07-14T07:12:41.876Z"
         },
         {
-            "createAt": "2021-07-14T07:04:22.420Z",
+            "createAt": "2021-07-14T07:12:48.348Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -113,19 +113,19 @@ DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
         },
         {
             "message": "일일 발송량을 초과하여 발송에 실패하였습니다.",
-            "createAt": "2021-07-14T07:04:22.460Z"
+            "createAt": "2021-07-14T07:12:48.385Z"
         },
         {
             "message": "일일 발송량을 초과하여 발송에 실패하였습니다.",
-            "createAt": "2021-07-14T07:04:22.484Z"
+            "createAt": "2021-07-14T07:12:48.407Z"
         },
         {
             "message": "메시지 그룹이 삭제되었습니다.",
-            "createAt": "2021-07-14T07:04:22.708Z"
+            "createAt": "2021-07-14T07:12:48.625Z"
         }
     ],
     "status": "DELETED",
-    "dateSent": "2021-07-14T07:04:22.420Z",
+    "dateSent": "2021-07-14T07:12:48.348Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -148,8 +148,8 @@ DELETE https://api.coolsms.co.kr/messages/v4/groups/:groupId
     },
     "customFields": {},
     "hint": {},
-    "dateCreated": "2021-07-14T07:04:15.920Z",
-    "dateUpdated": "2021-07-14T07:04:22.711Z"
+    "dateCreated": "2021-07-14T07:12:41.879Z",
+    "dateUpdated": "2021-07-14T07:12:48.630Z"
 }
 ```
 

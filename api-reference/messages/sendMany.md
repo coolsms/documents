@@ -71,8 +71,8 @@ POST https://api.coolsms.co.kr/messages/v4/send-many
 | groupId | `string` | O | 그룹 아이디 |
 | messageId | `string` | O | 메시지 아이디 |
 | accountId | `string` | O | 계정 고유 번호 |
-| statusMessage | `string` | O | 상태 메시지 [참고](docs.coolsms.co.kr/api-reference/message-status-codes) |
-| statusCode | `string` | O | 상태 코드 [참고](docs.coolsms.co.kr/api-reference/message-status-codes) |
+| statusMessage | `string` | O | 상태 메시지 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
+| statusCode | `string` | O | 상태 코드 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
 | to | `string` | O | 수신번호 |
 | from | `string` | O | 발신번호<br>사전 등록된 전화번호만 사용 가능 |
 | type | `string` | O | 메시지 타입 |
@@ -163,15 +163,15 @@ POST https://api.coolsms.co.kr/messages/v4/send-many
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:26.082Z",
+            "createAt": "2021-07-14T07:12:52.084Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.102Z",
+            "createAt": "2021-07-14T07:12:52.105Z",
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.123Z",
+            "createAt": "2021-07-14T07:12:52.123Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -181,7 +181,7 @@ POST https://api.coolsms.co.kr/messages/v4/send-many
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:26.123Z",
+    "dateSent": "2021-07-14T07:12:52.123Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -189,17 +189,17 @@ POST https://api.coolsms.co.kr/messages/v4/send-many
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V202107141604265JMR8NPXDKDGWZ1",
+    "_id": "G4V202107141612521P0CYN2JZOCNMCY",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V202107141604265JMR8NPXDKDGWZ1",
+    "groupId": "G4V202107141612521P0CYN2JZOCNMCY",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:26.084Z",
-    "dateUpdated": "2021-07-14T07:04:26.123Z"
+    "dateCreated": "2021-07-14T07:12:52.086Z",
+    "dateUpdated": "2021-07-14T07:12:52.123Z"
 }
 ```
 
@@ -494,15 +494,15 @@ public class Request {
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:26.179Z",
+            "createAt": "2021-07-14T07:12:52.181Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.201Z",
+            "createAt": "2021-07-14T07:12:52.203Z",
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.230Z",
+            "createAt": "2021-07-14T07:12:52.219Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -512,7 +512,7 @@ public class Request {
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:26.230Z",
+    "dateSent": "2021-07-14T07:12:52.219Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -520,17 +520,17 @@ public class Request {
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V20210714160426TXPWPKJ55P5C1J5",
+    "_id": "G4V20210714161252XJ8TOHXJRWXPPDI",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V20210714160426TXPWPKJ55P5C1J5",
+    "groupId": "G4V20210714161252XJ8TOHXJRWXPPDI",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:26.181Z",
-    "dateUpdated": "2021-07-14T07:04:26.230Z"
+    "dateCreated": "2021-07-14T07:12:52.184Z",
+    "dateUpdated": "2021-07-14T07:12:52.219Z"
 }
 ```
 
@@ -828,15 +828,15 @@ public class Request {
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:26.286Z",
+            "createAt": "2021-07-14T07:12:52.279Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.310Z",
+            "createAt": "2021-07-14T07:12:52.301Z",
             "message": "국가코드(82)의 장문문자(LMS) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.328Z",
+            "createAt": "2021-07-14T07:12:52.318Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -846,7 +846,7 @@ public class Request {
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:26.328Z",
+    "dateSent": "2021-07-14T07:12:52.318Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -854,17 +854,17 @@ public class Request {
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V20210714160426T5Z4UZSNS76VZBV",
+    "_id": "G4V20210714161252KDQLKVZGZPKMDYV",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V20210714160426T5Z4UZSNS76VZBV",
+    "groupId": "G4V20210714161252KDQLKVZGZPKMDYV",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:26.289Z",
-    "dateUpdated": "2021-07-14T07:04:26.328Z"
+    "dateCreated": "2021-07-14T07:12:52.282Z",
+    "dateUpdated": "2021-07-14T07:12:52.318Z"
 }
 ```
 
@@ -1166,15 +1166,15 @@ public class Request {
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:26.386Z",
+            "createAt": "2021-07-14T07:12:52.378Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.413Z",
+            "createAt": "2021-07-14T07:12:52.404Z",
             "message": "국가코드(82)의 포토문자(MMS) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.430Z",
+            "createAt": "2021-07-14T07:12:52.421Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -1184,7 +1184,7 @@ public class Request {
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:26.430Z",
+    "dateSent": "2021-07-14T07:12:52.421Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -1192,17 +1192,17 @@ public class Request {
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V20210714160426B5MTRHMKUCTIBBO",
+    "_id": "G4V20210714161252GRWWGYDHRZ3T6A1",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V20210714160426B5MTRHMKUCTIBBO",
+    "groupId": "G4V20210714161252GRWWGYDHRZ3T6A1",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:26.388Z",
-    "dateUpdated": "2021-07-14T07:04:26.430Z"
+    "dateCreated": "2021-07-14T07:12:52.380Z",
+    "dateUpdated": "2021-07-14T07:12:52.422Z"
 }
 ```
 
@@ -1514,15 +1514,15 @@ public class Request {
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:26.491Z",
+            "createAt": "2021-07-14T07:12:52.480Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.518Z",
+            "createAt": "2021-07-14T07:12:52.506Z",
             "message": "국가코드(82)의 알림톡(ATA) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.537Z",
+            "createAt": "2021-07-14T07:12:52.529Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -1532,7 +1532,7 @@ public class Request {
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:26.537Z",
+    "dateSent": "2021-07-14T07:12:52.529Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -1540,17 +1540,17 @@ public class Request {
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V2021071416042671KTNZ1NONP5K9C",
+    "_id": "G4V20210714161252INAZFOCR2MJTGCS",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V2021071416042671KTNZ1NONP5K9C",
+    "groupId": "G4V20210714161252INAZFOCR2MJTGCS",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:26.493Z",
-    "dateUpdated": "2021-07-14T07:04:26.538Z"
+    "dateCreated": "2021-07-14T07:12:52.483Z",
+    "dateUpdated": "2021-07-14T07:12:52.529Z"
 }
 ```
 
@@ -1873,15 +1873,15 @@ public class Request {
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:26.599Z",
+            "createAt": "2021-07-14T07:12:52.583Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.623Z",
+            "createAt": "2021-07-14T07:12:52.612Z",
             "message": "국가코드(82)의 친구톡(CTA) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.640Z",
+            "createAt": "2021-07-14T07:12:52.629Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -1891,7 +1891,7 @@ public class Request {
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:26.640Z",
+    "dateSent": "2021-07-14T07:12:52.629Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -1899,17 +1899,17 @@ public class Request {
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V20210714160426A0ETOGCXTDVJZP3",
+    "_id": "G4V20210714161252AZ0AY4UHUNOSZUX",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V20210714160426A0ETOGCXTDVJZP3",
+    "groupId": "G4V20210714161252AZ0AY4UHUNOSZUX",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:26.601Z",
-    "dateUpdated": "2021-07-14T07:04:26.640Z"
+    "dateCreated": "2021-07-14T07:12:52.585Z",
+    "dateUpdated": "2021-07-14T07:12:52.629Z"
 }
 ```
 
@@ -2216,15 +2216,15 @@ public class Request {
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:26.700Z",
+            "createAt": "2021-07-14T07:12:52.686Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.726Z",
+            "createAt": "2021-07-14T07:12:52.711Z",
             "message": "국가코드(82)의 친구톡 이미지(CTI) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:26.745Z",
+            "createAt": "2021-07-14T07:12:52.727Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -2234,7 +2234,7 @@ public class Request {
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:26.745Z",
+    "dateSent": "2021-07-14T07:12:52.727Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -2242,17 +2242,17 @@ public class Request {
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V202107141604265UKOKYGZ3CX8YUM",
+    "_id": "G4V20210714161252HKG0HGQLRWSULO7",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V202107141604265UKOKYGZ3CX8YUM",
+    "groupId": "G4V20210714161252HKG0HGQLRWSULO7",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:26.702Z",
-    "dateUpdated": "2021-07-14T07:04:26.745Z"
+    "dateCreated": "2021-07-14T07:12:52.689Z",
+    "dateUpdated": "2021-07-14T07:12:52.728Z"
 }
 ```
 
@@ -2560,15 +2560,15 @@ public class Request {
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:25.802Z",
+            "createAt": "2021-07-14T07:12:51.806Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:25.830Z",
+            "createAt": "2021-07-14T07:12:51.829Z",
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다."
         },
         {
-            "createAt": "2021-07-14T07:04:25.848Z",
+            "createAt": "2021-07-14T07:12:51.854Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -2578,7 +2578,7 @@ public class Request {
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:25.848Z",
+    "dateSent": "2021-07-14T07:12:51.854Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -2586,17 +2586,17 @@ public class Request {
     "strict": false,
     "masterAccountId": null,
     "allowDuplicates": false,
-    "_id": "G4V20210714160425GTIZQXATBKAJBBO",
+    "_id": "G4V20210714161251SL6GWDR5FD8S1T3",
     "accountId": "12925149",
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V20210714160425GTIZQXATBKAJBBO",
+    "groupId": "G4V20210714161251SL6GWDR5FD8S1T3",
     "price": {
         "82": []
     },
-    "dateCreated": "2021-07-14T07:04:25.805Z",
-    "dateUpdated": "2021-07-14T07:04:25.848Z"
+    "dateCreated": "2021-07-14T07:12:51.809Z",
+    "dateUpdated": "2021-07-14T07:12:51.854Z"
 }
 ```
 

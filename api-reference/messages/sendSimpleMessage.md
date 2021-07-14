@@ -45,7 +45,7 @@ POST https://api.coolsms.co.kr/messages/v4/send
 | type | `string` |  | 메시지 타입 |
 | country | `string` |  | 국가번호 (기본: 82, 미국(캐나다):1, 중국: 86, 일본: 81) |
 | subject | `string` |  | 메시지 제목<br>한글 20자, 영문 40자 제한 |
-| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](docs.coolsms.co.kr/api-reference/storage) |
+| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](https://docs.coolsms.co.kr/api-reference/storage) |
 | [kakaoOptions](#body-message-kakaooptions) | `object` |  | 친구톡, 알림톡을 보내기 위한 옵션 |
 | [naverOptions](#body-message-naveroptions) | `object` |  | 네이버 스마트 알림을 보내기 위한 옵션 |
 | [rcsOptions](#body-message-rcsoptions) | `object` |  | 설명 없음 |
@@ -62,7 +62,7 @@ POST https://api.coolsms.co.kr/messages/v4/send
 | adFlag | `boolean` |  | 설명 없음 |
 | templateId | `string` |  | 알림톡 템플릿 아이디 |
 | disableSms | `boolean` |  | 대체 발송 여부 |
-| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](docs.coolsms.co.kr/api-reference/storage) |
+| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](https://docs.coolsms.co.kr/api-reference/storage) |
 | [variables](#body-message-kakaooptions-variables) | `object` |  | 설명 없음 |
 | [buttons](#body-message-kakaooptions-buttons) | `array` |  | 알림톡 템플릿 버튼 목록 |
 
@@ -135,7 +135,7 @@ POST https://api.coolsms.co.kr/messages/v4/send
 | :--- | :--: | :------: | :---------- |
 | title | `string` | O | 설명 없음 |
 | description | `string` | O | 설명 없음 |
-| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](docs.coolsms.co.kr/api-reference/storage) |
+| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](https://docs.coolsms.co.kr/api-reference/storage) |
 | [buttons](#body-message-rcsoptions-additionalbody-buttons) | `array` |  | 설명 없음 |
 
 
@@ -213,8 +213,8 @@ POST https://api.coolsms.co.kr/messages/v4/send
 | groupId | `string` | O | 그룹 아이디 |
 | messageId | `string` | O | 메시지 아이디 |
 | accountId | `string` | O | 계정 고유 번호 |
-| statusMessage | `string` | O | 상태 메시지 [참고](docs.coolsms.co.kr/api-reference/message-status-codes) |
-| statusCode | `string` | O | 상태 코드 [참고](docs.coolsms.co.kr/api-reference/message-status-codes) |
+| statusMessage | `string` | O | 상태 메시지 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
+| statusCode | `string` | O | 상태 코드 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
 | to | `string` | O | 수신번호 |
 | from | `string` | O | 발신번호<br>사전 등록된 전화번호만 사용 가능 |
 | type | `string` | O | 메시지 타입 |
@@ -243,13 +243,13 @@ POST https://api.coolsms.co.kr/messages/v4/send
 
 ```json
 {
-    "groupId": "G4V20210714160420XFQYE4JXGB9DZBN",
+    "groupId": "G4V20210714161246XWYVKGWWBWQBO9F",
     "to": "01000000001",
     "from": "029302266",
     "type": "SMS",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V20210714160420TP1VFVUHJSLRPWG",
+    "messageId": "M4V202107141612465OCIWLUSSXIZNWM",
     "statusCode": "2000",
     "accountId": "12925149"
 }
@@ -480,13 +480,13 @@ public class Request {
 
 ```json
 {
-    "groupId": "G4V20210714160420MBGKDDOMUM5AZXD",
+    "groupId": "G4V20210714161246HYGZSWOBKYS9OXA",
     "to": "01000000001",
     "from": "029302266",
     "type": "SMS",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V20210714160420CLYPRSILIVYTDTZ",
+    "messageId": "M4V20210714161246TLWWCG1KX5X5WML",
     "statusCode": "2000",
     "accountId": "12925149"
 }
@@ -720,13 +720,13 @@ public class Request {
 
 ```json
 {
-    "groupId": "G4V20210714160420EXH5TBN8AEJZ8VA",
+    "groupId": "G4V20210714161246ATMYI11AZZPHE0R",
     "to": "01000000001",
     "from": "029302266",
     "type": "LMS",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V20210714160420U2QKANIJC9S7BDR",
+    "messageId": "M4V20210714161246XZO2DEAGKQ6LWTC",
     "statusCode": "2000",
     "accountId": "12925149"
 }
@@ -964,13 +964,13 @@ public class Request {
 
 ```json
 {
-    "groupId": "G4V202107141604208QX6M0KCQRBWLIT",
+    "groupId": "G4V20210714161246RGOKMHFXVA5VARO",
     "to": "01000000001",
     "from": "029302266",
     "type": "MMS",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V20210714160420QD7SIUDWEUXPRIM",
+    "messageId": "M4V20210714161246OFOWCHMXGUZEE9Q",
     "statusCode": "2000",
     "accountId": "12925149"
 }
@@ -1218,13 +1218,13 @@ public class Request {
 
 ```json
 {
-    "groupId": "G4V20210714160420R02T2WJUOCVZFWM",
+    "groupId": "G4V20210714161246MVENDC0S23XUQCP",
     "to": "01000000001",
     "from": "029302266",
     "type": "ATA",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V20210714160420AVCVXPB1P8GYY4A",
+    "messageId": "M4V20210714161246ASNVONORWLG2IPQ",
     "statusCode": "2000",
     "accountId": "12925149"
 }
@@ -1483,13 +1483,13 @@ public class Request {
 
 ```json
 {
-    "groupId": "G4V202107141604207X3BKPJIY3QUJXZ",
+    "groupId": "G4V20210714161246CLHZ04JP3ARNC8Y",
     "to": "01000000001",
     "from": "029302266",
     "type": "CTA",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V20210714160420OA3HWXIDN64DDZG",
+    "messageId": "M4V20210714161246SMKYWL3IB8M2OTO",
     "statusCode": "2000",
     "accountId": "12925149"
 }
@@ -1732,13 +1732,13 @@ public class Request {
 
 ```json
 {
-    "groupId": "G4V20210714160420OPMJ5HIV7LV6NCW",
+    "groupId": "G4V20210714161246HDBEVKWG1XC1VCQ",
     "to": "01000000001",
     "from": "029302266",
     "type": "CTI",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V20210714160420KXXLN8O4H8WE1EV",
+    "messageId": "M4V20210714161246SH9IVZY4HIREVMD",
     "statusCode": "2000",
     "accountId": "12925149"
 }
@@ -1980,13 +1980,13 @@ public class Request {
 
 ```json
 {
-    "groupId": "G4V20210714160420NS3SMMXFR5KUKEI",
+    "groupId": "G4V20210714161245WBIVHKWEG9CZWEZ",
     "to": "01000000001",
     "from": "029302266",
     "type": "SMS",
     "statusMessage": "정상 접수(이통사로 접수 예정) ",
     "country": "82",
-    "messageId": "M4V2021071416042002GPZXFT65MYUP0",
+    "messageId": "M4V20210714161245I92A4WM6FX8GRKP",
     "statusCode": "2000",
     "accountId": "12925149"
 }

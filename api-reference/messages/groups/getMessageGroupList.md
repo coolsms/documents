@@ -396,7 +396,7 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "osPlatform": null,
             "log": [
                 {
-                    "createAt": "2021-07-14T07:04:15.979Z",
+                    "createAt": "2021-07-14T07:12:41.935Z",
                     "message": "메시지 그룹이 생성되었습니다."
                 }
             ],
@@ -431,11 +431,177 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "price": {},
             "customFields": {},
             "hint": {},
-            "dateCreated": "2021-07-14T07:04:15.981Z",
-            "dateUpdated": "2021-07-14T07:04:15.981Z"
+            "dateCreated": "2021-07-14T07:12:41.937Z",
+            "dateUpdated": "2021-07-14T07:12:41.937Z"
         },
-        "G4V20210714160416UUUMAAHQE3B8TWJ": {
-            "_id": "G4V20210714160416UUUMAAHQE3B8TWJ",
+        "G4V20210714161242N9LDHCHSXGUN79M": {
+            "_id": "G4V20210714161242N9LDHCHSXGUN79M",
+            "count": {
+                "total": 0,
+                "sentTotal": 0,
+                "sentFailed": 0,
+                "sentSuccess": 0,
+                "sentPending": 0,
+                "sentReplacement": 0,
+                "refund": 0,
+                "registeredFailed": 0,
+                "registeredSuccess": 0
+            },
+            "countForCharge": {
+                "sms": {},
+                "lms": {},
+                "mms": {},
+                "ata": {},
+                "cta": {},
+                "cti": {},
+                "nsa": {},
+                "rcs_sms": {},
+                "rcs_lms": {},
+                "rcs_mms": {},
+                "rcs_tpl": {}
+            },
+            "balance": {
+                "requested": 0,
+                "replacement": 0,
+                "refund": 0,
+                "sum": 0
+            },
+            "point": {
+                "requested": 0,
+                "replacement": 0,
+                "refund": 0,
+                "sum": 0
+            },
+            "app": {
+                "profit": {
+                    "sms": 0,
+                    "lms": 0,
+                    "mms": 0,
+                    "ata": 0,
+                    "cta": 0,
+                    "cti": 0,
+                    "nsa": 0,
+                    "rcs_sms": 0,
+                    "rcs_lms": 0,
+                    "rcs_mms": 0,
+                    "rcs_tpl": 0
+                },
+                "appId": null,
+                "version": null
+            },
+            "serviceMethod": "MT",
+            "sdkVersion": null,
+            "osPlatform": null,
+            "log": [
+                {
+                    "createAt": "2021-07-14T07:12:42.320Z",
+                    "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
+                }
+            ],
+            "status": "PENDING",
+            "dateSent": null,
+            "scheduledDate": null,
+            "dateCompleted": null,
+            "isRefunded": false,
+            "flagUpdated": false,
+            "prepaid": true,
+            "strict": false,
+            "masterAccountId": null,
+            "allowDuplicates": false,
+            "accountId": "12925149",
+            "apiVersion": "4",
+            "customFields": {},
+            "hint": null,
+            "groupId": "G4V20210714161242N9LDHCHSXGUN79M",
+            "price": {},
+            "dateCreated": "2021-07-14T07:12:42.323Z",
+            "dateUpdated": "2021-07-14T07:12:42.323Z"
+        },
+        "G4V20210714161242KALYJKJ9VLVMJKR": {
+            "_id": "G4V20210714161242KALYJKJ9VLVMJKR",
+            "count": {
+                "total": 0,
+                "sentTotal": 0,
+                "sentFailed": 0,
+                "sentSuccess": 0,
+                "sentPending": 0,
+                "sentReplacement": 0,
+                "refund": 0,
+                "registeredFailed": 0,
+                "registeredSuccess": 0
+            },
+            "countForCharge": {
+                "sms": {},
+                "lms": {},
+                "mms": {},
+                "ata": {},
+                "cta": {},
+                "cti": {},
+                "nsa": {},
+                "rcs_sms": {},
+                "rcs_lms": {},
+                "rcs_mms": {},
+                "rcs_tpl": {}
+            },
+            "balance": {
+                "requested": 0,
+                "replacement": 0,
+                "refund": 0,
+                "sum": 0
+            },
+            "point": {
+                "requested": 0,
+                "replacement": 0,
+                "refund": 0,
+                "sum": 0
+            },
+            "app": {
+                "profit": {
+                    "sms": 0,
+                    "lms": 0,
+                    "mms": 0,
+                    "ata": 0,
+                    "cta": 0,
+                    "cti": 0,
+                    "nsa": 0,
+                    "rcs_sms": 0,
+                    "rcs_lms": 0,
+                    "rcs_mms": 0,
+                    "rcs_tpl": 0
+                },
+                "appId": "TESTAPPID",
+                "version": null
+            },
+            "serviceMethod": "MT",
+            "sdkVersion": "1.0",
+            "osPlatform": "win",
+            "log": [
+                {
+                    "createAt": "2021-07-14T07:12:42.339Z",
+                    "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
+                }
+            ],
+            "status": "PENDING",
+            "dateSent": null,
+            "scheduledDate": null,
+            "dateCompleted": null,
+            "isRefunded": false,
+            "flagUpdated": false,
+            "prepaid": true,
+            "strict": false,
+            "masterAccountId": null,
+            "allowDuplicates": false,
+            "accountId": "12925149",
+            "apiVersion": "4",
+            "customFields": {},
+            "hint": null,
+            "groupId": "G4V20210714161242KALYJKJ9VLVMJKR",
+            "price": {},
+            "dateCreated": "2021-07-14T07:12:42.343Z",
+            "dateUpdated": "2021-07-14T07:12:42.343Z"
+        },
+        "G4V20210714161242FUUWHPCQA0E87S1": {
+            "_id": "G4V20210714161242FUUWHPCQA0E87S1",
             "count": {
                 "total": 0,
                 "sentTotal": 0,
@@ -495,7 +661,7 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "log": [
                 {
                     "message": "유효하지 않은 AppId",
-                    "createAt": "2021-07-14T07:04:16.343Z"
+                    "createAt": "2021-07-14T07:12:42.298Z"
                 }
             ],
             "status": "FAILED",
@@ -510,98 +676,15 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "allowDuplicates": false,
             "accountId": "12925149",
             "apiVersion": "4",
-            "groupId": "G4V20210714160416UUUMAAHQE3B8TWJ",
+            "groupId": "G4V20210714161242FUUWHPCQA0E87S1",
             "price": {},
             "customFields": {},
             "hint": {},
-            "dateCreated": "2021-07-14T07:04:16.347Z",
-            "dateUpdated": "2021-07-14T07:04:16.347Z"
+            "dateCreated": "2021-07-14T07:12:42.302Z",
+            "dateUpdated": "2021-07-14T07:12:42.302Z"
         },
-        "G4V20210714160416UPQHSQKZGCZSYKU": {
-            "_id": "G4V20210714160416UPQHSQKZGCZSYKU",
-            "count": {
-                "total": 0,
-                "sentTotal": 0,
-                "sentFailed": 0,
-                "sentSuccess": 0,
-                "sentPending": 0,
-                "sentReplacement": 0,
-                "refund": 0,
-                "registeredFailed": 0,
-                "registeredSuccess": 0
-            },
-            "countForCharge": {
-                "sms": {},
-                "lms": {},
-                "mms": {},
-                "ata": {},
-                "cta": {},
-                "cti": {},
-                "nsa": {},
-                "rcs_sms": {},
-                "rcs_lms": {},
-                "rcs_mms": {},
-                "rcs_tpl": {}
-            },
-            "balance": {
-                "requested": 0,
-                "replacement": 0,
-                "refund": 0,
-                "sum": 0
-            },
-            "point": {
-                "requested": 0,
-                "replacement": 0,
-                "refund": 0,
-                "sum": 0
-            },
-            "app": {
-                "profit": {
-                    "sms": 0,
-                    "lms": 0,
-                    "mms": 0,
-                    "ata": 0,
-                    "cta": 0,
-                    "cti": 0,
-                    "nsa": 0,
-                    "rcs_sms": 0,
-                    "rcs_lms": 0,
-                    "rcs_mms": 0,
-                    "rcs_tpl": 0
-                },
-                "appId": "TESTAPPID",
-                "version": null
-            },
-            "serviceMethod": "MT",
-            "sdkVersion": "1.0",
-            "osPlatform": "win",
-            "log": [
-                {
-                    "createAt": "2021-07-14T07:04:16.384Z",
-                    "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
-                }
-            ],
-            "status": "PENDING",
-            "dateSent": null,
-            "scheduledDate": null,
-            "dateCompleted": null,
-            "isRefunded": false,
-            "flagUpdated": false,
-            "prepaid": true,
-            "strict": false,
-            "masterAccountId": null,
-            "allowDuplicates": false,
-            "accountId": "12925149",
-            "apiVersion": "4",
-            "customFields": {},
-            "hint": null,
-            "groupId": "G4V20210714160416UPQHSQKZGCZSYKU",
-            "price": {},
-            "dateCreated": "2021-07-14T07:04:16.389Z",
-            "dateUpdated": "2021-07-14T07:04:16.389Z"
-        },
-        "G4V20210714160416RZHKZPEZPPMWHU5": {
-            "_id": "G4V20210714160416RZHKZPEZPPMWHU5",
+        "G4V20210714161242FCWZDC4SR5ITUIN": {
+            "_id": "G4V20210714161242FCWZDC4SR5ITUIN",
             "count": {
                 "total": 0,
                 "sentTotal": 0,
@@ -660,173 +743,7 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "osPlatform": "win",
             "log": [
                 {
-                    "createAt": "2021-07-14T07:04:16.398Z",
-                    "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
-                }
-            ],
-            "status": "PENDING",
-            "dateSent": null,
-            "scheduledDate": null,
-            "dateCompleted": null,
-            "isRefunded": false,
-            "flagUpdated": false,
-            "prepaid": true,
-            "strict": false,
-            "masterAccountId": null,
-            "allowDuplicates": false,
-            "accountId": "12925149",
-            "apiVersion": "4",
-            "customFields": {},
-            "hint": null,
-            "groupId": "G4V20210714160416RZHKZPEZPPMWHU5",
-            "price": {},
-            "dateCreated": "2021-07-14T07:04:16.401Z",
-            "dateUpdated": "2021-07-14T07:04:16.401Z"
-        },
-        "G4V20210714160416IHN7M8PP6BPEXRM": {
-            "_id": "G4V20210714160416IHN7M8PP6BPEXRM",
-            "count": {
-                "total": 0,
-                "sentTotal": 0,
-                "sentFailed": 0,
-                "sentSuccess": 0,
-                "sentPending": 0,
-                "sentReplacement": 0,
-                "refund": 0,
-                "registeredFailed": 0,
-                "registeredSuccess": 0
-            },
-            "countForCharge": {
-                "sms": {},
-                "lms": {},
-                "mms": {},
-                "ata": {},
-                "cta": {},
-                "cti": {},
-                "nsa": {},
-                "rcs_sms": {},
-                "rcs_lms": {},
-                "rcs_mms": {},
-                "rcs_tpl": {}
-            },
-            "balance": {
-                "requested": 0,
-                "replacement": 0,
-                "refund": 0,
-                "sum": 0
-            },
-            "point": {
-                "requested": 0,
-                "replacement": 0,
-                "refund": 0,
-                "sum": 0
-            },
-            "app": {
-                "profit": {
-                    "sms": 0,
-                    "lms": 0,
-                    "mms": 0,
-                    "ata": 0,
-                    "cta": 0,
-                    "cti": 0,
-                    "nsa": 0,
-                    "rcs_sms": 0,
-                    "rcs_lms": 0,
-                    "rcs_mms": 0,
-                    "rcs_tpl": 0
-                },
-                "appId": null,
-                "version": null
-            },
-            "serviceMethod": "MT",
-            "sdkVersion": null,
-            "osPlatform": null,
-            "log": [
-                {
-                    "createAt": "2021-07-14T07:04:16.363Z",
-                    "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
-                }
-            ],
-            "status": "PENDING",
-            "dateSent": null,
-            "scheduledDate": null,
-            "dateCompleted": null,
-            "isRefunded": false,
-            "flagUpdated": false,
-            "prepaid": true,
-            "strict": false,
-            "masterAccountId": null,
-            "allowDuplicates": false,
-            "accountId": "12925149",
-            "apiVersion": "4",
-            "customFields": {},
-            "hint": null,
-            "groupId": "G4V20210714160416IHN7M8PP6BPEXRM",
-            "price": {},
-            "dateCreated": "2021-07-14T07:04:16.367Z",
-            "dateUpdated": "2021-07-14T07:04:16.367Z"
-        },
-        "G4V202107141604168RZQQJT5Y1SIW7F": {
-            "_id": "G4V202107141604168RZQQJT5Y1SIW7F",
-            "count": {
-                "total": 0,
-                "sentTotal": 0,
-                "sentFailed": 0,
-                "sentSuccess": 0,
-                "sentPending": 0,
-                "sentReplacement": 0,
-                "refund": 0,
-                "registeredFailed": 0,
-                "registeredSuccess": 0
-            },
-            "countForCharge": {
-                "sms": {},
-                "lms": {},
-                "mms": {},
-                "ata": {},
-                "cta": {},
-                "cti": {},
-                "nsa": {},
-                "rcs_sms": {},
-                "rcs_lms": {},
-                "rcs_mms": {},
-                "rcs_tpl": {}
-            },
-            "balance": {
-                "requested": 0,
-                "replacement": 0,
-                "refund": 0,
-                "sum": 0
-            },
-            "point": {
-                "requested": 0,
-                "replacement": 0,
-                "refund": 0,
-                "sum": 0
-            },
-            "app": {
-                "profit": {
-                    "sms": 0,
-                    "lms": 0,
-                    "mms": 0,
-                    "ata": 0,
-                    "cta": 0,
-                    "cti": 0,
-                    "nsa": 0,
-                    "rcs_sms": 0,
-                    "rcs_lms": 0,
-                    "rcs_mms": 0,
-                    "rcs_tpl": 0
-                },
-                "appId": null,
-                "version": null
-            },
-            "serviceMethod": "MT",
-            "sdkVersion": "1.0",
-            "osPlatform": "win",
-            "log": [
-                {
-                    "createAt": "2021-07-14T07:04:16.410Z",
+                    "createAt": "2021-07-14T07:12:42.364Z",
                     "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
                 }
             ],
@@ -846,10 +763,93 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "hint": {
                 "routeType": "large"
             },
-            "groupId": "G4V202107141604168RZQQJT5Y1SIW7F",
+            "groupId": "G4V20210714161242FCWZDC4SR5ITUIN",
             "price": {},
-            "dateCreated": "2021-07-14T07:04:16.413Z",
-            "dateUpdated": "2021-07-14T07:04:16.413Z"
+            "dateCreated": "2021-07-14T07:12:42.367Z",
+            "dateUpdated": "2021-07-14T07:12:42.367Z"
+        },
+        "G4V202107141612423OCDPVBPXMAKBKT": {
+            "_id": "G4V202107141612423OCDPVBPXMAKBKT",
+            "count": {
+                "total": 0,
+                "sentTotal": 0,
+                "sentFailed": 0,
+                "sentSuccess": 0,
+                "sentPending": 0,
+                "sentReplacement": 0,
+                "refund": 0,
+                "registeredFailed": 0,
+                "registeredSuccess": 0
+            },
+            "countForCharge": {
+                "sms": {},
+                "lms": {},
+                "mms": {},
+                "ata": {},
+                "cta": {},
+                "cti": {},
+                "nsa": {},
+                "rcs_sms": {},
+                "rcs_lms": {},
+                "rcs_mms": {},
+                "rcs_tpl": {}
+            },
+            "balance": {
+                "requested": 0,
+                "replacement": 0,
+                "refund": 0,
+                "sum": 0
+            },
+            "point": {
+                "requested": 0,
+                "replacement": 0,
+                "refund": 0,
+                "sum": 0
+            },
+            "app": {
+                "profit": {
+                    "sms": 0,
+                    "lms": 0,
+                    "mms": 0,
+                    "ata": 0,
+                    "cta": 0,
+                    "cti": 0,
+                    "nsa": 0,
+                    "rcs_sms": 0,
+                    "rcs_lms": 0,
+                    "rcs_mms": 0,
+                    "rcs_tpl": 0
+                },
+                "appId": null,
+                "version": null
+            },
+            "serviceMethod": "MT",
+            "sdkVersion": "1.0",
+            "osPlatform": "win",
+            "log": [
+                {
+                    "createAt": "2021-07-14T07:12:42.353Z",
+                    "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
+                }
+            ],
+            "status": "PENDING",
+            "dateSent": null,
+            "scheduledDate": null,
+            "dateCompleted": null,
+            "isRefunded": false,
+            "flagUpdated": false,
+            "prepaid": true,
+            "strict": false,
+            "masterAccountId": null,
+            "allowDuplicates": false,
+            "accountId": "12925149",
+            "apiVersion": "4",
+            "customFields": {},
+            "hint": null,
+            "groupId": "G4V202107141612423OCDPVBPXMAKBKT",
+            "price": {},
+            "dateCreated": "2021-07-14T07:12:42.355Z",
+            "dateUpdated": "2021-07-14T07:12:42.355Z"
         },
         "G4V20190FFFFFFFFFH3PTASXMNJG2JIO": {
             "_id": "G4V20190FFFFFFFFFH3PTASXMNJG2JIO",
@@ -899,11 +899,11 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "log": [
                 {
                     "message": "메시지 그룹이 생성되었습니다.",
-                    "createAt": "2021-07-14T07:04:16.003Z"
+                    "createAt": "2021-07-14T07:12:41.958Z"
                 },
                 {
                     "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-                    "createAt": "2021-07-14T07:04:16.003Z"
+                    "createAt": "2021-07-14T07:12:41.958Z"
                 }
             ],
             "status": "PENDING",
@@ -937,8 +937,8 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "price": {},
             "customFields": {},
             "hint": {},
-            "dateCreated": "2021-07-14T07:04:16.006Z",
-            "dateUpdated": "2021-07-14T07:04:16.006Z"
+            "dateCreated": "2021-07-14T07:12:41.961Z",
+            "dateUpdated": "2021-07-14T07:12:41.961Z"
         },
         "G4V20190607105937H3PTASXMNJG2JID": {
             "_id": "G4V20190607105937H3PTASXMNJG2JID",
@@ -987,7 +987,7 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "osPlatform": null,
             "log": [
                 {
-                    "createAt": "2021-07-14T07:04:15.966Z",
+                    "createAt": "2021-07-14T07:12:41.918Z",
                     "message": "메시지 그룹이 생성되었습니다."
                 }
             ],
@@ -1022,8 +1022,8 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "price": {},
             "customFields": {},
             "hint": {},
-            "dateCreated": "2021-07-14T07:04:15.970Z",
-            "dateUpdated": "2021-07-14T07:04:15.970Z"
+            "dateCreated": "2021-07-14T07:12:41.927Z",
+            "dateUpdated": "2021-07-14T07:12:41.927Z"
         },
         "G4V20190607105937H3PFASXMNJG2JID": {
             "_id": "G4V20190607105937H3PFASXMNJG2JID",
@@ -1072,7 +1072,7 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "osPlatform": null,
             "log": [
                 {
-                    "createAt": "2021-07-14T07:04:15.973Z",
+                    "createAt": "2021-07-14T07:12:41.930Z",
                     "message": "메시지 그룹이 생성되었습니다."
                 }
             ],
@@ -1107,8 +1107,8 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "price": {},
             "customFields": {},
             "hint": {},
-            "dateCreated": "2021-07-14T07:04:15.977Z",
-            "dateUpdated": "2021-07-14T07:04:15.977Z"
+            "dateCreated": "2021-07-14T07:12:41.933Z",
+            "dateUpdated": "2021-07-14T07:12:41.933Z"
         },
         "G4V2019030710593FFFNCELSCHEDULE4": {
             "_id": "G4V2019030710593FFFNCELSCHEDULE4",
@@ -1158,11 +1158,11 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "log": [
                 {
                     "message": "메시지 그룹이 생성되었습니다.",
-                    "createAt": "2021-07-14T07:04:15.985Z"
+                    "createAt": "2021-07-14T07:12:41.940Z"
                 },
                 {
                     "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-                    "createAt": "2021-07-14T07:04:15.985Z"
+                    "createAt": "2021-07-14T07:12:41.940Z"
                 }
             ],
             "status": "FAILED",
@@ -1196,8 +1196,8 @@ http://api.coolsms.co.kr/messages/v4/groups?limit=10
             "price": {},
             "customFields": {},
             "hint": {},
-            "dateCreated": "2021-07-14T07:04:15.987Z",
-            "dateUpdated": "2021-07-14T07:04:15.987Z"
+            "dateCreated": "2021-07-14T07:12:41.943Z",
+            "dateUpdated": "2021-07-14T07:12:41.943Z"
         }
     },
     "nextKey": "G4V20190307105937H3PTASXMNJGCCCC"

@@ -102,14 +102,14 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
     "log": [
         {
             "message": "메시지 그룹이 생성되었습니다.",
-            "createAt": "2021-07-14T07:04:16.003Z"
+            "createAt": "2021-07-14T07:12:41.958Z"
         },
         {
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-            "createAt": "2021-07-14T07:04:16.003Z"
+            "createAt": "2021-07-14T07:12:41.958Z"
         },
         {
-            "createAt": "2021-07-14T07:04:23.057Z",
+            "createAt": "2021-07-14T07:12:48.987Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -119,7 +119,7 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-07-14T07:04:23.057Z",
+    "dateSent": "2021-07-14T07:12:48.987Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
@@ -142,8 +142,8 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
     },
     "customFields": {},
     "hint": {},
-    "dateCreated": "2021-07-14T07:04:16.006Z",
-    "dateUpdated": "2021-07-14T07:04:23.058Z"
+    "dateCreated": "2021-07-14T07:12:41.961Z",
+    "dateUpdated": "2021-07-14T07:12:48.987Z"
 }
 ```
 

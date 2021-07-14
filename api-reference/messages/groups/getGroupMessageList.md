@@ -98,8 +98,8 @@ http://api.coolsms.co.kr/messages/v4/groups/G4V20180307105937H3PTASXMNJG2JIO/mes
             "to": "01000000000",
             "customFields": {},
             "queues": [],
-            "dateCreated": "2021-07-14T07:04:16.042Z",
-            "dateUpdated": "2021-07-14T07:04:16.042Z",
+            "dateCreated": "2021-07-14T07:12:41.992Z",
+            "dateUpdated": "2021-07-14T07:12:41.992Z",
             "reason": null,
             "networkName": "ETC"
         }

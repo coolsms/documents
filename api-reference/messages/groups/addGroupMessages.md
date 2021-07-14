@@ -53,7 +53,7 @@ PUT https://api.coolsms.co.kr/messages/v4/groups/:groupId/messages
 | type | `string` |  | 메시지 타입 |
 | country | `string` |  | 국가번호 (기본: 82, 미국(캐나다):1, 중국: 86, 일본: 81) |
 | subject | `string` |  | 메시지 제목<br>한글 20자, 영문 40자 제한 |
-| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](docs.coolsms.co.kr/api-reference/storage) |
+| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](https://docs.coolsms.co.kr/api-reference/storage) |
 | [kakaoOptions](#body-messages-kakaooptions) | `object` |  | 친구톡, 알림톡을 보내기 위한 옵션 |
 | [naverOptions](#body-messages-naveroptions) | `object` |  | 네이버 스마트 알림을 보내기 위한 옵션 |
 | [rcsOptions](#body-messages-rcsoptions) | `object` |  | 설명 없음 |
@@ -68,7 +68,7 @@ PUT https://api.coolsms.co.kr/messages/v4/groups/:groupId/messages
 | pfGroupId | `string` |  | 설명 없음 |
 | templateId | `string` |  | 알림톡 템플릿 아이디 |
 | disableSms | `boolean` |  | 대체 발송 여부 |
-| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](docs.coolsms.co.kr/api-reference/storage) |
+| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](https://docs.coolsms.co.kr/api-reference/storage) |
 | [buttons](#body-messages-kakaooptions-buttons) | `array` |  | 알림톡 템플릿 버튼 목록 |
 | title | `string` |  | 설명 없음 |
 
@@ -128,7 +128,7 @@ PUT https://api.coolsms.co.kr/messages/v4/groups/:groupId/messages
 | :--- | :--: | :------: | :---------- |
 | title | `string` | O | 설명 없음 |
 | description | `string` | O | 설명 없음 |
-| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](docs.coolsms.co.kr/api-reference/storage) |
+| imageId | `string` |  | Storage API에 등록된 이미지 아이디 [참고](https://docs.coolsms.co.kr/api-reference/storage) |
 | [buttons](#body-messages-rcsoptions-additionalbody-buttons) | `array` |  | 설명 없음 |
 
 
@@ -212,8 +212,8 @@ PUT https://api.coolsms.co.kr/messages/v4/groups/:groupId/messages
 | type | `string` | O | 메시지 타입 |
 | country | `string` | O | 국가번호 (기본: 82, 미국(캐나다):1, 중국: 86, 일본: 81) |
 | messageId | `string` | O | 메시지 아이디 |
-| statusCode | `string` | O | 상태 코드 [참고](docs.coolsms.co.kr/api-reference/message-status-codes) |
-| statusMessage | `string` | O | 상태 메시지 [참고](docs.coolsms.co.kr/api-reference/message-status-codes) |
+| statusCode | `string` | O | 상태 코드 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
+| statusMessage | `string` | O | 상태 메시지 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
 | accountId | `string` | O | 계정 고유 아이디 |
 
 
@@ -250,7 +250,7 @@ PUT https://api.coolsms.co.kr/messages/v4/groups/:groupId/messages
             "type": "SMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160416QLIIBM8ATGDZFHF",
+            "messageId": "M4V202107141612429PVTHSGIF4MTQYI",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -501,7 +501,7 @@ public class Request {
             "type": "LMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160416Y23W5UEQSHAGNSL",
+            "messageId": "M4V20210714161242WWB90D7IRVQIWDO",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -755,7 +755,7 @@ public class Request {
             "type": "MMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160416YYKVVRVHWXIJIG9",
+            "messageId": "M4V20210714161242MSMBT4IEL9TJARV",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -1038,7 +1038,7 @@ public class Request {
             "type": "ATA",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V202107141604174XHNOS18TEYFR6F",
+            "messageId": "M4V2021071416124209WMLND3NN02KKJ",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -1350,7 +1350,7 @@ public class Request {
             "type": "CTA",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160417CBPOQLCBHMRQBYE",
+            "messageId": "M4V20210714161243THAG0BCYHVAIWXC",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -1610,7 +1610,7 @@ public class Request {
             "type": "CTI",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160417HF1VDMN3YRYBUET",
+            "messageId": "M4V20210714161243IYIPMLMF5D6KREK",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -1876,7 +1876,7 @@ public class Request {
             "type": "CTA",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160417TJ27JMFOE5JZUIK",
+            "messageId": "M4V20210714161243XBPBCYLM0Z2ZPL1",
             "statusCode": "2000",
             "accountId": "12925149",
             "customFields": {
@@ -2147,7 +2147,7 @@ public class Request {
             "type": "SMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V202107141604175HDVWEDQEEQPUVP",
+            "messageId": "M4V20210714161243OLEEOCEYWHMVQQN",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -2400,7 +2400,7 @@ public class Request {
             "type": "SMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160417UDHNBXIDKPRFGIH",
+            "messageId": "M4V20210714161243RRV5LX5WLSEVOPR",
             "statusCode": "2000",
             "accountId": "12925149"
         },
@@ -2410,7 +2410,7 @@ public class Request {
             "type": "SMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160417I3F6P6ID343ZAZE",
+            "messageId": "M4V20210714161243MHA4SJVZQZY5MC4",
             "statusCode": "2000",
             "accountId": "12925149"
         }
@@ -2672,7 +2672,7 @@ public class Request {
             "type": "SMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160418FXVOMAULJHUFZ8N",
+            "messageId": "M4V20210714161244IHUHSOYAKUKQUNJ",
             "statusCode": "2000",
             "accountId": "12925149"
         },
@@ -2682,7 +2682,7 @@ public class Request {
             "type": "SMS",
             "statusMessage": "정상 접수(이통사로 접수 예정) ",
             "country": "82",
-            "messageId": "M4V20210714160418LU4SCMFWOZWUMYW",
+            "messageId": "M4V20210714161244PFQKXMZNCXMBKMM",
             "statusCode": "2000",
             "accountId": "12925149"
         },
@@ -2692,7 +2692,7 @@ public class Request {
             "type": "SMS",
             "statusMessage": "중복 수신번호",
             "country": "82",
-            "messageId": "M4V20210714160418HA5J9IDWMMZHDZK",
+            "messageId": "M4V20210714161244ZBJVUNYV8V3WYE8",
             "statusCode": "1026",
             "accountId": "12925149"
         }

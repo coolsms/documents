@@ -122,7 +122,7 @@ POST https://api.coolsms.co.kr/messages/v4/groups/
     "osPlatform": null,
     "log": [
         {
-            "createAt": "2021-07-14T07:04:16.363Z",
+            "createAt": "2021-07-14T07:12:42.320Z",
             "message": "[::ffff:127.0.0.1] 메시지 그룹이 생성되었습니다."
         }
     ],
@@ -139,11 +139,11 @@ POST https://api.coolsms.co.kr/messages/v4/groups/
     "apiVersion": "4",
     "customFields": {},
     "hint": null,
-    "groupId": "G4V20210714160416IHN7M8PP6BPEXRM",
+    "groupId": "G4V20210714161242N9LDHCHSXGUN79M",
     "price": {},
-    "dateCreated": "2021-07-14T07:04:16.367Z",
-    "dateUpdated": "2021-07-14T07:04:16.367Z",
-    "_id": "G4V20210714160416IHN7M8PP6BPEXRM"
+    "dateCreated": "2021-07-14T07:12:42.323Z",
+    "dateUpdated": "2021-07-14T07:12:42.323Z",
+    "_id": "G4V20210714161242N9LDHCHSXGUN79M"
 }
 ```
 
