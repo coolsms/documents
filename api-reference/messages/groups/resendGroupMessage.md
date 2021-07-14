@@ -60,7 +60,12 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
         "mms": {},
         "ata": {},
         "cta": {},
-        "cti": {}
+        "cti": {},
+        "nsa": {},
+        "rcs_sms": {},
+        "rcs_lms": {},
+        "rcs_mms": {},
+        "rcs_tpl": {}
     },
     "balance": {
         "requested": 0,
@@ -81,7 +86,12 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
             "mms": 0,
             "ata": 0,
             "cta": 0,
-            "cti": 0
+            "cti": 0,
+            "nsa": 0,
+            "rcs_sms": 0,
+            "rcs_lms": 0,
+            "rcs_mms": 0,
+            "rcs_tpl": 0
         },
         "appId": null,
         "version": null
@@ -92,14 +102,14 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
     "log": [
         {
             "message": "메시지 그룹이 생성되었습니다.",
-            "createAt": "2021-01-23T10:47:44.251Z"
+            "createAt": "2021-07-14T07:04:16.003Z"
         },
         {
             "message": "국가코드(82)의 단문문자(SMS) 1 건이 추가되었습니다.",
-            "createAt": "2021-01-23T10:47:44.251Z"
+            "createAt": "2021-07-14T07:04:16.003Z"
         },
         {
-            "createAt": "2021-01-23T10:47:49.937Z",
+            "createAt": "2021-07-14T07:04:23.057Z",
             "message": "메시지를 발송했습니다.",
             "oldBalance": 100,
             "newBalance": 100,
@@ -109,13 +119,14 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
         }
     ],
     "status": "SENDING",
-    "dateSent": "2021-01-23T10:47:49.937Z",
+    "dateSent": "2021-07-14T07:04:23.057Z",
     "dateCompleted": null,
     "isRefunded": false,
     "flagUpdated": false,
     "prepaid": true,
     "strict": true,
     "masterAccountId": null,
+    "allowDuplicates": false,
     "_id": "G4V20190FFFFFFFFFH3PTASXMNJG2JIO",
     "groupId": "G4V20190FFFFFFFFFH3PTASXMNJG2JIO",
     "accountId": "12925149",
@@ -131,8 +142,8 @@ POST https://api.coolsms.co.kr/messages/v4/groups/:groupId/resend
     },
     "customFields": {},
     "hint": {},
-    "dateCreated": "2021-01-23T10:47:44.253Z",
-    "dateUpdated": "2021-01-23T10:47:49.937Z"
+    "dateCreated": "2021-07-14T07:04:16.006Z",
+    "dateUpdated": "2021-07-14T07:04:23.058Z"
 }
 ```
 
@@ -316,5 +327,5 @@ public class Request {
 
 ---
 
-> 문서 생성일 : 2021-01-23
+> 문서 생성일 : 2021-07-14
 
