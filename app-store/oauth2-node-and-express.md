@@ -73,7 +73,7 @@ $ npm run start
 ## OAuth 2 로그인 버튼 제작하기
 
 {% hint style="warning" %}
-[앱 등록](https://www.notion.so/ec71ebba081f400e85bd7aae7dea4983#dc2bcabfab514a9aa90b8b91ef1841fd)을 먼저 완료해야 합니다.
+앱 등록을 먼저 완료해야 합니다.
 {% endhint %}
 
 웹 페이지를 띄워주기 위해 [EJS](https://ejs.co) 템플릿 엔진을 사용하였습니다. 템플릿 엔진은 [hogan](https://twitter.github.io/hogan.js/), [pug](https://pugjs.org/api/getting-started.html) 등 아무거나 사용해도 무관합니다.
