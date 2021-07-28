@@ -6,6 +6,9 @@
 
 * [Overview](authentication/overview.md)
 * [API Key 인증 방식](authentication/api-key.md)
+* [SSO 인증 방식](authentication/sso/README.md)
+  * [시작하기](authentication/sso/undefined.md)
+  * [SSO 토큰으로 API 접근하기](authentication/sso/sso-api.md)
 * [OAuth2 인증 방식](authentication/oauth2-3/README.md)
   * [적용하기](authentication/oauth2-3/oauth2.md)
   * [권한\(Scope\) 목록](authentication/oauth2-3/scope.md)
@@ -172,6 +175,11 @@
   * [웹훅 목록 조회](api-reference/webhook/readoutgoingdata.md)
   * [테스트 이벤트 데이터 전송](api-reference/webhook/sendtestoutgoingdata.md)
   * [웹훅 수정](api-reference/webhook/updateoutgoingdata.md)
+* [SSO](api-reference/sso/README.md)
+  * [SSO 토큰 발급](api-reference/sso/sso.md)
+  * [OAuth2 토큰 발급](api-reference/sso/oauth2.md)
+  * [사이트에 OAuth2 토큰 설정](api-reference/sso/oauth2-1.md)
+  * [SSO 토큰 조회](api-reference/sso/sso-1.md)
 * [메시지 상태 코드](api-reference/message-status-codes.md)
 * [Terminology](api-reference/terminology.md)
 
@@ -182,9 +190,7 @@
 
 ## OLD-VERSIONS-SDK
 
-* [c](old-versions-sdk/c.md)
 * [C](old-versions-sdk/c-1.md)
-* [c](old-versions-sdk/c-2.md)
 * [Delphi](old-versions-sdk/delphi/README.md)
   * [API Reference](old-versions-sdk/delphi/api-reference.md)
   * [Examples](old-versions-sdk/delphi/examples.md)
