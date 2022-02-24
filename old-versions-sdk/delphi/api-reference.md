@@ -2,40 +2,40 @@
 
 
 
-## 문자\(SMS\)
+## 문자(SMS)
 
 문자관련 Api Reference를 설명합니다.
 
-### 문자전송\(SEND\)
+### 문자전송(SEND)
 
-| 구분 | 제한사항 |
-| :--- | :--- |
-| SMS | 90바이트 까지 전송가능 |
-| LMS | 2,000바이트 까지 전송가능 |
-| MMS | 2,000바이트 텍스트, 1개의 이미지 전송   |
+| 구분  | 제한사항                                 |
+| --- | ------------------------------------ |
+| SMS | 90바이트 까지 전송가능                        |
+| LMS | 2,000바이트 까지 전송가능                     |
+| MMS | <p>2,000바이트 텍스트, 1개의 이미지 전송<br> </p> |
 
-**Parameters :**        
+**Parameters :**       &#x20;
 
 * to - 받는사람 번호
 * from - 보내는사람 번호
 * text - 문자내용
 * type - 문자 타입
-* app\_version - 어플리케이션 버젼 예\) Purplebook 4.1
+* app\_version - 어플리케이션 버젼 예) Purplebook 4.1
 * to - 받는사람 번호 여러개 입력시
-* image\_path - image file path 이미지 파일 경로 설정 \(기본 "./"\)
-* image - image file \(지원형식 : 200KB 이하의 JPEG\)
+* image\_path - image file path 이미지 파일 경로 설정 (기본 "./")
+* image - image file (지원형식 : 200KB 이하의 JPEG)
 * refname - 참조내용
 * country - 국가코드 한국:KR 일본:JP 미국:US 중국:CN
-* datetime - 예약전송시 날짜 설정        
-* subject - LMS, MMS 일때 제목        
+* datetime - 예약전송시 날짜 설정       &#x20;
+* subject - LMS, MMS 일때 제목       &#x20;
 * charset - 인코딩 방식
 * srk - 솔루션 제공 수수료를 정산받을 솔루션 등록키
 * mode - test모드 수신번호를 반드시 01000000000 으로 테스트하세요. 예약필드 datetime는 무시됨. 결과값은 60. 잔액에서 실제 차감되며 다음날 새벽에 재충전됨
-* extension - 개별문자 보내기        
+* extension - 개별문자 보내기       &#x20;
 
 **Return :** 아래와 같이 JSONObject 형태로 return
 
-```text
+```
 {
   'recipient_number': '01012345678',
   'group_id': '20120217103829612403761364',
@@ -45,11 +45,11 @@
 }
 ```
 
-### 전송결과\(SENT\)
+### 전송결과(SENT)
 
 **Parameters :**
 
-* mid - message\_id 
+* mid - message\_id&#x20;
 * gid - group\_id
 * count - count
 * page - page
@@ -59,7 +59,7 @@
 
 **Return :** 아래와 같은 구조로 return
 
-```text
+```
 {
   'total_count':169,
   'list_count':4,
@@ -93,22 +93,22 @@
 }
 ```
 
-### 잔액확인\(BALANCE\)
+### 잔액확인(BALANCE)
 
 **Parameters :**
 
 * 없음
 
-**Return :**  아래와 같이 JSONObject 형태로 return             
+**Return :**  아래와 같이 JSONObject 형태로 return            &#x20;
 
-```text
+```
 {
   'cash': '0',
   'point': '15121',  
 }
 ```
 
-### 예약취소\(CANCEL\)
+### 예약취소(CANCEL)
 
 **Parameters :**
 
@@ -117,65 +117,65 @@
 
 **Return :** Return값이 없습니다.
 
-```text
+```
 None
 ```
 
-## 발신번호\(SENDERID\)
+## 발신번호(SENDERID)
 
-### 등록요청\(REGISTER\)
+### 등록요청(REGISTER)
 
 \* 보안상 문제로 현재는 제공하지 않습니다. 쿨에스엠에스 사이트에서 발신번호를 등록해 주세요
 
-**Parameters :**        
+**Parameters :**       &#x20;
 
-* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예\) admin
-* phone - 발신번호 예\) 021234567 
+* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예) admin
+* phone - 발신번호 예) 021234567&#x20;
 
 **Return :** 아래와 같이 JSONObject 형태로 return
 
-```text
+```
 {
   'handle_key': 'CI283910CCKKI91',
   'ars_number': '01000000000'
 }
 ```
 
-### 등록확인\(VERIFY\)
+### 등록확인(VERIFY)
 
 \* 보안상 문제로 현재는 제공하지 않습니다. 쿨에스엠에스 사이트에서 발신번호를 등록해 주세요
 
-**Parameters :**        
+**Parameters :**       &#x20;
 
 * handle\_key - register 호출 후 리턴받은 핸들값
 
 **Return :** Return값이 없습니다.
 
-```text
+```
 None
 ```
 
-### 삭제\(DELETE\)
+### 삭제(DELETE)
 
-**Parameters :**        
+**Parameters :**       &#x20;
 
 * handle\_key - register 호출 후 리턴받은 핸들값
 
 **Return :** Return값이 없습니다.
 
-```text
+```
 None
 ```
 
-### 리스트보기\(LIST\)
+### 리스트보기(LIST)
 
-**Parameters :**        
+**Parameters :**       &#x20;
 
-* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예\) admin
+* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예) admin
 
 **Return :** 아래와 같이 JSONObject 형태로 return
 
-```text
+```
 {
   "data":
   [
@@ -197,32 +197,31 @@ None
 }
 ```
 
-### 기본발신번호설정\(SET\_DEFAULT\)
+### 기본발신번호설정(SET\_DEFAULT)
 
-**Parameters :**        
+**Parameters :**       &#x20;
 
-* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예\) admin
+* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예) admin
 * handle\_key - 발신번호 핸들값을 입력
 
 **Return :** Return값이 없습니다.
 
-```text
+```
 None
 ```
 
-### 기본발신번호보기\(GET\_DEFAULT\)
+### 기본발신번호보기(GET\_DEFAULT)
 
-**Parameters :**        
+**Parameters :**       &#x20;
 
-* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예\) admin
-* phone - 발신번호 예\) 021234567 
+* site\_user - 사이트 유저 아이디 입력, 미입력시 \_\_private\_\_ 으로 설정됩니다. 예) admin
+* phone - 발신번호 예) 021234567&#x20;
 
 **Return :** 아래와 같이 JSONObject 형태로 return
 
-```text
+```
 {
   'handle_key': 'CI283910CCKKI91',
   'ars_number': '01000000000'
 }
 ```
-

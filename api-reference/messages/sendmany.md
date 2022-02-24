@@ -2,21 +2,21 @@
 
 ## Request
 
-```text
+```
 POST https://api.coolsms.co.kr/messages/v4/send-many
 ```
 
 하나 이상의 메시지를 발송합니다. 대량 발송은 그룹 메시지를 사용하세요.
 
-홈페이지의 [문자발송 내역](https://coolsms.co.kr/message-log/detail)에서 전송결과 내역을 확인하실 수 있습니다. \(로그인 필요\)
+홈페이지의 [문자발송 내역](https://coolsms.co.kr/message-log/detail)에서 전송결과 내역을 확인하실 수 있습니다. (로그인 필요)
 
-전송 내역\(메시지 그룹, 메시지 목록\)의 보관기간은 생성일 기준 6개월 입니다. 6개월이 지난 내역은 조회가 불가능합니다.
+전송 내역(메시지 그룹, 메시지 목록)의 보관기간은 생성일 기준 6개월 입니다. 6개월이 지난 내역은 조회가 불가능합니다.
 
 ### Authorization 인증 필요 [\[?\]](https://docs.coolsms.co.kr/authentication/overview#authorization)
 
-| 계정 권한 | 회원 권한 | 계정 상태 | 회원 상태 | 계정 인증 |
-| :--- | :--- | :--- | :--- | :---: |
-| `message:write` | `role-message:write` | `ACTIVE` | `ACTIVE` |  |
+| 계정 권한           | 회원 권한                | 계정 상태    | 회원 상태    | 계정 인증 |
+| --------------- | -------------------- | -------- | -------- | :---: |
+| `message:write` | `role-message:write` | `ACTIVE` | `ACTIVE` |       |
 
 ### Request Structure
 
@@ -30,19 +30,19 @@ POST https://api.coolsms.co.kr/messages/v4/send-many
 
 ### Body Params
 
-| Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
-| messages | `Array` | O | 발송할 메시지 내용 |
-| strict | `boolean` |  | 설명 없음 |
-| [agent](sendmany.md#body-agent) | `object` |  | 에이전트 |
+| Name                            |    Type   | Required | Description |
+| ------------------------------- | :-------: | :------: | ----------- |
+| messages                        |  `Array`  |     O    | 발송할 메시지 내용  |
+| strict                          | `boolean` |          | 설명 없음       |
+| [agent](sendmany.md#body-agent) |  `object` |          | 에이전트        |
 
 #### Body / agent
 
-| Name | Type | Required | Description |
-| :--- | :---: | :---: | :--- |
-| appId | `string` |  | 앱 아이디 |
-| osPlatform | `string` |  | OS 플렛폼 |
-| sdkVersion | `string` |  | SDK 버전 |
+| Name       |   Type   | Required | Description |
+| ---------- | :------: | :------: | ----------- |
+| appId      | `string` |          | 앱 아이디       |
+| osPlatform | `string` |          | OS 플렛폼      |
+| sdkVersion | `string` |          | SDK 버전      |
 
 ## Response
 
@@ -66,21 +66,21 @@ POST https://api.coolsms.co.kr/messages/v4/send-many
 
 #### Response /
 
-| Name | Type | Should Return | Description |
-| :--- | :---: | :---: | :--- |
-| groupId | `string` | O | 그룹 아이디 |
-| messageId | `string` | O | 메시지 아이디 |
-| accountId | `string` | O | 계정 고유 번호 |
-| statusMessage | `string` | O | 상태 메시지 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
-| statusCode | `string` | O | 상태 코드 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
-| to | `string` | O | 수신번호 |
-| from | `string` | O | 발신번호 사전 등록된 전화번호만 사용 가능 |
-| type | `string` | O | 메시지 타입 |
-| country | `string` | O | 국가번호 \(기본: 82, 미국\(캐나다\):1, 중국: 86, 일본: 81\) |
+| Name          |   Type   | Should Return | Description                                                                |
+| ------------- | :------: | :-----------: | -------------------------------------------------------------------------- |
+| groupId       | `string` |       O       | 그룹 아이디                                                                     |
+| messageId     | `string` |       O       | 메시지 아이디                                                                    |
+| accountId     | `string` |       O       | 계정 고유 번호                                                                   |
+| statusMessage | `string` |       O       | 상태 메시지 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes) |
+| statusCode    | `string` |       O       | 상태 코드 [참고](https://docs.coolsms.co.kr/api-reference/message-status-codes)  |
+| to            | `string` |       O       | 수신번호                                                                       |
+| from          | `string` |       O       | <p>발신번호<br>사전 등록된 전화번호만 사용 가능</p>                                          |
+| type          | `string` |       O       | 메시지 타입                                                                     |
+| country       | `string` |       O       | 국가번호 (기본: 82, 미국(캐나다):1, 중국: 86, 일본: 81)                                   |
 
 ## Samples
 
-### 메시지 발송 \(type: Auto Detect\)
+### 메시지 발송 (type: Auto Detect)
 
 > **Sample Request**
 
@@ -273,7 +273,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -393,7 +393,7 @@ public class Request {
 {% endtab %}
 {% endtabs %}
 
-### 단문문자\(SMS\) 발송
+### 단문문자(SMS) 발송
 
 > **Sample Request**
 
@@ -588,7 +588,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -709,7 +709,7 @@ public class Request {
 {% endtab %}
 {% endtabs %}
 
-### 장문문자\(LMS\) 발송
+### 장문문자(LMS) 발송
 
 > **Sample Request**
 
@@ -907,7 +907,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -1029,7 +1029,7 @@ public class Request {
 {% endtab %}
 {% endtabs %}
 
-### 사진문자\(MMS\) 발송
+### 사진문자(MMS) 발송
 
 > **Sample Request**
 
@@ -1228,7 +1228,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -1351,7 +1351,7 @@ public class Request {
 {% endtab %}
 {% endtabs %}
 
-### 알림톡\(ATA\) 발송
+### 알림톡(ATA) 발송
 
 > **Sample Request**
 
@@ -1569,7 +1569,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -1701,7 +1701,7 @@ public class Request {
 {% endtab %}
 {% endtabs %}
 
-### 친구톡\(CTA\) 발송
+### 친구톡(CTA) 발송
 
 > **Sample Request**
 
@@ -1902,7 +1902,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -2026,7 +2026,7 @@ public class Request {
 {% endtab %}
 {% endtabs %}
 
-### 친구톡 사진\(CTI\) 발송
+### 친구톡 사진(CTI) 발송
 
 > **Sample Request**
 
@@ -2229,7 +2229,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -2552,7 +2552,7 @@ print(response.text)
 {% endtab %}
 
 {% tab title="CURL" %}
-```text
+```
 #!/bin/bash
 curl -X POST \
     -H 'Authorization: HMAC-SHA256 apiKey=NCSAYU7YDBXYORXC, date=2019-07-01T00:41:48Z, salt=jqsba2jxjnrjor, signature=1779eac71a24cbeeadfa7263cb84b7ea0af1714f5c0270aa30ffd34600e363b4' \
@@ -2677,4 +2677,3 @@ public class Request {
 {% endtabs %}
 
 > 문서 생성일 : 2021-07-14
-
